@@ -92,6 +92,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c1fd03a028ef38ba2276dce7e33fcd6369c158a1bca17946c4b1b701891c1ff7"
 
 [[package]]
+name = "arrayref"
+version = "0.3.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "76a2e8124351fda1ef8aaaa3bbd7ebbcb486bbcd4225aca0aa0d84bb2db8fecb"
+
+[[package]]
+name = "arrayvec"
+version = "0.7.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7c02d123df017efcdfbd739ef81735b36c5ba83ec3c59c80a9d7ecc718f92e50"
+
+[[package]]
 name = "autocfg"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -143,6 +155,19 @@ dependencies = [
  "radium",
  "tap",
  "wyz",
+]
+
+[[package]]
+name = "blake3"
+version = "1.5.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b8ee0c1824c4dea5b5f81736aff91bae041d2c07ee1192bec91054e10e3e601e"
+dependencies = [
+ "arrayref",
+ "arrayvec",
+ "cc",
+ "cfg-if",
+ "constant_time_eq",
 ]
 
 [[package]]
@@ -292,6 +317,31 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5b63caa9aa9397e2d9480a9b13673856c78d8ac123288526c37d7839f2a86990"
 
 [[package]]
+name = "commonware-consensus"
+version = "0.0.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2d8d19dcee8fcce980a52512d667f7c8664ef3ca561c6992ba257b2bf3dda002"
+dependencies = [
+ "bytes",
+ "commonware-cryptography",
+ "commonware-macros",
+ "commonware-p2p",
+ "commonware-runtime",
+ "commonware-storage",
+ "commonware-utils 0.0.6",
+ "futures",
+ "governor",
+ "prometheus-client",
+ "prost",
+ "prost-build",
+ "rand",
+ "rand_distr",
+ "sha2 0.10.8",
+ "thiserror",
+ "tracing",
+]
+
+[[package]]
 name = "commonware-cryptography"
 version = "0.0.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -370,6 +420,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "commonware-storage"
+version = "0.0.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fc5410852dd62b7e5c6ba0c5608b95c2c905ecca30ec3e91d353f114a645b7fd"
+dependencies = [
+ "bytes",
+ "commonware-macros",
+ "commonware-runtime",
+ "commonware-utils 0.0.6",
+ "crc32fast",
+ "futures",
+ "futures-util",
+ "prometheus-client",
+ "rangemap",
+ "thiserror",
+ "tracing",
+ "zstd",
+]
+
+[[package]]
 name = "commonware-stream"
 version = "0.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -409,12 +479,27 @@ dependencies = [
 ]
 
 [[package]]
+name = "constant_time_eq"
+version = "0.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7c74b8349d32d297c9134b8c88677813a227df8f779daa29bfc29c183fe3dca6"
+
+[[package]]
 name = "cpufeatures"
 version = "0.2.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "16b80225097f2e5ae4e7179dd2266824648f3e2f49d9134d584b76389d31c4c3"
 dependencies = [
  "libc",
+]
+
+[[package]]
+name = "crc32fast"
+version = "1.4.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a97769d94ddab943e4510d138150169a2758b5ef3eb191a9ee688de3e23ef7b3"
+dependencies = [
+ "cfg-if",
 ]
 
 [[package]]
@@ -1569,6 +1654,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "rangemap"
+version = "1.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f60fcc7d6849342eff22c4350c8b9a989ee8ceabc4b481253e8946b9fe83d684"
+
+[[package]]
 name = "raw-cpuid"
 version = "11.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1640,17 +1731,22 @@ name = "romer"
 version = "0.1.0"
 dependencies = [
  "bincode",
+ "blake3",
  "bytes",
  "clap",
+ "commonware-consensus",
  "commonware-cryptography",
  "commonware-p2p",
  "commonware-runtime",
+ "commonware-storage",
  "commonware-utils 0.0.3",
  "futures",
+ "futures-channel",
  "governor",
  "hex",
  "prometheus-client",
  "serde",
+ "thiserror",
  "tokio",
  "tracing",
  "tracing-subscriber",

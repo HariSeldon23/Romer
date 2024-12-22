@@ -5,7 +5,9 @@ edition = "2021"
 
 [dependencies]
 commonware-p2p = "=0.0.25"
-commonware-cryptography = "=0.0.14"  # This needs to match p2p's requirement
+commonware-cryptography = "=0.0.14"
+commonware-consensus = "=0.0.3"
+commonware-storage = "=0.0.6"
 commonware-runtime = "=0.0.11"
 commonware-utils = "=0.0.3"
 hex = "0.4"
@@ -20,3 +22,6 @@ governor = "0.6"
 bytes = "1.5"
 futures = "0.3"
 warp = "0.3"
+thiserror = "1.0"
+blake3 = "1.5"
+futures-channel = "0.3"

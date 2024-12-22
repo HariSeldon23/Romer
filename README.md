@@ -72,3 +72,8 @@ This will start Prometheus at
 http://localhost:9090
 
 Add Prometheus as a Data Source to Grafana
+
+## Consensus
+Current implementation uses Simplex with a round robin leader selection. Once the network is working smoothly we'll then adjust Leader selection.
+
+RomerSupervisor handles validator set management and leader selection.
