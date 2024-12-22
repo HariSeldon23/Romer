@@ -13,11 +13,17 @@ use std::num::NonZeroU32;
 use bytes::Bytes;
 use tracing;
 
-// Unique namespace for our network protocol
+// Import our custom metrics module
+// The metrics module contains the NetworkMetrics struct with the corrected histogram
+mod metrics;
+use crate::metrics::NetworkMetrics;
+
+// Protocol constants
 const ROMER_NAMESPACE: &[u8] = b"romer-chain-v0.1";
 const MAX_MESSAGE_SIZE: usize = 1024 * 1024; // 1 MB
 
 /// Configuration for a validator node
+#[derive(Clone)]
 struct NodeConfig {
     key_seed: u64,
     port: u16,
@@ -25,7 +31,7 @@ struct NodeConfig {
     bootstrap_nodes: Vec<(Vec<u8>, SocketAddr)>  // (public_key, address)
 }
 
-/// Network announcement message format
+/// Network announcement message format for peer discovery
 #[derive(Serialize, Deserialize)]
 struct NetworkAnnouncement {
     public_key: Vec<u8>,
@@ -33,15 +39,20 @@ struct NetworkAnnouncement {
     timestamp: u64,
 }
 
-/// PeerDiscovery handles the peer discovery protocol
+/// Handles peer discovery and metrics collection
 struct PeerDiscovery {
     identity: Ed25519,
     region: String,
+    metrics: Arc<NetworkMetrics>,
 }
 
 impl PeerDiscovery {
-    fn new(identity: Ed25519, region: String) -> Self {
-        Self { identity, region }
+    fn new(identity: Ed25519, region: String, metrics: Arc<NetworkMetrics>) -> Self {
+        Self { 
+            identity, 
+            region, 
+            metrics 
+        }
     }
 
     async fn run<S, R>(self, mut sender: S, mut receiver: R)
@@ -49,8 +60,8 @@ impl PeerDiscovery {
         S: Sender,
         R: Receiver,
     {
-        // Log that our discovery service is starting
         tracing::info!("Starting peer discovery service");
+
         // Create our network announcement
         let announcement = NetworkAnnouncement {
             public_key: self.identity.public_key().to_vec(),
@@ -61,11 +72,14 @@ impl PeerDiscovery {
                 .as_secs(),
         };
 
-        // Broadcast to all peers
+        // Serialize announcement once to reuse for metrics
+        let encoded_announcement = bincode::serialize(&announcement).unwrap();
+        
+        // Broadcast our presence to all peers
         match sender
             .send(
                 Recipients::All,
-                bincode::serialize(&announcement).unwrap().into(),
+                encoded_announcement.clone().into(),
                 false,
             )
             .await
@@ -73,8 +87,10 @@ impl PeerDiscovery {
             Ok(_) => {
                 tracing::info!(
                     region = self.region,
-                    "Broadcasted our presence to the network"
+                    "Broadcasted presence to network"
                 );
+                // Record outbound message in metrics
+                self.metrics.record_message(encoded_announcement.len(), true);
             }
             Err(e) => {
                 tracing::error!("Failed to send announcement: {:?}", e);
@@ -83,8 +99,14 @@ impl PeerDiscovery {
 
         // Handle incoming announcements
         while let Ok((peer_key, msg)) = receiver.recv().await {
+            // Record the received message size
+            self.metrics.record_message(msg.len(), false);
+            
             match bincode::deserialize::<NetworkAnnouncement>(&msg) {
                 Ok(announcement) => {
+                    // Record the new peer connection
+                    self.metrics.record_connection(&peer_key, &announcement.region);
+                    
                     tracing::info!(
                         peer_id = hex::encode(&peer_key),
                         peer_region = announcement.region,
@@ -98,6 +120,8 @@ impl PeerDiscovery {
                         "Failed to deserialize announcement: {:?}",
                         e
                     );
+                    // Record disconnection on deserialization failure
+                    self.metrics.record_disconnection(&peer_key, "unknown");
                 }
             }
         }
@@ -105,7 +129,7 @@ impl PeerDiscovery {
 }
 
 fn main() {
-    // Initialize logging
+    // Initialize logging with tracing
     tracing_subscriber::fmt()
         .with_max_level(tracing::Level::INFO)
         .init();
@@ -199,11 +223,16 @@ fn main() {
                 .map(|(key, addr)| (Bytes::copy_from_slice(key), *addr))
                 .collect();
 
-            // Configure P2P network
+            // Initialize metrics registry and network metrics
+            let mut registry = Registry::default();
+            let network_metrics = NetworkMetrics::new(&mut registry);
+            let network_metrics = Arc::new(network_metrics);
+            
+            // Configure P2P network with metrics
             let p2p_config = authenticated::Config::aggressive(
                 signer.clone(),
                 ROMER_NAMESPACE,
-                Arc::new(Mutex::new(Registry::default())),
+                Arc::new(Mutex::new(registry)),
                 SocketAddr::new(IpAddr::V4(Ipv4Addr::UNSPECIFIED), config.port),
                 bootstrap_nodes,
                 MAX_MESSAGE_SIZE,
@@ -212,7 +241,7 @@ fn main() {
             // Initialize network
             let (mut network, _oracle) = AuthNetwork::new(runtime.clone(), p2p_config);
 
-            // Set up discovery channel
+            // Set up discovery channel with rate limiting
             const DISCOVERY_CHANNEL: u32 = 1;
             let (discovery_sender, discovery_receiver) = network.register(
                 DISCOVERY_CHANNEL,
@@ -221,35 +250,53 @@ fn main() {
                 Some(3), // compression level
             );
 
-            // Create and spawn peer discovery handler
+            // Create and spawn peer discovery handler with metrics
             let discovery = PeerDiscovery::new(
                 signer,
-                config.region,
+                config.region.clone(),
+                network_metrics.clone(),
             );
+            
             runtime.spawn(
                 "discovery",
                 discovery.run(discovery_sender, discovery_receiver),
             );
 
-            // Set up network monitoring
+            // Set up network monitoring channel
             const NETWORK_EVENTS_CHANNEL: u32 = 2;
-            let (events_sender, mut events_receiver) = network.register(
+            let (_events_sender, mut events_receiver) = network.register(
                 NETWORK_EVENTS_CHANNEL,
                 Quota::per_second(NonZeroU32::new(100).unwrap()),
                 1024, // larger backlog for events
                 None, // no compression for events
             );
             
-            // Spawn network event monitor
+            // Clone metrics for the monitor task
+            let monitor_metrics = network_metrics.clone();
+            
+            // Spawn network event monitor with metrics recording
             runtime.spawn(
                 "network-monitor",
                 async move {
-                    while let Ok((peer_key, _)) = events_receiver.recv().await {
+                    while let Ok((peer_key, msg)) = events_receiver.recv().await {
+                        // Record the message metrics
+                        monitor_metrics.record_message(msg.len(), false);
+                        
                         tracing::info!(
                             peer = hex::encode(&peer_key),
-                            "Network connection established"
+                            msg_size = msg.len(),
+                            "Network message received"
                         );
                     }
+                },
+            );
+            
+            // Spawn metrics health check
+            let health_metrics = network_metrics.clone();
+            runtime.spawn(
+                "metrics-health",
+                async move {
+                    health_metrics.run_health_check().await;
                 },
             );
 

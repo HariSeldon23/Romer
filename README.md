@@ -52,3 +52,23 @@ The node command accepts these arguments:
 Use any of these regions when starting your node:
 
 Frankfurt, Amsterdam, London, Ashburn VA, New York/NJ, Tokyo, Singapore, Hong Kong, Sydney, São Paulo, Marseille, Los Angeles, Seattle, Miami, Toronto, Dubai, Mumbai, Chennai, Fortaleza, Manila, Stockholm, Warsaw, Istanbul, Cairo, Moscow, Beijing, Seoul, Taipei, Jakarta, Auckland, Paris, Madrid, Milan, Vienna, Prague, Copenhagen, Helsinki, Tel Aviv, Johannesburg, Lagos, Nairobi, Cape Town, Panama City, Santiago, Vancouver, Perth, Kuala Lumpur, Muscat, Dublin, Montreal
+
+## Monitoring
+`brew install prometheus`
+`brew install grafana`
+`brew services start grafana`
+
+Go to 
+http://localhost:3000
+
+to access Grafana
+
+Login with admin/admin
+
+`prometheus --config.file=./prometheus.yaml`
+
+This will start Prometheus at
+
+http://localhost:9090
+
+Add Prometheus as a Data Source to Grafana
