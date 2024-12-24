@@ -1,235 +1,64 @@
 use clap::Parser;
-use commonware_cryptography::Ed25519;
-use commonware_p2p::{
-    authenticated::{self, Network as AuthNetwork},
-    Sender, Recipients, Receiver,
-};
-use commonware_runtime::tokio::{Executor, Config as RuntimeConfig};
-use prometheus_client::registry::Registry;
-use std::net::{IpAddr, Ipv4Addr, SocketAddr};
-use std::str::FromStr;
-use std::sync::{Arc, Mutex};
-use std::time::Duration;
-use governor::Quota;
-use std::num::NonZeroU32;
-use tracing;
+use commonware_cryptography::{Ed25519, Scheme};
+use commonware_runtime::{Runner};
+use commonware_runtime::deterministic::{Executor};
+use std::net::SocketAddr;
 
-mod storage;
-mod consensus;
-mod metrics;
+// AUTOMATON
+mod automaton;  
+mod node;
+mod utils;
+mod genesis_config;
+use crate::node::Node;
+use crate::genesis_config::GenesisConfig;
 
-use crate::storage::BlockStorage;
-use crate::consensus::{ConsensusConfig, init_consensus, ConsensusRelay};
-use crate::metrics::NetworkMetrics;
-
-// Protocol constants
-const ROMER_NAMESPACE: &[u8] = b"romer-chain-v0.1";
-const MAX_MESSAGE_SIZE: usize = 1024 * 1024; // 1 MB
-
-/// Command line arguments for the node
+// Command line arguments for node configuration
 #[derive(Parser, Debug)]
-#[clap(author, version, about)]
-struct Args {
-    /// Private key seed for the validator
-    #[clap(long)]
-    key_seed: u64,
+#[command(author, version, about, long_about = None)]
+struct NodeCliArgs {
+    /// Node's network address
+    #[arg(short, long, default_value = "127.0.0.1:8000")]
+    address: SocketAddr,
 
-    /// Port to listen on
-    #[clap(long, default_value = "30303")]
-    port: u16,
+    /// Genesis node flag
+    #[arg(short, long)]
+    genesis: bool,
 
-    /// Validator's region
-    #[clap(long)]
-    region: String,
-
-    /// Bootstrap nodes in the format key@ip:port
-    #[clap(long, value_delimiter = ',')]
-    bootstrappers: Vec<String>,
-
-    /// Data directory for blockchain storage
-    #[clap(long, default_value = "./data")]
-    data_dir: String,
+    /// Bootstrap node address (required for non-genesis nodes)
+    #[arg(short, long)]
+    bootstrap: Option<String>,
 }
 
-/// Configuration for setting up a validator node
-#[derive(Clone)]
-struct NodeConfig {
-    key_seed: u64,
-    port: u16,
-    region: String,
-    bootstrap_nodes: Vec<(Vec<u8>, SocketAddr)>, // (public_key, address)
-    data_dir: String,
-}
+fn main() {
+    // Initialize logging
+    tracing_subscriber::fmt::init();
 
-impl TryFrom<Args> for NodeConfig {
-    type Error = Box<dyn std::error::Error>;
+    // Parse command line arguments
+    let args = NodeCliArgs::parse();
 
-    fn try_from(args: Args) -> Result<Self, Self::Error> {
-        let bootstrap_nodes = args.bootstrappers
-            .iter()
-            .map(|node| {
-                let parts: Vec<&str> = node.split('@').collect();
-                if parts.len() != 2 {
-                    return Err("Bootstrap node format should be key@ip:port".into());
-                }
-                let peer_key = parts[0]
-                    .parse::<u64>()
-                    .map_err(|_| "Bootstrap key must be a number")?;
-                let peer_verifier = Ed25519::from_seed(peer_key).public_key().to_vec();
-                let addr = SocketAddr::from_str(parts[1])
-                    .map_err(|_| "Invalid bootstrap node address")?;
-                Ok((peer_verifier, addr))
-            })
-            .collect::<Result<Vec<_>, Box<dyn std::error::Error>>>()?;
+    // Load the genesis configuration
+    let genesis_config = GenesisConfig::load_default()
+        .expect("Failed to load genesis configuration");
 
-        Ok(NodeConfig {
-            key_seed: args.key_seed,
-            port: args.port,
-            region: args.region,
-            bootstrap_nodes,
-            data_dir: args.data_dir,
-        })
-    }
-}
+    // Parse network addresses
+    let local_addr: SocketAddr = args.address;
+    let bootstrap_addr = args.bootstrap
+        .map(|addr| addr.parse().expect("Invalid bootstrap address"));
 
-#[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // Initialize logging with timestamps
-    tracing_subscriber::fmt()
-        .with_target(false)
-        .with_thread_ids(true)
-        .with_file(true)
-        .with_line_number(true)
-        .with_level(true)
-        .init();
+    // Initialize the Commonware Runtime
+    let (executor, runtime, _) = Executor::default();
 
-    let args = Args::parse();
-    let config = NodeConfig::try_from(args)?;
+    // Create node identity
+    let signer = Ed25519::from_seed(42);
 
-    // Initialize runtime configuration
-    let runtime_config = RuntimeConfig::default();
-    let (executor, runtime) = Executor::init(runtime_config);
-
-    // Start the executor with full node configuration
-    executor.start(async move {
-        // Initialize validator identity
-        let signer = Ed25519::from_seed(config.key_seed);
-        tracing::info!(
-            public_key = hex::encode(signer.public_key()),
-            region = config.region,
-            "Initializing validator"
-        );
-
-        // Initialize metrics registry
-        let registry = Arc::new(Mutex::new(Registry::default()));
-        let network_metrics = Arc::new(NetworkMetrics::new(&mut registry.lock().unwrap()));
-
-        // Initialize storage
-        let storage = BlockStorage::new(
-            runtime.clone(),
-            registry.clone(),
-        )
-        .await
-        .expect("Failed to initialize storage");
-
-        // Configure P2P network
-        let p2p_config = authenticated::Config::aggressive(
-            signer.clone(),
-            ROMER_NAMESPACE,
-            registry.clone(),
-            SocketAddr::new(IpAddr::V4(Ipv4Addr::UNSPECIFIED), config.port),
-            config.bootstrap_nodes
-                .iter()
-                .map(|(key, addr)| (Bytes::copy_from_slice(key), *addr))
-                .collect(),
-            MAX_MESSAGE_SIZE,
-        );
-
-        // Initialize network
-        let (mut network, _oracle) = AuthNetwork::new(runtime.clone(), p2p_config);
-
-        // Set up consensus channels
-        const CONSENSUS_CHANNEL: u32 = 1;
-        let (consensus_sender, consensus_receiver) = network.register(
-            CONSENSUS_CHANNEL,
-            Quota::per_second(NonZeroU32::new(100).unwrap()),
-            1024,
-            Some(5),
-        );
-
-        // Initialize consensus with our region
-        let regions = vec![
-            "Frankfurt".to_string(),
-            "London".to_string(),
-            "Amsterdam".to_string(),
-            "New York".to_string(),
-            "Tokyo".to_string(),
-        ];
-
-        let consensus_config = ConsensusConfig::new(
-            signer.clone(),
-            storage.clone(),
-            regions,
-            registry.clone(),
-        )
-        .with_leader_timeout(Duration::from_secs(5))
-        .with_notarization_timeout(Duration::from_secs(10));
-
-        // Initialize consensus system
-        let (consensus, relay) = init_consensus(
-            runtime.clone(),
-            consensus_sender,
-            consensus_config,
-        )
-        .await
-        .expect("Failed to initialize consensus");
-
-        // Clone relay for message handler
-        let message_relay = relay.clone();
-
-        // Spawn consensus message handler
-        runtime.spawn("consensus-handler", async move {
-            while let Ok(msg) = consensus_receiver.recv().await {
-                let peer_key = msg.sender().to_vec();
-                let msg_data = msg.into_data();
-
-                match bincode::deserialize(&msg_data) {
-                    Ok(consensus_msg) => {
-                        if let Err(e) = message_relay.handle_message(consensus_msg, peer_key).await {
-                            tracing::warn!(
-                                error = ?e,
-                                "Failed to handle consensus message"
-                            );
-                        }
-                    }
-                    Err(e) => {
-                        tracing::warn!(
-                            error = ?e,
-                            "Failed to deserialize consensus message"
-                        );
-                    }
-                }
-            }
-        });
-
-        // Spawn metrics monitoring
-        let health_metrics = network_metrics.clone();
-        runtime.spawn("metrics-health", async move {
-            health_metrics.run_health_check().await;
-        });
-
-        // Register ourselves in our primary region
-        relay.announce_validator(
-            signer.public_key().to_vec(),
-            config.region,
-        ).await.expect("Failed to register validator");
-
-        // Spawn consensus engine
-        runtime.spawn("consensus", consensus.run());
-
-        // Run the network
-        network.run().await;
+    // Create and run the node with configuration
+    let node = Node::new(runtime.clone(), signer, genesis_config);
+    
+    Runner::start(executor, async move {
+        node.run(
+            local_addr,
+            args.genesis,
+            bootstrap_addr,
+        ).await;
     });
-
-    Ok(())
 }

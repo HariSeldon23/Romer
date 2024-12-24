@@ -18,12 +18,17 @@ cargo build --release
 
 ## Running a Node
 
-### Starting the First Node
+### Starting the Genesis Node
+The Genesis node is responsible for the following:
+* Creates and Signs the genesis block
+* List of initial validators
+* Network Protocol Parameters (regions, block size limits, consensus etc)
+* Network Identifier
 
-To start the first node in the network:
+To start the genesis node in the network:
 
 ```bash
-cargo run --release -- node --key 1234 --region sydney --port 30303
+cargo run -- -a-127.0.0.1:8000 -g
 ```
 
 **Please note** Your private key is not stored anywhere and is regenerated everytime you use the key to seed.
