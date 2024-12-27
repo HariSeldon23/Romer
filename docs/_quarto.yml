@@ -10,6 +10,8 @@ website:
         text: Home
       - href: pitch/index.qmd
         text: Pitch Deck
+      - href: regions.qmd
+        text: Regions
       - href: tokenomics.qmd
         text: Tokenomics
       - about.qmd

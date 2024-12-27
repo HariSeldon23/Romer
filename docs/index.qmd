@@ -8,7 +8,7 @@ title: "Overview"
 ## Network Overview
 Rømer Chain, named after Ole Rømer who first proved light travels at a finite speed, represents a fundamental shift in blockchain security models. Instead of relying on economic stake or computational work, Rømer Chain's security is anchored in the immutable laws of physics - specifically, the speed of light and the physical reality of global network infrastructure.
 
-The chain's consensus mechanism, Proof of Physics, leverages the unchangeable nature of light speed and network topology to ensure security. By integrating with 50 major internet exchanges and submarine cable landing points worldwide, Rømer Chain measures performance through BGP (Border Gateway Protocol) paths. These paths reveal the true network topology, making it impossible to fake geographic distribution or network performance.
+The chain's consensus mechanism, Proof of Physics, leverages the unchangeable nature of light speed and network topology to ensure security. By integrating with 100 major internet exchanges and submarine cable landing points worldwide, Rømer Chain measures performance through BGP (Border Gateway Protocol) paths. These paths reveal the true network topology, making it impossible to fake geographic distribution or network performance.
 
 Validator selection follows a deterministic epoch system where regions must complete a full cycle before repeating. Within each region, validators compete based on their network performance, infrastructure quality, and path diversity. This creates a system where the worst possible attack only results in temporary halts rather than chain forks, and executing such an attack would require controlling physical infrastructure across multiple global regions.
 
