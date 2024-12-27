@@ -10,10 +10,12 @@ website:
         text: Home
       - href: pitch/index.qmd
         text: Pitch Deck
-      - href: regions.qmd
-        text: Regions
+      - href: pop.qmd
+        text: Proof of Physics
       - href: tokenomics.qmd
         text: Tokenomics
+      - href: regions.qmd
+        text: Regions
       - about.qmd
   
 format:

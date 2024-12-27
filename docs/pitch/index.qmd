@@ -4,6 +4,10 @@ subtitle: "Building the First Chain Optimized for MEV"
 format:
   revealjs:
     theme: simple
+    include-in-header:
+      - text: |
+          <a href="http://localhost:3511" class="back-button">← Back to Website</a>
+    controls: true
     slide-number: true
     width: 1600
     height: 900
@@ -95,17 +99,67 @@ Our stack combines four powerful technologies:
 
 ---
 
-## Tokenomics: Core Principles
+## Tokenomics: Economic Philosophy
 
-Our token model embodies cypherpunk values:
+Our token model embodies a revolutionary approach to blockchain economics:
 
 ::: {.incremental}
-- No venture capital funding
-- Community-driven development
-- Merit-based contribution rewards
-- Progressive decentralization
-- Sustainable long-term incentives
-- Public goods funding
+- **Stability as a First-Class Citizen**
+  - Predictable compute costs
+  - Dynamic supply adaptation
+  - Minimal governance intervention
+
+- **Austrian Economic Alignment**
+  - Natural price discovery
+  - Market-based supply adjustments
+  - Sound money principles
+
+- **Validator Sustainability**
+  - Fixed block emissions
+  - Clear economic incentives
+  - No direct transaction fees
+:::
+
+---
+
+## Tokenomics Architecture
+
+### Core Economic Mechanics
+
+::: {.incremental}
+- **Block Emission**: 1 RØMER per block
+- **Supply Elasticity**
+  - Expands with genuine compute demand
+  - Real-time market response
+  - No artificial scarcity
+
+- **Governance Model**
+  - Quarterly base compute reviews
+  - Data-driven adjustments
+  - Community-focused approach
+:::
+
+---
+
+## Supply Dynamics
+
+### Compute-Driven Supply Mechanism
+
+```python
+def calculate_supply_adjustment(base_compute_units, actual_compute_units):
+    BASE_COST_TARGET = 0.001  # RØMER per compute unit
+    
+    if actual_compute_units > base_compute_units:
+        new_supply = (actual_compute_units - base_compute_units) * 
+                     (BASE_COST_TARGET / base_compute_units)
+        return new_supply
+    return 0
+```
+
+::: {.incremental}
+- Adaptive supply based on network usage
+- Prevents artificial inflation
+- Maintains economic stability
 :::
 
 ---
@@ -117,90 +171,122 @@ Total Supply: 1.008 billion RØMER tokens distributed across three phases:
 :::: {.columns}
 ::: {.column width="30%"}
 **Devnet (10%)**
-Development of core validator infrastructure and protocol fundamentals
+Core infrastructure development
+Validator node bootstrapping
 :::
 
 ::: {.column width="30%"}
 **Testnet (15%)**
-Academic partnerships and infrastructure bootstrapping
+Academic partnerships
+Infrastructure foundation
 :::
 
 ::: {.column width="40%"}
 **Mainnet (75%)**
-Long-term network operation and growth
+Long-term network growth
+Ecosystem expansion
 :::
 ::::
 
 ---
 
-## Devnet Phase: Core Development (10%)
-
-The devnet allocation focuses on building foundational technology:
+## Devnet Phase: Foundation Building
 
 ::: {.incremental}
 - **Validator Node Development**
-  - Implementation of Simplex consensus
-  - Integration with Reth execution layer
-  - Rollup Boost integration for MEV handling
-  - Development of ZK Halo2 proofs for physical presence verification
+  - Simplex consensus implementation
+  - Reth execution layer integration
+  - MEV handling via Rollup Boost
+  - ZK physical presence verification
 
-- **Token Distribution**
+- **Token Distribution Strategy**
   - 100% allocated to core developers
-  - Merit-based distribution tied to development milestones
-  - Focus on attracting top technical talent
+  - Merit-based milestone distribution
+  - Attracting top technical talent
 :::
 
 ---
 
-## Testnet Phase: Academic Foundation (15%)
-
-Creating a research-focused validator culture:
+## Testnet: Research and Infrastructure
 
 :::: {.columns}
 ::: {.column width="50%"}
 **Regional Validator Program (45%)**
-
-- Partnerships with 10 leading universities
-- Geographic distribution requirements
-- Academic research integration
-- Focus on network optimization studies
+- University partnerships
+- Geographic diversity
+- Research integration
+- Network optimization studies
 :::
 
 ::: {.column width="50%"}
 **Infrastructure Development (45%)**
-
-- Gitcoin-based reward distribution
-- Infrastructure provider incentives
+- Gitcoin-based rewards
+- Provider incentives
 - Network monitoring tools
-- Development of supporting systems
+- Supporting systems development
 :::
 ::::
 
 **Public Access (10%)**
-
-- Testnet faucet for community participation
-- Convertible to mainnet tokens at launch
+- Community testnet participation
+- Mainnet token convertibility
 
 ---
 
-## Mainnet Distribution (75%)
-
-Network operation and growth funding:
+## Mainnet Distribution and Governance
 
 ::: {.incremental}
-**Fixed Allocations:**
-- Regional validator rewards
-- Initial searcher infrastructure setup
+**Fixed Allocations**
+- Validator rewards
+- Searcher infrastructure setup
 
-**Gitcoin-Governed Allocations:**
-- Infrastructure provider rewards
-- SAFE implementation
-- Wallet development
-- Block explorer systems
-- Searcher infrastructure (like Propellerheads)
+**Community-Governed Allocations**
+- Infrastructure development
+- Protocol improvements
+- Ecosystem growth initiatives
 
-**Governance Mechanism:**
-- All non-validator allocations controlled by Gitcoin
-- Community-driven priority setting
-- Focus on public goods funding
+**Governance Principles**
+- Gitcoin-controlled non-validator allocations
+- Transparent, community-driven prioritization
+- Focus on public goods and sustainable development
+:::
+
+---
+
+## Economic Security and Resilience
+
+::: {.incremental}
+- **Anti-Spam Protection**
+  - Compute-usage-tied costs
+  - Natural economic barriers
+
+- **Black Swan Handling**
+  - Automatic supply adjustment
+  - Real-time cost stabilization
+  - Market functionality preservation
+
+- **Treasury Management**
+  - Transparent allocation
+  - Ecosystem support
+  - Community-driven initiatives
+:::
+
+---
+
+## Long-Term Vision
+
+::: {.incremental}
+- **Network Sustainability**
+  - Predictable economic model
+  - Aligned validator incentives
+  - Organic growth mechanisms
+
+- **Adaptive Ecosystem**
+  - Quarterly economic reviews
+  - Market-responsive design
+  - Minimal governance overhead
+
+- **Philosophical Foundation**
+  - Blockchain as a living economic system
+  - Value creation through intelligent design
 :::

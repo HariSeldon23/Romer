@@ -23,7 +23,7 @@
 ## Supply Mechanics
 
 ### Per Block Emissions
-- 16 RØMER fixed emission to validators
+- 1 RØMER fixed emission to validators
 - No direct transaction fees to validators (eliminates principal-agent problem)
 - Base fee burns to offset emissions
 
@@ -31,7 +31,7 @@
 ```
 Per Block:
 Base_Compute_Units = X
-Base_Cost_Target = 0.016 RØMER per compute unit
+Base_Cost_Target = 0.001 RØMER per compute unit
 
 Real-time adjustment:
 If Actual_Compute > Base_Compute:
