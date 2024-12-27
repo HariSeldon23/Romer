@@ -1,0 +1,206 @@
+---
+title: "Rømer Chain"
+subtitle: "Building the First Chain Optimized for MEV"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    width: 1600
+    height: 900
+    footer: "Rømer Chain - 2024"
+    incremental: true
+---
+
+## The Problem
+
+Any successful blockchain faces an inevitable challenge:
+
+::: {.incremental}
+- **MEV is Inevitable** - As a chain grows, MEV opportunities emerge naturally
+- **Geographic Centralization** - Current chains optimize for node count, not true decentralization
+- **Inequality in MEV Extraction** - Large players dominate, creating centralization pressure
+- **Misaligned Incentives** - Current solutions treat MEV as a problem rather than a core feature
+:::
+
+---
+
+## Why Geographic Decentralization Matters
+
+::: {.incremental}
+- Speed of light creates immutable constraints on network topology
+- Physical infrastructure can't be faked or virtualized
+- True resilience comes from geographic distribution
+- Prevents capture by any single jurisdiction
+:::
+
+---
+
+## The Current State of MEV
+
+::: {.incremental}
+- Over $1B in extracted MEV since 2020
+- Centralization of MEV extraction among few players
+- Growing sophistication of extraction techniques
+- Increasing importance in overall blockchain economics
+:::
+
+---
+
+## Introducing Rømer Chain
+
+Built from first principles to handle MEV:
+
+::: {.incremental}
+- **Proof of Physics** - Validators selected based on network performance and geographic distribution. Physical location proved by ZK proofs.
+- **Commonware Primitives** - Utilizing advanced consensus mechanisms like Simplex
+- **Rollup Boost Integration** - Leveraging Flashbots' technology for efficient block building
+- **Equal Reward Distribution** - Designed to prevent centralization pressure
+:::
+
+---
+
+## Technical Architecture
+
+Our stack combines four powerful technologies:
+
+:::: {.columns}
+::: {.column width="50%"}
+**1. Commonware Primitives**
+
+- Simplex consensus for fast cross-region messaging
+- Geographic optimization at protocol level
+- Secure validator communication network
+
+**2. Proof of Physics**
+
+- One validator per major internet exchange
+- Performance-based selection process
+- Required diversity in BGP paths
+:::
+
+::: {.column width="50%"}
+**3. Reth Execution Layer**
+
+- Rust-based EVM execution
+- Advanced state management
+- Full Ethereum compatibility
+
+**4. Rollup Boost**
+
+- 250ms "Flashblocks"
+- Native revert protection
+- Verifiable transaction ordering
+:::
+::::
+
+---
+
+## Tokenomics: Core Principles
+
+Our token model embodies cypherpunk values:
+
+::: {.incremental}
+- No venture capital funding
+- Community-driven development
+- Merit-based contribution rewards
+- Progressive decentralization
+- Sustainable long-term incentives
+- Public goods funding
+:::
+
+---
+
+## Token Distribution Overview
+
+Total Supply: 1.008 billion RØMER tokens distributed across three phases:
+
+:::: {.columns}
+::: {.column width="30%"}
+**Devnet (10%)**
+Development of core validator infrastructure and protocol fundamentals
+:::
+
+::: {.column width="30%"}
+**Testnet (15%)**
+Academic partnerships and infrastructure bootstrapping
+:::
+
+::: {.column width="40%"}
+**Mainnet (75%)**
+Long-term network operation and growth
+:::
+::::
+
+---
+
+## Devnet Phase: Core Development (10%)
+
+The devnet allocation focuses on building foundational technology:
+
+::: {.incremental}
+- **Validator Node Development**
+  - Implementation of Simplex consensus
+  - Integration with Reth execution layer
+  - Rollup Boost integration for MEV handling
+  - Development of ZK Halo2 proofs for physical presence verification
+
+- **Token Distribution**
+  - 100% allocated to core developers
+  - Merit-based distribution tied to development milestones
+  - Focus on attracting top technical talent
+:::
+
+---
+
+## Testnet Phase: Academic Foundation (15%)
+
+Creating a research-focused validator culture:
+
+:::: {.columns}
+::: {.column width="50%"}
+**Regional Validator Program (45%)**
+
+- Partnerships with 10 leading universities
+- Geographic distribution requirements
+- Academic research integration
+- Focus on network optimization studies
+:::
+
+::: {.column width="50%"}
+**Infrastructure Development (45%)**
+
+- Gitcoin-based reward distribution
+- Infrastructure provider incentives
+- Network monitoring tools
+- Development of supporting systems
+:::
+::::
+
+**Public Access (10%)**
+
+- Testnet faucet for community participation
+- Convertible to mainnet tokens at launch
+
+---
+
+## Mainnet Distribution (75%)
+
+Network operation and growth funding:
+
+::: {.incremental}
+**Fixed Allocations:**
+- Regional validator rewards
+- Initial searcher infrastructure setup
+
+**Gitcoin-Governed Allocations:**
+- Infrastructure provider rewards
+- SAFE implementation
+- Wallet development
+- Block explorer systems
+- Searcher infrastructure (like Propellerheads)
+
+**Governance Mechanism:**
+- All non-validator allocations controlled by Gitcoin
+- Community-driven priority setting
+- Focus on public goods funding
+:::

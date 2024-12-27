@@ -1,0 +1,23 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Rømer Chain"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: pitch/index.qmd
+        text: Pitch Deck
+      - href: tokenomics.qmd
+        text: Tokenomics
+      - about.qmd
+  
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true

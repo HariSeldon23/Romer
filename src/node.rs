@@ -59,6 +59,7 @@ impl Node {
 
         // Create and store the genesis block
         let genesis_block = self.automaton.genesis().await;
+        info!("Generated genesis block: {:?}", genesis_block);
         
         // Store genesis block in the journal
         journal.append(0, genesis_block).await?;

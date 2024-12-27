@@ -1,0 +1,155 @@
+# Rømer Chain Tokenomics
+
+## Core Principles
+
+1. Stability First
+- Stable and predictable compute costs
+- Automatic supply elasticity
+- Minimal governance intervention
+- Market-driven growth
+
+2. Austrian Economic Alignment
+- Natural price discovery
+- Market-based supply adjustment
+- Sound money principles
+- Real economic value backing
+
+3. Validator Sustainability
+- Fixed emissions reward per block
+- Clear economic incentives
+- No transaction fees to validators
+- Aligned incentives with users
+
+## Supply Mechanics
+
+### Per Block Emissions
+- 16 RØMER fixed emission to validators
+- No direct transaction fees to validators (eliminates principal-agent problem)
+- Base fee burns to offset emissions
+
+### Dynamic Supply Elasticity
+```
+Per Block:
+Base_Compute_Units = X
+Base_Cost_Target = 0.016 RØMER per compute unit
+
+Real-time adjustment:
+If Actual_Compute > Base_Compute:
+    New_Supply = (Actual_Compute - Base_Compute) * (Base_Cost_Target/Base_Compute)
+    Treasury_Emission = New_Supply
+```
+
+### Supply Features
+- Supply expands with genuine compute demand
+- Real-time response to usage patterns
+- No artificial scarcity
+- Natural market adaptation
+
+## Governance
+
+### Periodic Base Compute Review
+- Every 3 months
+- Only adjusts Base_Compute_Units
+- Data-driven decision process
+- Gradual adjustments preferred
+
+### Review Metrics
+1. Network Utilization
+- Average compute usage
+- Usage patterns
+- Growth trends
+
+2. Economic Activity
+- Real transaction volume
+- Contract deployments
+- Protocol usage
+
+3. Market Health
+- Token velocity
+- Supply growth rate
+- Price stability
+
+## Initial Parameters
+
+### Genesis Block
+- Only validator emissions active and devnet and testnet rewards
+- No treasury emissions until compute demand exceeds base
+- Market discovery period
+
+### Testnet Phase
+- Determine initial Base_Compute_Units
+- Calibrate Base_Cost_Target
+- Test supply elasticity
+- Validate economic model
+
+## Security Features
+
+### Anti-Spam Protection
+- Costs tied to actual compute usage
+- Can't game through simple transactions
+- Natural economic barriers
+- Maintains network quality
+
+### Black Swan Handling
+- Automatic supply adjustment
+- Real-time cost stability
+- No manual intervention needed
+- Market stays functional
+
+## Treasury
+
+### Emissions
+- Receives excess compute-driven supply
+- Transparent allocation process
+- Supports ecosystem growth
+- Community governed
+
+### Usage
+1. Development Grants
+2. Protocol Improvements
+3. Ecosystem Growth
+4. Community Initiatives
+
+## Economic Properties
+
+### Cost Stability
+- Predictable compute costs
+- Better for developers
+- Supports adoption
+- Reduces volatility
+
+### Supply Elasticity
+- Grows with real demand
+- No artificial constraints
+- Market-driven expansion
+- Natural scaling
+
+## Long-term Sustainability
+
+### Validator Economics
+- Predictable block rewards
+- No fee dependence
+- Aligned incentives
+- Sustainable model
+
+### Network Growth
+- Organic expansion
+- Real economic backing
+- Market-driven supply
+- Stable foundation
+
+### Future Adaptability
+- Simple governance model
+- Clear adjustment mechanisms
+- Market-responsive
+- Evolution capable
+
+This creates a robust economic system that:
+
+- Maintains stability
+- Allows natural growth
+- Minimizes governance
+- Follows market signals
+- Supports long-term sustainability
+
+Would you like me to expand on any particular aspect of this model?
