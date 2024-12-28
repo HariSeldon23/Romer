@@ -1,6 +1,6 @@
 ---
 title: "Rømer Chain"
-subtitle: "Building the First Chain Optimized for MEV"
+subtitle: "Building the First Chain Optimized for Geographic Decentralization"
 format:
   revealjs:
     theme: simple
@@ -17,13 +17,13 @@ format:
 
 ## The Problem
 
-Any successful blockchain faces an inevitable challenge:
+Current blockchain architectures face fundamental challenges:
 
 ::: {.incremental}
-- **MEV is Inevitable** - As a chain grows, MEV opportunities emerge naturally
-- **Geographic Centralization** - Current chains optimize for node count, not true decentralization
-- **Inequality in MEV Extraction** - Large players dominate, creating centralization pressure
-- **Misaligned Incentives** - Current solutions treat MEV as a problem rather than a core feature
+- **Geographic Centralization** - Existing chains optimize for node count rather than true physical decentralization
+- **High Validator Barriers** - Proof of Work and Proof of Stake create massive financial barriers to participation
+- **Unstable Computation Costs** - No blockchain provides predictable, Austrian economics-aligned pricing for compute
+- **MEV as a Market Distortion** - Current chains treat MEV as a feature rather than a fundamental economic flaw
 :::
 
 ---
@@ -35,30 +35,32 @@ Any successful blockchain faces an inevitable challenge:
 - Physical infrastructure can't be faked or virtualized
 - True resilience comes from geographic distribution
 - Prevents capture by any single jurisdiction
+- Creates natural DDoS resistance through physical separation
 :::
 
 ---
 
-## The Current State of MEV
+## The Current State of Blockchain Economics
 
 ::: {.incremental}
-- Over $1B in extracted MEV since 2020
-- Centralization of MEV extraction among few players
-- Growing sophistication of extraction techniques
-- Increasing importance in overall blockchain economics
+- Volatile and unpredictable computation costs
+- High barriers to entry for network participation
+- Centralization pressure from economies of scale
+- Lack of sound money principles in system design
+- Transaction ordering becoming a purchasable commodity
 :::
 
 ---
 
 ## Introducing Rømer Chain
 
-Built from first principles to handle MEV:
+Built from first principles to solve these core challenges:
 
 ::: {.incremental}
-- **Proof of Physics** - Validators selected based on network performance and geographic distribution. Physical location proved by ZK proofs.
-- **Commonware Primitives** - Utilizing advanced consensus mechanisms like Simplex
-- **Rollup Boost Integration** - Leveraging Flashbots' technology for efficient block building
-- **Equal Reward Distribution** - Designed to prevent centralization pressure
+- **Proof of Physics** - Validators selected based on network performance and geographic distribution, with physical location proved by ZK proofs
+- **Commonware Primitives** - Utilizing advanced consensus mechanisms like Simplex for optimal cross-region performance
+- **Sui Object Model** - Leveraging Move's resource-oriented programming for precise compute cost calculation
+- **Austrian Economic Design** - Fixed computation costs with market-driven supply adjustment
 :::
 
 ---
@@ -83,17 +85,17 @@ Our stack combines four powerful technologies:
 :::
 
 ::: {.column width="50%"}
-**3. Reth Execution Layer**
+**3. Sui Integration**
 
-- Rust-based EVM execution
-- Advanced state management
-- Full Ethereum compatibility
+- Move-based execution layer
+- Object-oriented state management
+- Precise compute cost tracking
 
-**4. Rollup Boost**
+**4. FHE Foundation**
 
-- 250ms "Flashblocks"
-- Native revert protection
-- Verifiable transaction ordering
+- Privacy-preserving transaction ordering
+- Future MEV protection layer
+- Post-mainnet development focus
 :::
 ::::
 
@@ -101,49 +103,30 @@ Our stack combines four powerful technologies:
 
 ## Tokenomics: Economic Philosophy
 
-Our token model embodies a revolutionary approach to blockchain economics:
+Our token model embodies Austrian economic principles:
 
 ::: {.incremental}
 - **Stability as a First-Class Citizen**
-  - Predictable compute costs
-  - Dynamic supply adaptation
-  - Minimal governance intervention
+  - Fixed compute costs
+  - Market-driven supply adjustment
+  - Automatic expansion and contraction
 
-- **Austrian Economic Alignment**
+- **Sound Money Implementation**
   - Natural price discovery
-  - Market-based supply adjustments
-  - Sound money principles
+  - No artificial scarcity
+  - Market-based supply control
 
 - **Validator Sustainability**
-  - Fixed block emissions
-  - Clear economic incentives
-  - No direct transaction fees
-:::
-
----
-
-## Tokenomics Architecture
-
-### Core Economic Mechanics
-
-::: {.incremental}
-- **Block Emission**: 1 RØMER per block
-- **Supply Elasticity**
-  - Expands with genuine compute demand
-  - Real-time market response
-  - No artificial scarcity
-
-- **Governance Model**
-  - Quarterly base compute reviews
-  - Data-driven adjustments
-  - Community-focused approach
+  - No minimum stake requirement
+  - Rewards based on network performance
+  - Geographic distribution incentives
 :::
 
 ---
 
 ## Supply Dynamics
 
-### Compute-Driven Supply Mechanism
+### Market-Responsive Supply Mechanism
 
 ```python
 def calculate_supply_adjustment(base_compute_units, actual_compute_units):
@@ -153,122 +136,67 @@ def calculate_supply_adjustment(base_compute_units, actual_compute_units):
         new_supply = (actual_compute_units - base_compute_units) * 
                      (BASE_COST_TARGET / base_compute_units)
         return new_supply
-    return 0
+    
+    # Supply contraction during low demand
+    contraction_rate = base_compute_units / actual_compute_units
+    return -1 * (BASE_COST_TARGET * contraction_rate)
 ```
 
 ::: {.incremental}
-- Adaptive supply based on network usage
-- Prevents artificial inflation
-- Maintains economic stability
+- Bidirectional supply adjustment
+- Natural market equilibrium
+- Automatic price stability
 :::
 
 ---
 
-## Token Distribution Overview
+## Development Roadmap
 
-Total Supply: 1.008 billion RØMER tokens distributed across three phases:
-
-:::: {.columns}
-::: {.column width="30%"}
-**Devnet (10%)**
-Core infrastructure development
-Validator node bootstrapping
-:::
-
-::: {.column width="30%"}
-**Testnet (15%)**
-Academic partnerships
-Infrastructure foundation
-:::
-
-::: {.column width="40%"}
-**Mainnet (75%)**
-Long-term network growth
-Ecosystem expansion
-:::
-::::
-
----
-
-## Devnet Phase: Foundation Building
+### Devnet Phase
 
 ::: {.incremental}
-- **Validator Node Development**
-  - Simplex consensus implementation
-  - Reth execution layer integration
-  - MEV handling via Rollup Boost
-  - ZK physical presence verification
+- **Sui Integration**
+  - Implementing Sui mempool operations
+  - Building Tycho indexer and simulator
+  - Transaction validation framework
+  - Move resource tracking integration
 
-- **Token Distribution Strategy**
-  - 100% allocated to core developers
-  - Merit-based milestone distribution
-  - Attracting top technical talent
+- **Infrastructure Development**
+  - Proof of Physics implementation
+  - Geographic validator network
+  - Network performance measurement
 :::
 
 ---
 
-## Testnet: Research and Infrastructure
+## Funding Strategy
 
-:::: {.columns}
-::: {.column width="50%"}
-**Regional Validator Program (45%)**
-- University partnerships
-- Geographic diversity
-- Research integration
-- Network optimization studies
-:::
-
-::: {.column width="50%"}
-**Infrastructure Development (45%)**
-- Gitcoin-based rewards
-- Provider incentives
-- Network monitoring tools
-- Supporting systems development
-:::
-::::
-
-**Public Access (10%)**
-- Community testnet participation
-- Mainnet token convertibility
-
----
-
-## Mainnet Distribution and Governance
+Current Stage: Angel Round
 
 ::: {.incremental}
-**Fixed Allocations**
-- Validator rewards
-- Searcher infrastructure setup
+- **Strategic Partnerships**
+  - Exploring Sui Foundation grant opportunities
+  - Potential Movement Labs collaboration for Aptos Move
+  - Focus on technical infrastructure development
 
-**Community-Governed Allocations**
-- Infrastructure development
-- Protocol improvements
-- Ecosystem growth initiatives
-
-**Governance Principles**
-- Gitcoin-controlled non-validator allocations
-- Transparent, community-driven prioritization
-- Focus on public goods and sustainable development
+- **Development Priorities**
+  - Mempool operation and monitoring
+  - Transaction validation framework
+  - Geographic proof system
 :::
 
 ---
 
-## Economic Security and Resilience
+## Why Now?
+
+The market needs a blockchain that:
 
 ::: {.incremental}
-- **Anti-Spam Protection**
-  - Compute-usage-tied costs
-  - Natural economic barriers
-
-- **Black Swan Handling**
-  - Automatic supply adjustment
-  - Real-time cost stabilization
-  - Market functionality preservation
-
-- **Treasury Management**
-  - Transparent allocation
-  - Ecosystem support
-  - Community-driven initiatives
+- Provides genuine geographic decentralization
+- Implements sound Austrian economics
+- Offers predictable computation costs
+- Eliminates financial barriers to validation
+- Creates natural resistance to centralization
 :::
 
 ---
@@ -277,16 +205,17 @@ Ecosystem expansion
 
 ::: {.incremental}
 - **Network Sustainability**
-  - Predictable economic model
-  - Aligned validator incentives
-  - Organic growth mechanisms
+  - Geographic resilience
+  - Economic stability
+  - Permissionless validation
 
-- **Adaptive Ecosystem**
-  - Quarterly economic reviews
-  - Market-responsive design
-  - Minimal governance overhead
+- **Technical Innovation**
+  - FHE-based privacy features
+  - Advanced MEV protection
+  - Continued geographic expansion
 
 - **Philosophical Foundation**
-  - Blockchain as a living economic system
-  - Value creation through intelligent design
+  - True decentralization
+  - Sound money principles
+  - Market-driven evolution
 :::

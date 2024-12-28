@@ -16,7 +16,8 @@ website:
         text: Tokenomics
       - href: regions.qmd
         text: Regions
-      - about.qmd
+      - href: engineering.qmd
+        text: Engineering
   
 format:
   html:

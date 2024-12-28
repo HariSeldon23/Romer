@@ -109,8 +109,8 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Regions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="./engineering.html"> 
+<span class="menu-text">Engineering</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -128,45 +128,64 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#rømer-chain-tokenomics" id="toc-rømer-chain-tokenomics" class="nav-link active" data-scroll-target="#rømer-chain-tokenomics">Rømer Chain Tokenomics</a>
+  <li><a href="#rømer-chain-an-austrian-economic-approach-to-dynamic-supply-adjustment" id="toc-rømer-chain-an-austrian-economic-approach-to-dynamic-supply-adjustment" class="nav-link active" data-scroll-target="#rømer-chain-an-austrian-economic-approach-to-dynamic-supply-adjustment">RØMER Chain: An Austrian Economic Approach to Dynamic Supply Adjustment</a>
   <ul class="collapse">
-  <li><a href="#core-principles" id="toc-core-principles" class="nav-link" data-scroll-target="#core-principles">Core Principles</a></li>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">1. Introduction</a></li>
+  <li><a href="#austrian-economic-foundations" id="toc-austrian-economic-foundations" class="nav-link" data-scroll-target="#austrian-economic-foundations">2. Austrian Economic Foundations</a>
+  <ul class="collapse">
+  <li><a href="#core-principles" id="toc-core-principles" class="nav-link" data-scroll-target="#core-principles">2.1 Core Principles</a></li>
+  <li><a href="#key-mechanisms" id="toc-key-mechanisms" class="nav-link" data-scroll-target="#key-mechanisms">2.2 Key Mechanisms</a></li>
+  </ul></li>
+  <li><a href="#supply-dynamics" id="toc-supply-dynamics" class="nav-link" data-scroll-target="#supply-dynamics">3. Supply Dynamics</a>
+  <ul class="collapse">
+  <li><a href="#natural-market-states" id="toc-natural-market-states" class="nav-link" data-scroll-target="#natural-market-states">3.1 Natural Market States</a></li>
+  <li><a href="#dynamic-supply-adjustment" id="toc-dynamic-supply-adjustment" class="nav-link" data-scroll-target="#dynamic-supply-adjustment">3.2 Dynamic Supply Adjustment</a></li>
+  </ul></li>
+  <li><a href="#fee-burning-as-dynamic-supply-control" id="toc-fee-burning-as-dynamic-supply-control" class="nav-link" data-scroll-target="#fee-burning-as-dynamic-supply-control">4. Fee Burning as Dynamic Supply Control</a>
+  <ul class="collapse">
+  <li><a href="#purpose-of-enhanced-fee-burning" id="toc-purpose-of-enhanced-fee-burning" class="nav-link" data-scroll-target="#purpose-of-enhanced-fee-burning">4.1 Purpose of Enhanced Fee Burning</a></li>
+  <li><a href="#proportional-supply-control" id="toc-proportional-supply-control" class="nav-link" data-scroll-target="#proportional-supply-control">4.2 Proportional Supply Control</a></li>
+  </ul></li>
+  <li><a href="#validator-economics" id="toc-validator-economics" class="nav-link" data-scroll-target="#validator-economics">5. Validator Economics</a>
+  <ul class="collapse">
+  <li><a href="#market-based-rewards-and-mev-economics" id="toc-market-based-rewards-and-mev-economics" class="nav-link" data-scroll-target="#market-based-rewards-and-mev-economics">5.1 Market-Based Rewards and MEV Economics</a></li>
+  </ul></li>
+  <li><a href="#market-driven-price-discovery" id="toc-market-driven-price-discovery" class="nav-link" data-scroll-target="#market-driven-price-discovery">6. Market-Driven Price Discovery</a>
+  <ul class="collapse">
+  <li><a href="#market-leadership-through-dex-efficiency" id="toc-market-leadership-through-dex-efficiency" class="nav-link" data-scroll-target="#market-leadership-through-dex-efficiency">6.1 Market Leadership Through DEX Efficiency</a></li>
+  <li><a href="#quarterly-governance-reviews" id="toc-quarterly-governance-reviews" class="nav-link" data-scroll-target="#quarterly-governance-reviews">6.2 Quarterly Governance Reviews</a></li>
+  </ul></li>
+  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation">7. Implementation</a>
+  <ul class="collapse">
+  <li><a href="#market-launch-parameters" id="toc-market-launch-parameters" class="nav-link" data-scroll-target="#market-launch-parameters">7.1 Market Launch Parameters</a></li>
+  <li><a href="#natural-market-evolution" id="toc-natural-market-evolution" class="nav-link" data-scroll-target="#natural-market-evolution">7.2 Natural Market Evolution</a></li>
+  </ul></li>
+  <li><a href="#game-theory-and-economic-behavior" id="toc-game-theory-and-economic-behavior" class="nav-link" data-scroll-target="#game-theory-and-economic-behavior">8. Game Theory and Economic Behavior</a>
+  <ul class="collapse">
+  <li><a href="#block-space-optimization" id="toc-block-space-optimization" class="nav-link" data-scroll-target="#block-space-optimization">8.1 Block Space Optimization</a></li>
+  <li><a href="#mev-distribution" id="toc-mev-distribution" class="nav-link" data-scroll-target="#mev-distribution">8.2 MEV Distribution</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">9. Conclusion</a></li>
+  </ul></li>
+  <li><a href="#rømer-chain-token-distribution-and-supply-mechanics" id="toc-rømer-chain-token-distribution-and-supply-mechanics" class="nav-link" data-scroll-target="#rømer-chain-token-distribution-and-supply-mechanics">RØMER Chain: Token Distribution and Supply Mechanics</a>
+  <ul class="collapse">
+  <li><a href="#initial-token-distribution" id="toc-initial-token-distribution" class="nav-link" data-scroll-target="#initial-token-distribution">Initial Token Distribution</a>
+  <ul class="collapse">
+  <li><a href="#genesis-allocation" id="toc-genesis-allocation" class="nav-link" data-scroll-target="#genesis-allocation">Genesis Allocation</a></li>
+  <li><a href="#burn-reserve-calculation" id="toc-burn-reserve-calculation" class="nav-link" data-scroll-target="#burn-reserve-calculation">Burn Reserve Calculation</a></li>
+  </ul></li>
   <li><a href="#supply-mechanics" id="toc-supply-mechanics" class="nav-link" data-scroll-target="#supply-mechanics">Supply Mechanics</a>
   <ul class="collapse">
-  <li><a href="#per-block-emissions" id="toc-per-block-emissions" class="nav-link" data-scroll-target="#per-block-emissions">Per Block Emissions</a></li>
-  <li><a href="#dynamic-supply-elasticity" id="toc-dynamic-supply-elasticity" class="nav-link" data-scroll-target="#dynamic-supply-elasticity">Dynamic Supply Elasticity</a></li>
-  <li><a href="#supply-features" id="toc-supply-features" class="nav-link" data-scroll-target="#supply-features">Supply Features</a></li>
+  <li><a href="#price-stability-mechanism" id="toc-price-stability-mechanism" class="nav-link" data-scroll-target="#price-stability-mechanism">Price Stability Mechanism</a></li>
+  <li><a href="#base-compute-threshold" id="toc-base-compute-threshold" class="nav-link" data-scroll-target="#base-compute-threshold">Base Compute Threshold</a></li>
+  <li><a href="#quarterly-adjustments" id="toc-quarterly-adjustments" class="nav-link" data-scroll-target="#quarterly-adjustments">Quarterly Adjustments</a></li>
   </ul></li>
-  <li><a href="#governance" id="toc-governance" class="nav-link" data-scroll-target="#governance">Governance</a>
+  <li><a href="#example-scenarios" id="toc-example-scenarios" class="nav-link" data-scroll-target="#example-scenarios">Example Scenarios</a>
   <ul class="collapse">
-  <li><a href="#periodic-base-compute-review" id="toc-periodic-base-compute-review" class="nav-link" data-scroll-target="#periodic-base-compute-review">Periodic Base Compute Review</a></li>
-  <li><a href="#review-metrics" id="toc-review-metrics" class="nav-link" data-scroll-target="#review-metrics">Review Metrics</a></li>
-  </ul></li>
-  <li><a href="#initial-parameters" id="toc-initial-parameters" class="nav-link" data-scroll-target="#initial-parameters">Initial Parameters</a>
-  <ul class="collapse">
-  <li><a href="#genesis-block" id="toc-genesis-block" class="nav-link" data-scroll-target="#genesis-block">Genesis Block</a></li>
-  <li><a href="#testnet-phase" id="toc-testnet-phase" class="nav-link" data-scroll-target="#testnet-phase">Testnet Phase</a></li>
-  </ul></li>
-  <li><a href="#security-features" id="toc-security-features" class="nav-link" data-scroll-target="#security-features">Security Features</a>
-  <ul class="collapse">
-  <li><a href="#anti-spam-protection" id="toc-anti-spam-protection" class="nav-link" data-scroll-target="#anti-spam-protection">Anti-Spam Protection</a></li>
-  <li><a href="#black-swan-handling" id="toc-black-swan-handling" class="nav-link" data-scroll-target="#black-swan-handling">Black Swan Handling</a></li>
-  </ul></li>
-  <li><a href="#treasury" id="toc-treasury" class="nav-link" data-scroll-target="#treasury">Treasury</a>
-  <ul class="collapse">
-  <li><a href="#emissions" id="toc-emissions" class="nav-link" data-scroll-target="#emissions">Emissions</a></li>
-  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
-  </ul></li>
-  <li><a href="#economic-properties" id="toc-economic-properties" class="nav-link" data-scroll-target="#economic-properties">Economic Properties</a>
-  <ul class="collapse">
-  <li><a href="#cost-stability" id="toc-cost-stability" class="nav-link" data-scroll-target="#cost-stability">Cost Stability</a></li>
-  <li><a href="#supply-elasticity" id="toc-supply-elasticity" class="nav-link" data-scroll-target="#supply-elasticity">Supply Elasticity</a></li>
-  </ul></li>
-  <li><a href="#long-term-sustainability" id="toc-long-term-sustainability" class="nav-link" data-scroll-target="#long-term-sustainability">Long-term Sustainability</a>
-  <ul class="collapse">
-  <li><a href="#validator-economics" id="toc-validator-economics" class="nav-link" data-scroll-target="#validator-economics">Validator Economics</a></li>
-  <li><a href="#network-growth" id="toc-network-growth" class="nav-link" data-scroll-target="#network-growth">Network Growth</a></li>
-  <li><a href="#future-adaptability" id="toc-future-adaptability" class="nav-link" data-scroll-target="#future-adaptability">Future Adaptability</a></li>
+  <li><a href="#scenario-1-low-demand-period" id="toc-scenario-1-low-demand-period" class="nav-link" data-scroll-target="#scenario-1-low-demand-period">Scenario 1: Low Demand Period</a></li>
+  <li><a href="#scenario-2-high-demand-period" id="toc-scenario-2-high-demand-period" class="nav-link" data-scroll-target="#scenario-2-high-demand-period">Scenario 2: High Demand Period</a></li>
+  <li><a href="#scenario-3-burn-reserve-management" id="toc-scenario-3-burn-reserve-management" class="nav-link" data-scroll-target="#scenario-3-burn-reserve-management">Scenario 3: Burn Reserve Management</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -178,228 +197,326 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="rømer-chain-tokenomics" class="level1">
-<h1>Rømer Chain Tokenomics</h1>
-<section id="core-principles" class="level2">
-<h2 class="anchored" data-anchor-id="core-principles">Core Principles</h2>
+<section id="rømer-chain-an-austrian-economic-approach-to-dynamic-supply-adjustment" class="level1">
+<h1>RØMER Chain: An Austrian Economic Approach to Dynamic Supply Adjustment</h1>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>This paper presents RØMER Chain’s tokenomics model, grounded in Austrian economic principles of sound money and market-driven price discovery. Through dynamic supply adjustment that both expands and contracts based on real market demand, RØMER creates a system where token supply precisely reflects network utility. The model employs proportional fee burning during low-demand periods to reduce total supply, while allowing supply expansion only when genuine market demand exceeds network capacity. This approach creates a blockchain economy that responds organically to market conditions through both growth and contraction phases.</p>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">1. Introduction</h2>
+<p>Traditional blockchain networks often struggle with rigid monetary policies that fail to contract supply during periods of reduced demand, leading to price instability and misaligned incentives. RØMER Chain takes a fundamentally different approach, embracing Austrian economic principles where market participants’ actions determine not only supply expansion but also supply contraction, creating a truly responsive monetary system.</p>
+</section>
+<section id="austrian-economic-foundations" class="level2">
+<h2 class="anchored" data-anchor-id="austrian-economic-foundations">2. Austrian Economic Foundations</h2>
+<section id="core-principles" class="level3">
+<h3 class="anchored" data-anchor-id="core-principles">2.1 Core Principles</h3>
+<p>RØMER’s economic model is built on key Austrian economic concepts:</p>
 <ol type="1">
-<li>Stability First</li>
+<li><p>Natural Price Discovery: All prices emerge from genuine market activity rather than central planning.</p></li>
+<li><p>Sound Money Principles: Token supply adjusts bidirectionally based on real market demand.</p></li>
+<li><p>Market-Driven Growth and Contraction: Network monetary policy responds organically to actual usage patterns.</p></li>
+<li><p>Time Preference: The model acknowledges that market participants have different time preferences for computation resources.</p></li>
 </ol>
-<ul>
-<li>Stable and predictable compute costs</li>
-<li>Automatic supply elasticity</li>
-<li>Minimal governance intervention</li>
-<li>Market-driven growth</li>
-</ul>
-<ol start="2" type="1">
-<li>Austrian Economic Alignment</li>
+</section>
+<section id="key-mechanisms" class="level3">
+<h3 class="anchored" data-anchor-id="key-mechanisms">2.2 Key Mechanisms</h3>
+<p>The model implements these principles through three interconnected mechanisms:</p>
+<ol type="1">
+<li><p>Base Validator Rewards: A steady emission of 1 RØMER per block to validators, representing the baseline cost of securing the network.</p></li>
+<li><p>Dynamic Supply Control: Fee burning that exceeds validator emissions during low demand periods, creating natural supply contraction.</p></li>
+<li><p>Demand-Based Issuance: New token issuance occurs only when compute demand exceeds the network’s base capacity, representing genuine market growth.</p></li>
 </ol>
+</section>
+</section>
+<section id="supply-dynamics" class="level2">
+<h2 class="anchored" data-anchor-id="supply-dynamics">3. Supply Dynamics</h2>
+<section id="natural-market-states" class="level3">
+<h3 class="anchored" data-anchor-id="natural-market-states">3.1 Natural Market States</h3>
+<p>The system recognizes three natural market states:</p>
+<ol type="1">
+<li><p>Below Market Demand Threshold</p>
 <ul>
-<li>Natural price discovery</li>
-<li>Market-based supply adjustment</li>
-<li>Sound money principles</li>
-<li>Real economic value backing</li>
+<li>Validator rewards: 1 RØMER per block</li>
+<li>Fee burning: &gt;1 RØMER per block (exceeds validator emissions)</li>
+<li>Net result: Supply contraction reflecting reduced market demand</li>
+<li>Natural price discovery through supply reduction</li>
+<li>Block space optimization opportunities: Fixed block cost enables bulk transaction efficiency</li>
 </ul>
-<ol start="3" type="1">
-<li>Validator Sustainability</li>
+<p>During low demand periods, the system actively reduces total supply by burning more tokens than are emitted. The burn rate is proportional to how far below the base threshold demand has fallen. This creates a natural supply contraction that maintains price equilibrium even during market downturns. For example:</p>
+<pre><code>If demand is at 50% of base threshold:
+- Validator emission: 1 RØMER/block
+- Fee burning: 2 RØMER/block
+- Net supply change: -1 RØMER/block</code></pre>
+<p>This mechanism also incentivizes efficient block space usage through transaction batching, as users can optimize their costs by aggregating multiple transactions during low-demand periods.</p></li>
+<li><p>At Market Equilibrium</p>
+<ul>
+<li>Validator rewards: 1 RØMER per block</li>
+<li>Fee burning: 1 RØMER per block</li>
+<li>Net result: Stable supply, reflecting market equilibrium</li>
+<li>Natural price discovery at market-clearing rates</li>
+<li>Network operates at optimal capacity for DEX operations</li>
+</ul></li>
+<li><p>Above Base Capacity</p>
+<ul>
+<li>Validator rewards: 1 RØMER per block</li>
+<li>Fee burning: Continues at 1 RØMER per block</li>
+<li>Additional supply: Minted based on excess demand above base capacity</li>
+<li>Natural price discovery through supply expansion</li>
+<li>MEV opportunities increase with transaction volume</li>
+</ul></li>
 </ol>
+</section>
+<section id="dynamic-supply-adjustment" class="level3">
+<h3 class="anchored" data-anchor-id="dynamic-supply-adjustment">3.2 Dynamic Supply Adjustment</h3>
+<p>The system employs two distinct formulas for supply adjustment:</p>
+<p>During Low Demand:</p>
+<pre><code>Demand Deficit = Base Compute Units - Current Compute Units
+Burn Rate = Base Burn Rate × (Base Compute Units / Current Compute Units)
+Net Supply Change = Validator Emission - Burn Rate</code></pre>
+<p>During High Demand:</p>
+<pre><code>Excess Demand = Current Compute Units - Base Compute Units
+Supply Increase = Excess Demand × Market Price</code></pre>
+<p>This creates a symmetric response to market conditions, where supply can both expand and contract based on real usage patterns.</p>
+</section>
+</section>
+<section id="fee-burning-as-dynamic-supply-control" class="level2">
+<h2 class="anchored" data-anchor-id="fee-burning-as-dynamic-supply-control">4. Fee Burning as Dynamic Supply Control</h2>
+<section id="purpose-of-enhanced-fee-burning" class="level3">
+<h3 class="anchored" data-anchor-id="purpose-of-enhanced-fee-burning">4.1 Purpose of Enhanced Fee Burning</h3>
+<p>Fee burning serves a more sophisticated economic function than just offsetting emissions. During low-demand periods, enhanced fee burning actively reduces total supply to maintain true market equilibrium. This mechanism:</p>
+<ol type="1">
+<li>Reduces total supply when network usage falls below base capacity</li>
+<li>Creates natural price support during market downturns</li>
+<li>Maintains computation cost efficiency across market cycles</li>
+<li>Ensures token supply accurately reflects actual network utility</li>
+</ol>
+</section>
+<section id="proportional-supply-control" class="level3">
+<h3 class="anchored" data-anchor-id="proportional-supply-control">4.2 Proportional Supply Control</h3>
+<p>The burn rate scales proportionally with demand reduction: - Lower demand triggers higher burn rates - Supply contracts more quickly during sharp demand drops - System naturally finds new equilibrium points - Creates predictable price dynamics during market cycles</p>
+</section>
+</section>
+<section id="validator-economics" class="level2">
+<h2 class="anchored" data-anchor-id="validator-economics">5. Validator Economics</h2>
+<section id="market-based-rewards-and-mev-economics" class="level3">
+<h3 class="anchored" data-anchor-id="market-based-rewards-and-mev-economics">5.1 Market-Based Rewards and MEV Economics</h3>
+<p>Validators receive compensation through multiple market mechanisms that naturally scale with network usage:</p>
+<ol type="1">
+<li>Base Block Rewards
 <ul>
-<li>Fixed emissions reward per block</li>
-<li>Clear economic incentives</li>
-<li>No transaction fees to validators</li>
-<li>Aligned incentives with users</li>
-</ul>
+<li>Consistent emission of 1 RØMER per block</li>
+<li>Predictable foundation for network security</li>
+<li>Value of rewards increases during low-demand periods due to supply contraction</li>
+</ul></li>
+<li>MEV-Driven Revenue Scaling
+<ul>
+<li>As compute requirements increase, MEV opportunities grow proportionally</li>
+<li>Higher network usage creates more profitable MEV extraction scenarios</li>
+<li>MEV rewards naturally offset increased operational costs during high-demand periods</li>
+<li>No need to adjust base block rewards as MEV provides automatic economic scaling</li>
+</ul></li>
+<li>Value Appreciation
+<ul>
+<li>Supply contraction during low demand supports value stability</li>
+<li>Increased network utility drives organic value growth</li>
+<li>Dynamic supply adjustment creates natural price discovery</li>
+</ul></li>
+</ol>
+<p>This multi-layered reward structure ensures validators remain incentivized across market cycles, as the value of their base rewards adjusts naturally through supply dynamics.</p>
+</section>
+</section>
+<section id="market-driven-price-discovery" class="level2">
+<h2 class="anchored" data-anchor-id="market-driven-price-discovery">6. Market-Driven Price Discovery</h2>
+<section id="market-leadership-through-dex-efficiency" class="level3">
+<h3 class="anchored" data-anchor-id="market-leadership-through-dex-efficiency">6.1 Market Leadership Through DEX Efficiency</h3>
+<p>RØMER defines market equilibrium through a concrete, measurable metric: the ability to process more token swaps per block than any other major blockchain network while maintaining lower costs per swap. This is achieved by:</p>
+<ol type="1">
+<li>Comprehensive Market Analysis
+<ul>
+<li>Collecting historical gas costs for swaps across Ethereum, Solana, and Base</li>
+<li>Analyzing throughput capabilities of major DEX platforms</li>
+<li>Measuring actual user costs across different market conditions</li>
+<li>Tracking yearly trends in swap efficiency</li>
+</ul></li>
+<li>Setting Competitive Parameters
+<ul>
+<li>Base compute capacity calibrated to exceed leading networks’ swap throughput</li>
+<li>Target costs positioned below market average for equivalent operations</li>
+<li>Regular adjustment of parameters based on market evolution</li>
+</ul></li>
+</ol>
+</section>
+<section id="quarterly-governance-reviews" class="level3">
+<h3 class="anchored" data-anchor-id="quarterly-governance-reviews">6.2 Quarterly Governance Reviews</h3>
+<p>Market participants can adjust base parameters quarterly based on: - Observed market conditions - Actual network utilization - Real validator economics - Genuine developer needs - Market competition</p>
+<p>This provides a framework for natural market evolution while maintaining predictability.</p>
+</section>
+</section>
+<section id="implementation" class="level2">
+<h2 class="anchored" data-anchor-id="implementation">7. Implementation</h2>
+<section id="market-launch-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="market-launch-parameters">7.1 Market Launch Parameters</h3>
+<p>Initial network parameters will be set based on: - Observed market rates for computation - Natural validator economic requirements - Real testnet usage patterns - Security considerations</p>
+</section>
+<section id="natural-market-evolution" class="level3">
+<h3 class="anchored" data-anchor-id="natural-market-evolution">7.2 Natural Market Evolution</h3>
+<p>The quarterly governance process allows for natural market evolution through: 1. Market data collection and analysis 2. Community discussion of real market conditions 3. Proposal submission based on observed needs 4. Stakeholder voting 5. Implementation of market-approved changes</p>
+</section>
+</section>
+<section id="game-theory-and-economic-behavior" class="level2">
+<h2 class="anchored" data-anchor-id="game-theory-and-economic-behavior">8. Game Theory and Economic Behavior</h2>
+<section id="block-space-optimization" class="level3">
+<h3 class="anchored" data-anchor-id="block-space-optimization">8.1 Block Space Optimization</h3>
+<p>The RØMER economic model creates interesting game theoretic scenarios that encourage efficient market behavior:</p>
+<ol type="1">
+<li>Bulk Transaction Efficiency
+<ul>
+<li>During low demand periods, fixed block costs create opportunities for transaction batching</li>
+<li>Market participants can optimize their costs by aggregating multiple transactions</li>
+<li>Higher burn rates during low demand increase incentives for efficient block usage</li>
+<li>Natural formation of transaction pools and batching services</li>
+</ul></li>
+<li>Strategic Timing
+<ul>
+<li>Users can optimize their costs by monitoring network utilization</li>
+<li>Bulk operations become more attractive during low-demand periods</li>
+<li>Creates natural load balancing through economic incentives</li>
+</ul></li>
+</ol>
+</section>
+<section id="mev-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="mev-distribution">8.2 MEV Distribution</h3>
+<p>The relationship between compute requirements and MEV opportunities creates additional game theoretic considerations:</p>
+<ol type="1">
+<li>Validator Competition
+<ul>
+<li>Higher compute requirements lead to more complex MEV opportunities</li>
+<li>Validators must balance resource allocation between transaction processing and MEV extraction</li>
+<li>Natural market for specialized MEV extraction services</li>
+</ul></li>
+<li>User Strategy
+<ul>
+<li>Users can optimize their transaction timing and grouping based on MEV patterns</li>
+<li>Creates opportunities for MEV-aware transaction strategies</li>
+<li>Encourages development of sophisticated trading and arbitrage systems</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">9. Conclusion</h2>
+<p>RØMER Chain’s tokenomics model represents a practical implementation of Austrian economic principles in a blockchain context. By implementing dynamic supply adjustment that responds to market conditions through both expansion and contraction, the system maintains true economic equilibrium across market cycles.</p>
+<p>The combination of proportional fee burning, validator rewards, and natural price discovery creates an environment where genuine market forces determine network economics. The addition of game theoretic elements around block space usage and MEV distribution further enhances the system’s efficiency and sustainability.</p>
+<p>Through its focus on market leadership in DEX operations and its carefully balanced economic incentives, RØMER Chain positions itself as a platform for sustainable, market-driven growth in decentralized computation, with the unique ability to maintain economic stability through both growth and contraction phases.</p>
+</section>
+</section>
+<section id="rømer-chain-token-distribution-and-supply-mechanics" class="level1">
+<h1>RØMER Chain: Token Distribution and Supply Mechanics</h1>
+<section id="initial-token-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="initial-token-distribution">Initial Token Distribution</h2>
+<section id="genesis-allocation" class="level3">
+<h3 class="anchored" data-anchor-id="genesis-allocation">Genesis Allocation</h3>
+<p>The initial RØMER token supply at genesis is distributed as follows:</p>
+<ol type="1">
+<li>Mainnet Contributors (20%)
+<ul>
+<li>Allocated to developers, VCs, and other contributors critical to achieving mainnet</li>
+<li>Vests over the first year of mainnet operation</li>
+<li>Ensures alignment of early supporters with network success</li>
+<li>Includes both technical and financial contributors</li>
+</ul></li>
+<li>Treasury (50%)
+<ul>
+<li>Managed through governance</li>
+<li>Funds ecosystem development</li>
+<li>Supports grants and network growth initiatives</li>
+<li>Enables long-term sustainability</li>
+</ul></li>
+<li>Burn Reserve (30%)
+<ul>
+<li>Dedicated supply for maintaining price stability</li>
+<li>Must contain sufficient tokens for 3 months of maximum burn rate</li>
+<li>Acts as buffer until quarterly compute threshold adjustments</li>
+<li>Calculated based on base compute threshold</li>
+</ul></li>
+</ol>
+</section>
+<section id="burn-reserve-calculation" class="level3">
+<h3 class="anchored" data-anchor-id="burn-reserve-calculation">Burn Reserve Calculation</h3>
+<p>The burn reserve is sized to ensure price stability for a full quarter:</p>
+<pre><code>Daily Max Burn = Base Compute Threshold × Target Price × 24 hours
+Quarterly Reserve = Daily Max Burn × 90 days × Safety Margin(1.5)</code></pre>
+<p>This ensures sufficient reserves even in sustained low-demand periods, with a safety margin to account for usage fluctuations.</p>
+</section>
 </section>
 <section id="supply-mechanics" class="level2">
 <h2 class="anchored" data-anchor-id="supply-mechanics">Supply Mechanics</h2>
-<section id="per-block-emissions" class="level3">
-<h3 class="anchored" data-anchor-id="per-block-emissions">Per Block Emissions</h3>
-<ul>
-<li>1 RØMER fixed emission to validators</li>
-<li>No direct transaction fees to validators (eliminates principal-agent problem)</li>
-<li>Base fee burns to offset emissions</li>
-</ul>
-</section>
-<section id="dynamic-supply-elasticity" class="level3">
-<h3 class="anchored" data-anchor-id="dynamic-supply-elasticity">Dynamic Supply Elasticity</h3>
-<pre><code>Per Block:
-Base_Compute_Units = X
-Base_Cost_Target = 0.001 RØMER per compute unit
-
-Real-time adjustment:
-If Actual_Compute &gt; Base_Compute:
-    New_Supply = (Actual_Compute - Base_Compute) * (Base_Cost_Target/Base_Compute)
-    Treasury_Emission = New_Supply</code></pre>
-</section>
-<section id="supply-features" class="level3">
-<h3 class="anchored" data-anchor-id="supply-features">Supply Features</h3>
-<ul>
-<li>Supply expands with genuine compute demand</li>
-<li>Real-time response to usage patterns</li>
-<li>No artificial scarcity</li>
-<li>Natural market adaptation</li>
-</ul>
-</section>
-</section>
-<section id="governance" class="level2">
-<h2 class="anchored" data-anchor-id="governance">Governance</h2>
-<section id="periodic-base-compute-review" class="level3">
-<h3 class="anchored" data-anchor-id="periodic-base-compute-review">Periodic Base Compute Review</h3>
-<ul>
-<li>Every 3 months</li>
-<li>Only adjusts Base_Compute_Units</li>
-<li>Data-driven decision process</li>
-<li>Gradual adjustments preferred</li>
-</ul>
-</section>
-<section id="review-metrics" class="level3">
-<h3 class="anchored" data-anchor-id="review-metrics">Review Metrics</h3>
+<section id="price-stability-mechanism" class="level3">
+<h3 class="anchored" data-anchor-id="price-stability-mechanism">Price Stability Mechanism</h3>
+<p>The system maintains constant compute costs through dynamic supply management:</p>
 <ol type="1">
-<li>Network Utilization</li>
-</ol>
+<li>During Low Demand
 <ul>
-<li>Average compute usage</li>
-<li>Usage patterns</li>
-<li>Growth trends</li>
-</ul>
-<ol start="2" type="1">
-<li>Economic Activity</li>
-</ol>
+<li>Network usage below base compute threshold</li>
+<li>Tokens are burned from the reserve</li>
+<li>Burn rate proportional to demand shortfall</li>
+<li>Example: At 50% utilization, burn 2× the standard rate</li>
+</ul></li>
+<li>During High Demand
 <ul>
-<li>Real transaction volume</li>
-<li>Contract deployments</li>
-<li>Protocol usage</li>
-</ul>
-<ol start="3" type="1">
-<li>Market Health</li>
-</ol>
-<ul>
-<li>Token velocity</li>
-<li>Supply growth rate</li>
-<li>Price stability</li>
-</ul>
-</section>
-</section>
-<section id="initial-parameters" class="level2">
-<h2 class="anchored" data-anchor-id="initial-parameters">Initial Parameters</h2>
-<section id="genesis-block" class="level3">
-<h3 class="anchored" data-anchor-id="genesis-block">Genesis Block</h3>
-<ul>
-<li>Only validator emissions active and devnet and testnet rewards</li>
-<li>No treasury emissions until compute demand exceeds base</li>
-<li>Market discovery period</li>
-</ul>
-</section>
-<section id="testnet-phase" class="level3">
-<h3 class="anchored" data-anchor-id="testnet-phase">Testnet Phase</h3>
-<ul>
-<li>Determine initial Base_Compute_Units</li>
-<li>Calibrate Base_Cost_Target</li>
-<li>Test supply elasticity</li>
-<li>Validate economic model</li>
-</ul>
-</section>
-</section>
-<section id="security-features" class="level2">
-<h2 class="anchored" data-anchor-id="security-features">Security Features</h2>
-<section id="anti-spam-protection" class="level3">
-<h3 class="anchored" data-anchor-id="anti-spam-protection">Anti-Spam Protection</h3>
-<ul>
-<li>Costs tied to actual compute usage</li>
-<li>Can’t game through simple transactions</li>
-<li>Natural economic barriers</li>
-<li>Maintains network quality</li>
-</ul>
-</section>
-<section id="black-swan-handling" class="level3">
-<h3 class="anchored" data-anchor-id="black-swan-handling">Black Swan Handling</h3>
-<ul>
-<li>Automatic supply adjustment</li>
-<li>Real-time cost stability</li>
-<li>No manual intervention needed</li>
-<li>Market stays functional</li>
-</ul>
-</section>
-</section>
-<section id="treasury" class="level2">
-<h2 class="anchored" data-anchor-id="treasury">Treasury</h2>
-<section id="emissions" class="level3">
-<h3 class="anchored" data-anchor-id="emissions">Emissions</h3>
-<ul>
-<li>Receives excess compute-driven supply</li>
-<li>Transparent allocation process</li>
-<li>Supports ecosystem growth</li>
-<li>Community governed</li>
-</ul>
-</section>
-<section id="usage" class="level3">
-<h3 class="anchored" data-anchor-id="usage">Usage</h3>
-<ol type="1">
-<li>Development Grants</li>
-<li>Protocol Improvements</li>
-<li>Ecosystem Growth</li>
-<li>Community Initiatives</li>
+<li>Network usage above base compute threshold</li>
+<li>New tokens are minted</li>
+<li>Mint rate matches excess demand</li>
+<li>Maintains fixed compute costs</li>
+</ul></li>
 </ol>
 </section>
+<section id="base-compute-threshold" class="level3">
+<h3 class="anchored" data-anchor-id="base-compute-threshold">Base Compute Threshold</h3>
+<p>The base compute threshold is a critical network parameter: - Set initially based on market analysis of competing networks - Reviewed and adjusted quarterly through governance - Must be sustainable based on burn reserve levels - Determines network’s baseline capacity</p>
+<p>If burn reserve falls below critical levels, the base compute threshold can be adjusted downward at the quarterly review to ensure sustainability.</p>
 </section>
-<section id="economic-properties" class="level2">
-<h2 class="anchored" data-anchor-id="economic-properties">Economic Properties</h2>
-<section id="cost-stability" class="level3">
-<h3 class="anchored" data-anchor-id="cost-stability">Cost Stability</h3>
-<ul>
-<li>Predictable compute costs</li>
-<li>Better for developers</li>
-<li>Supports adoption</li>
-<li>Reduces volatility</li>
-</ul>
-</section>
-<section id="supply-elasticity" class="level3">
-<h3 class="anchored" data-anchor-id="supply-elasticity">Supply Elasticity</h3>
-<ul>
-<li>Grows with real demand</li>
-<li>No artificial constraints</li>
-<li>Market-driven expansion</li>
-<li>Natural scaling</li>
-</ul>
+<section id="quarterly-adjustments" class="level3">
+<h3 class="anchored" data-anchor-id="quarterly-adjustments">Quarterly Adjustments</h3>
+<p>Every three months, the network evaluates: 1. Current burn reserve levels 2. Network utilization patterns 3. Market conditions for computation 4. Validator economics</p>
+<p>Based on this analysis: - Base compute threshold may be adjusted - New burn reserve requirements calculated - Treasury may replenish burn reserve if needed</p>
+<p>This creates a predictable cycle for parameter adjustments while maintaining price stability between reviews.</p>
 </section>
 </section>
-<section id="long-term-sustainability" class="level2">
-<h2 class="anchored" data-anchor-id="long-term-sustainability">Long-term Sustainability</h2>
-<section id="validator-economics" class="level3">
-<h3 class="anchored" data-anchor-id="validator-economics">Validator Economics</h3>
+<section id="example-scenarios" class="level2">
+<h2 class="anchored" data-anchor-id="example-scenarios">Example Scenarios</h2>
+<section id="scenario-1-low-demand-period" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-1-low-demand-period">Scenario 1: Low Demand Period</h3>
 <ul>
-<li>Predictable block rewards</li>
-<li>No fee dependence</li>
-<li>Aligned incentives</li>
-<li>Sustainable model</li>
+<li>Network at 40% of base threshold</li>
+<li>Burn rate increased to 2.5× standard</li>
+<li>Example: If base burn is 1000 RØMER/day, actual burn is 2500 RØMER/day</li>
+<li>Price of computation remains constant</li>
 </ul>
 </section>
-<section id="network-growth" class="level3">
-<h3 class="anchored" data-anchor-id="network-growth">Network Growth</h3>
+<section id="scenario-2-high-demand-period" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-2-high-demand-period">Scenario 2: High Demand Period</h3>
 <ul>
-<li>Organic expansion</li>
-<li>Real economic backing</li>
-<li>Market-driven supply</li>
-<li>Stable foundation</li>
+<li>Network at 150% of base threshold</li>
+<li>Mint new tokens to cover excess demand</li>
+<li>Example: If demand exceeds base by 1000 compute units, mint tokens worth 1000 × target price</li>
+<li>Computation costs remain stable</li>
 </ul>
 </section>
-<section id="future-adaptability" class="level3">
-<h3 class="anchored" data-anchor-id="future-adaptability">Future Adaptability</h3>
+<section id="scenario-3-burn-reserve-management" class="level3">
+<h3 class="anchored" data-anchor-id="scenario-3-burn-reserve-management">Scenario 3: Burn Reserve Management</h3>
 <ul>
-<li>Simple governance model</li>
-<li>Clear adjustment mechanisms</li>
-<li>Market-responsive</li>
-<li>Evolution capable</li>
+<li>Reserve approaching minimum threshold</li>
+<li>Governance can:
+<ol type="a">
+<li>Reduce base compute threshold</li>
+<li>Authorize treasury to replenish reserve</li>
+<li>Combination of both approaches</li>
+</ol></li>
+<li>Ensures long-term sustainability</li>
 </ul>
-<p>This creates a robust economic system that:</p>
-<ul>
-<li>Maintains stability</li>
-<li>Allows natural growth</li>
-<li>Minimizes governance</li>
-<li>Follows market signals</li>
-<li>Supports long-term sustainability</li>
-</ul>
-<p>Would you like me to expand on any particular aspect of this model?</p>
+<p>This economic model creates: - Predictable costs for developers - Sustainable network economics - Clear governance mechanisms - Protection against market volatility</p>
 
 
 </section>

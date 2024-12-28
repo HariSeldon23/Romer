@@ -1,0 +1,277 @@
+# Design Document: Sui-Simplex Consensus Adapter
+
+## Introduction
+
+This document outlines the design for integrating Sui's object-oriented execution model with Commonware's Simplex consensus mechanism. This integration leverages Sui's powerful object model and Move programming language while incorporating Simplex consensus for transaction ordering and finalization. The key insight of this design is understanding that Sui serves as both the execution environment and state storage layer, while Simplex handles consensus and transaction ordering.
+
+## System Architecture
+
+### Core Components
+
+Our system consists of three primary components that work together to provide a robust blockchain infrastructure:
+
+1. Sui Core: Provides the foundation for execution and state management
+   - Validates Move modules and scripts
+   - Manages object-based state storage
+   - Handles transaction validation and versioning
+   - Provides the Move execution environment
+
+2. Simplex Consensus: Manages the consensus layer
+   - Orders transactions based on geographic distribution
+   - Achieves consensus among physically distributed validators
+   - Ensures transaction finality
+   - Coordinates state transitions
+
+3. Adapter Layer: Orchestrates communication
+   - Bridges Sui's object model with Simplex consensus
+   - Manages transaction batching and ordering
+   - Synchronizes state updates
+   - Handles object versioning
+
+### Transaction Flow
+
+The system processes transactions through several distinct phases:
+
+1. Transaction Submission Phase
+   - Users submit Move transactions through our API
+   - Sui validates Move code and object ownership
+   - Valid transactions enter the pending pool
+   - Object versions are tracked for dependencies
+
+2. Consensus Phase
+   - Simplex collects pending transactions
+   - Geographic consensus determines transaction order
+   - Move execution occurs in deterministic order
+   - Object versions are updated atomically
+
+3. Finalization Phase
+   - Adapter receives consensus decisions
+   - Object states are updated
+   - New object versions are published
+   - Results are available for querying
+
+## Component Details
+
+### Sui Integration
+
+The adapter implements two crucial interfaces with Sui:
+
+1. Transaction Processing Interface
+```rust
+pub trait MoveTransactionProcessor {
+    /// Get pending Move transactions that are ready for execution
+    fn get_pending_transactions(&self) -> Vec<MoveTransaction>;
+    
+    /// Execute a batch of Move transactions
+    fn execute_transactions(
+        &self, 
+        transactions: Vec<MoveTransaction>
+    ) -> Result<ExecutionEffects, Error>;
+    
+    /// Update object versions after consensus
+    fn update_object_versions(
+        &self, 
+        version_updates: Vec<ObjectVersionUpdate>
+    ) -> Result<(), Error>;
+}
+```
+
+2. Object Storage Interface
+```rust
+pub trait ObjectStorage {
+    /// Retrieve object state by ID and version
+    fn get_object(
+        &self, 
+        id: ObjectID, 
+        version: SequenceNumber
+    ) -> Result<Object, Error>;
+    
+    /// Update object states after consensus
+    fn update_objects(
+        &self, 
+        updates: Vec<ObjectUpdate>
+    ) -> Result<(), Error>;
+}
+```
+
+### Move Execution Management
+
+The system carefully manages Move execution:
+
+1. Object Tracking
+   - Monitor object dependencies between transactions
+   - Track object versions and ownership
+   - Handle concurrent access to objects
+   - Maintain execution invariants
+
+2. Resource Management
+   - Efficient object storage and retrieval
+   - Version history maintenance
+   - Garbage collection of old versions
+   - Resource limitation enforcement
+
+3. Execution Prioritization
+   - Handle object dependencies
+   - Consider transaction urgency
+   - Manage execution batching
+
+### State Management
+
+The object-based state management becomes more sophisticated:
+
+1. Object Updates
+   - Atomic updates to object versions
+   - Maintenance of ownership records
+   - Version history tracking
+   - Dependency resolution
+
+2. State Queries
+   - Efficient object lookup
+   - Version-aware querying
+   - Historical state access
+   - Ownership verification
+
+## Implementation Details
+
+### Key Interfaces
+
+1. Simplex Integration Interface
+```rust
+pub trait SimplexMoveAdapter {
+    /// Provide executable transactions to Simplex
+    fn get_executable_transactions(&self) -> Result<Vec<MoveTransaction>, Error>;
+    
+    /// Handle consensus decisions
+    fn handle_consensus_decision(
+        &self, 
+        decision: ConsensusDecision
+    ) -> Result<(), Error>;
+    
+    /// Update object states after consensus
+    fn update_object_states(
+        &self, 
+        state_updates: Vec<ObjectStateUpdate>
+    ) -> Result<(), Error>;
+}
+```
+
+2. Move Execution Interface
+```rust
+pub trait MoveExecutor {
+    /// Execute Move transaction batch
+    fn execute_move_batch(
+        &self, 
+        batch: MoveBatch
+    ) -> Result<ExecutionResult, Error>;
+    
+    /// Verify execution effects
+    fn verify_execution(
+        &self, 
+        effects: ExecutionEffects
+    ) -> Result<bool, Error>;
+}
+```
+
+### Error Handling
+
+The system handles several categories of errors:
+
+1. Move Execution Errors
+   - Invalid Move code
+   - Resource unavailability
+   - Ownership violations
+   - Version conflicts
+
+2. Object State Errors
+   - Invalid state transitions
+   - Version conflicts
+   - Missing dependencies
+   - Storage failures
+
+3. System Errors
+   - Network failures
+   - Resource exhaustion
+   - Component failures
+   - Consensus timeouts
+
+## Monitoring and Metrics
+
+The system tracks key performance indicators:
+
+1. Move Metrics
+   - Execution throughput
+   - Gas usage
+   - Object access patterns
+   - Version chain length
+
+2. State Metrics
+   - Object update frequency
+   - Storage growth
+   - Query latency
+   - Version history size
+
+3. System Health
+   - Component status
+   - Resource utilization
+   - Error rates
+   - Network performance
+
+## Security Considerations
+
+1. Move Security
+   - Bytecode verification
+   - Resource safety
+   - Ownership enforcement
+   - Access control
+
+2. Object Security
+   - Version consistency
+   - Atomic updates
+   - Ownership tracking
+   - Permission management
+
+3. System Security
+   - Resource limits
+   - Error isolation
+   - Recovery procedures
+   - Attack resistance
+
+## Future Enhancements
+
+1. Performance Optimizations
+   - Parallel execution
+   - Smart batching
+   - State caching
+   - Version pruning
+
+2. Feature Additions
+   - Advanced monitoring
+   - Extended Move features
+   - Enhanced security
+   - Cross-chain bridges
+
+## Development Priority: Tycho Integration
+
+The immediate focus for development is building a Tycho indexer and simulator for the Sui mempool. This component will:
+
+1. Index Capabilities
+   - Track all Move objects and their states
+   - Monitor ownership changes
+   - Record transaction history
+   - Analyze execution patterns
+
+2. Simulation Features
+   - Predict transaction effects
+   - Estimate resource usage
+   - Model state changes
+   - Test consensus outcomes
+
+3. Integration Points
+   - Connect with Sui mempool
+   - Interface with Simplex
+   - Support monitoring tools
+   - Enable testing framework
+
+## Conclusion
+
+This design leverages Sui's powerful object-centric model while maintaining the geographic consensus properties of Simplex. The key to successful integration lies in careful management of Move execution, object versioning, and state transitions. Our immediate focus on Tycho integration will provide essential tooling for development and testing.
