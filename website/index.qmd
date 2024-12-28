@@ -31,9 +31,9 @@ Traditional consensus mechanisms create significant barriers to network particip
 Rømer introduces Proof of Physics, a revolutionary consensus mechanism that simultaneously achieves true geographic decentralization and dramatically lowers barriers to participation. Unlike existing systems that require either expensive hardware (PoW) or large capital deposits (PoS), Proof of Physics enables validation based purely on a node's capability to maintain high-quality network connections.
 
 The system:
-- Integrates with global internet exchange points and undersea cable locations
+
 - Measures actual network performance metrics that cannot be spoofed
-- Requires zero-knowledge proofs of physical presence in claimed locations
+- Requires zero-knowledge proofs of physical hardware
 - Prohibits cloud provider participation to prevent data center centralization
 - Requires no minimum stake or specialized hardware, democratizing network participation
 - Enables genuine permissionless validation based on operational excellence rather than capital ownership
@@ -43,6 +43,7 @@ This approach not only ensures robust geographic distribution but also creates a
 ### Austrian-Inspired Economic Model
 
 Rømer implements a economic model grounded in Austrian principles:
+
 - Maintains fixed nominal costs for computation
 - Allows market forces to drive token supply through automatic adjustment
 - Channels new token issuance to a community treasury
@@ -51,6 +52,7 @@ Rømer implements a economic model grounded in Austrian principles:
 ### Precise Compute Pricing with MOVE
 
 Moving beyond the limitations of EVM and Solana, Rømer adopts Sui's MOVE virtual machine for several key reasons:
+
 - Provides granular resource tracking for accurate compute cost estimation
 - Enables predictable pricing for computational resources
 - Offers enhanced security through resource-oriented programming
@@ -59,6 +61,7 @@ Moving beyond the limitations of EVM and Solana, Rømer adopts Sui's MOVE virtua
 ### MEV Mitigation Strategy
 
 Rømer's approach to MEV aligns with its Austrian economic principles and commitment to true market freedom:
+
 - Fixed pricing for computation eliminates validator incentives for transaction reordering
 - Removes traditional transaction fees, significantly reducing MEV opportunities
 - Ensures transaction ordering follows natural network propagation, preventing artificial manipulation
@@ -69,6 +72,7 @@ This strategy recognizes that MEV often represents a market distortion rather th
 ## Technical Implementation
 
 The combination of these solutions creates a uniquely robust platform:
+
 - Transactions reach finality in under one second
 - Geographic distribution provides natural DDoS resistance
 - Zero-knowledge proofs ensure privacy while maintaining security
