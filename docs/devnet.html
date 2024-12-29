@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>pop – Rømer Chain</title>
+<title>devnet – Rømer Chain</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -97,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Pitch Deck</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./pop.html" aria-current="page"> 
+    <a class="nav-link" href="./pop.html"> 
 <span class="menu-text">Proof of Physics</span></a>
   </li>  
   <li class="nav-item">
@@ -105,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Tokenomics</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./devnet.html"> 
+    <a class="nav-link active" href="./devnet.html" aria-current="page"> 
 <span class="menu-text">Devnet</span></a>
   </li>  
   <li class="nav-item">
@@ -128,33 +128,30 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proof-of-physics-a-novel-layer-for-simplex-consensus-based-on-physical-infrastructure-and-network-topology" id="toc-proof-of-physics-a-novel-layer-for-simplex-consensus-based-on-physical-infrastructure-and-network-topology" class="nav-link active" data-scroll-target="#proof-of-physics-a-novel-layer-for-simplex-consensus-based-on-physical-infrastructure-and-network-topology">Proof of Physics: A Novel Layer for Simplex Consensus Based on Physical Infrastructure and Network Topology</a>
+  <li><a href="#rømer-chain-development-milestones" id="toc-rømer-chain-development-milestones" class="nav-link active" data-scroll-target="#rømer-chain-development-milestones">Rømer Chain Development Milestones</a>
   <ul class="collapse">
-  <li><a href="#abstract" id="toc-abstract" class="nav-link" data-scroll-target="#abstract">Abstract</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#system-architecture" id="toc-system-architecture" class="nav-link" data-scroll-target="#system-architecture">System Architecture</a>
+  <li><a href="#phase-1-core-network-bootstrap" id="toc-phase-1-core-network-bootstrap" class="nav-link" data-scroll-target="#phase-1-core-network-bootstrap">Phase 1: Core Network Bootstrap</a>
   <ul class="collapse">
-  <li><a href="#commonware-integration" id="toc-commonware-integration" class="nav-link" data-scroll-target="#commonware-integration">Commonware Integration</a></li>
-  <li><a href="#geographic-distribution" id="toc-geographic-distribution" class="nav-link" data-scroll-target="#geographic-distribution">Geographic Distribution</a></li>
-  <li><a href="#validator-requirements" id="toc-validator-requirements" class="nav-link" data-scroll-target="#validator-requirements">Validator Requirements</a></li>
-  <li><a href="#zero-knowledge-hardware-attestation" id="toc-zero-knowledge-hardware-attestation" class="nav-link" data-scroll-target="#zero-knowledge-hardware-attestation">Zero-Knowledge Hardware Attestation</a></li>
+  <li><a href="#milestone-1.1-genesis-and-block-production" id="toc-milestone-1.1-genesis-and-block-production" class="nav-link" data-scroll-target="#milestone-1.1-genesis-and-block-production">Milestone 1.1: Genesis and Block Production</a></li>
+  <li><a href="#milestone-1.2-economic-engine-core" id="toc-milestone-1.2-economic-engine-core" class="nav-link" data-scroll-target="#milestone-1.2-economic-engine-core">Milestone 1.2: Economic Engine Core</a></li>
   </ul></li>
-  <li><a href="#security-model" id="toc-security-model" class="nav-link" data-scroll-target="#security-model">Security Model</a>
+  <li><a href="#phase-2-network-coordination" id="toc-phase-2-network-coordination" class="nav-link" data-scroll-target="#phase-2-network-coordination">Phase 2: Network Coordination</a>
   <ul class="collapse">
-  <li><a href="#physical-security" id="toc-physical-security" class="nav-link" data-scroll-target="#physical-security">Physical Security</a></li>
-  <li><a href="#jurisdictional-security" id="toc-jurisdictional-security" class="nav-link" data-scroll-target="#jurisdictional-security">Jurisdictional Security</a></li>
-  <li><a href="#attack-resistance" id="toc-attack-resistance" class="nav-link" data-scroll-target="#attack-resistance">Attack Resistance</a></li>
+  <li><a href="#milestone-2.1-leader-election" id="toc-milestone-2.1-leader-election" class="nav-link" data-scroll-target="#milestone-2.1-leader-election">Milestone 2.1: Leader Election</a></li>
+  <li><a href="#milestone-2.2-network-performance-infrastructure" id="toc-milestone-2.2-network-performance-infrastructure" class="nav-link" data-scroll-target="#milestone-2.2-network-performance-infrastructure">Milestone 2.2: Network Performance Infrastructure</a></li>
   </ul></li>
-  <li><a href="#mev-protection" id="toc-mev-protection" class="nav-link" data-scroll-target="#mev-protection">MEV Protection</a>
+  <li><a href="#phase-3-validator-network-expansion" id="toc-phase-3-validator-network-expansion" class="nav-link" data-scroll-target="#phase-3-validator-network-expansion">Phase 3: Validator Network Expansion</a>
   <ul class="collapse">
-  <li><a href="#geographic-distribution-benefits" id="toc-geographic-distribution-benefits" class="nav-link" data-scroll-target="#geographic-distribution-benefits">Geographic Distribution Benefits</a></li>
+  <li><a href="#milestone-3.1-basic-zk-proof-system" id="toc-milestone-3.1-basic-zk-proof-system" class="nav-link" data-scroll-target="#milestone-3.1-basic-zk-proof-system">Milestone 3.1: Basic ZK Proof System</a></li>
+  <li><a href="#milestone-3.2-validator-onboarding" id="toc-milestone-3.2-validator-onboarding" class="nav-link" data-scroll-target="#milestone-3.2-validator-onboarding">Milestone 3.2: Validator Onboarding</a></li>
   </ul></li>
-  <li><a href="#performance-characteristics" id="toc-performance-characteristics" class="nav-link" data-scroll-target="#performance-characteristics">Performance Characteristics</a>
+  <li><a href="#phase-4-transaction-integration" id="toc-phase-4-transaction-integration" class="nav-link" data-scroll-target="#phase-4-transaction-integration">Phase 4: Transaction Integration</a>
   <ul class="collapse">
-  <li><a href="#consensus-speed" id="toc-consensus-speed" class="nav-link" data-scroll-target="#consensus-speed">Consensus Speed</a></li>
-  <li><a href="#network-efficiency" id="toc-network-efficiency" class="nav-link" data-scroll-target="#network-efficiency">Network Efficiency</a></li>
+  <li><a href="#milestone-4.1-sui-integration" id="toc-milestone-4.1-sui-integration" class="nav-link" data-scroll-target="#milestone-4.1-sui-integration">Milestone 4.1: Sui Integration</a></li>
+  <li><a href="#milestone-4.2-full-network-operation" id="toc-milestone-4.2-full-network-operation" class="nav-link" data-scroll-target="#milestone-4.2-full-network-operation">Milestone 4.2: Full Network Operation</a></li>
   </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#testing-requirements" id="toc-testing-requirements" class="nav-link" data-scroll-target="#testing-requirements">Testing Requirements</a></li>
+  <li><a href="#success-metrics" id="toc-success-metrics" class="nav-link" data-scroll-target="#success-metrics">Success Metrics</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -165,230 +162,137 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="proof-of-physics-a-novel-layer-for-simplex-consensus-based-on-physical-infrastructure-and-network-topology" class="level1">
-<h1>Proof of Physics: A Novel Layer for Simplex Consensus Based on Physical Infrastructure and Network Topology</h1>
-<section id="abstract" class="level2">
-<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
-<p>We present Proof of Physics, a novel security layer for <a href="https://simplex.blog/">Simplex Consensus</a> that leverages physical infrastructure, network topology, and zero-knowledge proofs to create a secure and truly decentralized blockchain network. Built on <a href="https://commonware.xyz/">Commonware</a> primitives, our system anchors security in the immutable laws of physics - specifically the speed of light and physical reality of global network infrastructure. The system achieves security through geographic distribution, jurisdictional complexity, and cryptographic verification of physical hardware, making attacks exponentially more difficult as the network grows.</p>
-</section>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Current blockchain consensus mechanisms face significant challenges:</p>
+<section id="rømer-chain-development-milestones" class="level1">
+<h1>Rømer Chain Development Milestones</h1>
+<section id="phase-1-core-network-bootstrap" class="level2">
+<h2 class="anchored" data-anchor-id="phase-1-core-network-bootstrap">Phase 1: Core Network Bootstrap</h2>
+<section id="milestone-1.1-genesis-and-block-production" class="level3">
+<h3 class="anchored" data-anchor-id="milestone-1.1-genesis-and-block-production">Milestone 1.1: Genesis and Block Production</h3>
+<p>The network must first demonstrate basic operation with a single node producing empty blocks. This establishes the foundation for all future development.</p>
+<p>Primary Goals:</p>
 <ul>
-<li>Proof of Work consumes massive energy resources</li>
-<li>Proof of Stake requires large capital lockup</li>
-<li>Both tend toward centralization</li>
-<li>Security costs scale linearly with protected value</li>
-<li>MEV extraction centralizes value capture</li>
-</ul>
-<p>Proof of Physics, built on Simplex Consensus and Commonware primitives, addresses these challenges by:</p>
-<ul>
-<li>Leveraging existing network infrastructure</li>
-<li>Requiring geographic distribution</li>
-<li>Creating jurisdictional complexity</li>
-<li>Verifying physical hardware through ZK proofs</li>
-<li>Making attacks exponentially harder to coordinate</li>
-<li>Maintaining Simplex’s 2-hop block times</li>
-<li>Preserving optimal finalization latency</li>
-<li>Distributing value capture across regions</li>
-<li>Rewarding actual contributions</li>
+<li>Fix Commonware storage integration for genesis block</li>
+<li>Implement basic block production with timestamps</li>
+<li>Create basic network startup sequence</li>
+<li>Validate block sequence integrity</li>
 </ul>
 </section>
-<section id="system-architecture" class="level2">
-<h2 class="anchored" data-anchor-id="system-architecture">System Architecture</h2>
-<section id="commonware-integration" class="level3">
-<h3 class="anchored" data-anchor-id="commonware-integration">Commonware Integration</h3>
-<p>The system is built on core Commonware primitives:</p>
-<ol type="1">
-<li>Commonware P2P</li>
-<li>Commonware Storage</li>
-<li>Commonware Runtime</li>
-<li>Commonware Consensus (Simplex)</li>
-</ol>
-</section>
-<section id="geographic-distribution" class="level3">
-<h3 class="anchored" data-anchor-id="geographic-distribution">Geographic Distribution</h3>
-<p>The network is divided into distinct regions based on major internet exchanges and submarine cable landing points. One validator can be active leader per region, with selection based on sustained network performance rather than computational work or stake.</p>
-</section>
-<section id="validator-requirements" class="level3">
-<h3 class="anchored" data-anchor-id="validator-requirements">Validator Requirements</h3>
-<p>Validators must:</p>
+<section id="milestone-1.2-economic-engine-core" class="level3">
+<h3 class="anchored" data-anchor-id="milestone-1.2-economic-engine-core">Milestone 1.2: Economic Engine Core</h3>
+<p>Implementing a simplified ledger-based token system allows testing of economic principles without requiring full transaction support.</p>
+<p>Primary Goals:</p>
 <ul>
-<li>Maintain physical hardware (no cloud providers)</li>
-<li>Demonstrate geographic presence</li>
-<li>Provide high-quality network connections</li>
-<li>Pass hardware attestation via ZK proofs</li>
-<li>Meet performance standards</li>
-<li>Maintain infrastructure</li>
-</ul>
-</section>
-<section id="zero-knowledge-hardware-attestation" class="level3">
-<h3 class="anchored" data-anchor-id="zero-knowledge-hardware-attestation">Zero-Knowledge Hardware Attestation</h3>
-<p>Validators submit ZK proofs using halo2 to verify:</p>
-<ul>
-<li>Physical hardware characteristics</li>
-<li>Geographic location</li>
-<li>Network path validity</li>
-<li>Infrastructure control</li>
-<li>Performance capabilities</li>
-<li>Timing constraints</li>
-</ul>
-<p>Proofs are required:</p>
-<ul>
-<li>On network join (comprehensive)</li>
-<li>Per epoch (verification)</li>
-<li>On challenge (random checks)</li>
+<li>Implement internal token ledger system</li>
+<li>Create genesis supply tracking</li>
+<li>Build supply adjustment algorithms</li>
+<li>Implement basic treasury record-keeping</li>
+<li>Maintain mint and burn history</li>
 </ul>
 </section>
 </section>
-<section id="security-model" class="level2">
-<h2 class="anchored" data-anchor-id="security-model">Security Model</h2>
-<section id="physical-security" class="level3">
-<h3 class="anchored" data-anchor-id="physical-security">Physical Security</h3>
-<p>Security is anchored in:</p>
+<section id="phase-2-network-coordination" class="level2">
+<h2 class="anchored" data-anchor-id="phase-2-network-coordination">Phase 2: Network Coordination</h2>
+<section id="milestone-2.1-leader-election" class="level3">
+<h3 class="anchored" data-anchor-id="milestone-2.1-leader-election">Milestone 2.1: Leader Election</h3>
+<p>Even with a single validator, the network must implement proper leader election mechanics to prepare for future expansion.</p>
+<p>Primary Goals:</p>
 <ul>
-<li>Speed of light constraints</li>
-<li>Physical infrastructure requirements</li>
-<li>Network topology</li>
-<li>Geographic distribution</li>
-<li>Hardware attestation</li>
-<li>Infrastructure control</li>
+<li>Implement leader election protocol</li>
+<li>Create validator scoring system</li>
+<li>Build election state management</li>
+<li>Test single-validator scenarios</li>
+<li>Prepare for multi-validator support</li>
 </ul>
 </section>
-<section id="jurisdictional-security" class="level3">
-<h3 class="anchored" data-anchor-id="jurisdictional-security">Jurisdictional Security</h3>
-<p>The system gains security through:</p>
+<section id="milestone-2.2-network-performance-infrastructure" class="level3">
+<h3 class="anchored" data-anchor-id="milestone-2.2-network-performance-infrastructure">Milestone 2.2: Network Performance Infrastructure</h3>
+<p>Before expanding to multiple validators, the system needs infrastructure to measure and validate network performance.</p>
+<p>Primary Goals:</p>
 <ul>
-<li>Multiple legal jurisdictions</li>
-<li>Local operator relationships</li>
-<li>Regional diversity</li>
-<li>Infrastructure ownership</li>
-<li>Network path validation</li>
-<li>Operator incentives</li>
-</ul>
-</section>
-<section id="attack-resistance" class="level3">
-<h3 class="anchored" data-anchor-id="attack-resistance">Attack Resistance</h3>
-<p>Primary threats:</p>
-<ul>
-<li>Cloud providers</li>
-<li>Infrastructure operators</li>
-<li>Nation-state actors</li>
-</ul>
-<p>Defense mechanisms:</p>
-<ol type="1">
-<li>Physical Constraints</li>
-</ol>
-<ul>
-<li>Hardware must be physical not virtual</li>
-<li>Network paths verified</li>
-<li>Geographic distribution enforced</li>
-<li>Performance requirements</li>
-<li>Infrastructure validation</li>
-</ul>
-<ol start="2" type="1">
-<li>Jurisdictional Complexity</li>
-</ol>
-<ul>
-<li>Multiple legal frameworks</li>
-<li>Local business relationships</li>
-<li>Regional operations</li>
-<li>Infrastructure ownership</li>
-<li>Operator incentives</li>
-</ul>
-<ol start="3" type="1">
-<li>Simplex Consensus Protection</li>
-</ol>
-<ul>
-<li>2-hop block propagation</li>
-<li>3-hop finalization</li>
-<li>Fast attack recovery</li>
-<li>Network resilience</li>
-<li>Block verification</li>
-<li>Performance optimization</li>
-</ul>
-<ol start="4" type="1">
-<li>Economic Security</li>
-</ol>
-<ul>
-<li>Local operator profitability</li>
-<li>Infrastructure investment</li>
-<li>Business relationships</li>
-<li>Market dynamics</li>
-<li>Long-term alignment</li>
+<li>Build network performance measurement</li>
+<li>Create latency tracking systems</li>
+<li>Implement regional performance benchmarks</li>
+<li>Develop network topology mapping</li>
+<li>Set up performance data storage</li>
 </ul>
 </section>
 </section>
-<section id="mev-protection" class="level2">
-<h2 class="anchored" data-anchor-id="mev-protection">MEV Protection</h2>
-<section id="geographic-distribution-benefits" class="level3">
-<h3 class="anchored" data-anchor-id="geographic-distribution-benefits">Geographic Distribution Benefits</h3>
-<ol type="1">
-<li>Network Topology Protection</li>
-</ol>
+<section id="phase-3-validator-network-expansion" class="level2">
+<h2 class="anchored" data-anchor-id="phase-3-validator-network-expansion">Phase 3: Validator Network Expansion</h2>
+<section id="milestone-3.1-basic-zk-proof-system" class="level3">
+<h3 class="anchored" data-anchor-id="milestone-3.1-basic-zk-proof-system">Milestone 3.1: Basic ZK Proof System</h3>
+<p>Validators must prove their physical presence before joining the network.</p>
+<p>Primary Goals:</p>
 <ul>
-<li>Validators physically distributed</li>
-<li>Multiple network paths</li>
-<li>Regional latency advantages neutralized</li>
-<li>Front-running more difficult</li>
-<li>No centralized points for MEV extraction</li>
-<li>Path diversity reduces timing advantages</li>
-<li>Geographic separation enforces fairness</li>
+<li>Implement basic hardware verification proofs</li>
+<li>Create proof submission system</li>
+<li>Build verification infrastructure</li>
+<li>Set up validator identity management</li>
+<li>Test proof validation process</li>
 </ul>
-<ol start="2" type="1">
-<li>Regional Transaction Flow</li>
-</ol>
+</section>
+<section id="milestone-3.2-validator-onboarding" class="level3">
+<h3 class="anchored" data-anchor-id="milestone-3.2-validator-onboarding">Milestone 3.2: Validator Onboarding</h3>
+<p>The network must support multiple validators joining and participating in consensus.</p>
+<p>Primary Goals:</p>
 <ul>
-<li>Transactions naturally flow through local validators</li>
-<li>Regional price discovery</li>
-<li>Reduced global arbitrage opportunities</li>
-<li>Local market efficiency</li>
-<li>Distributed order flow</li>
-<li>Regional market making</li>
-<li>Fair access to local liquidity</li>
-</ul>
-<ol start="3" type="1">
-<li>Latency-Based Protection</li>
-</ol>
-<ul>
-<li>Speed of light constraints</li>
-<li>Physical distance requirements</li>
-<li>No single point of order flow</li>
-<li>Geographic arbitrage limitations</li>
-<li>Timing advantage restrictions</li>
-<li>Natural network partitioning</li>
-<li>Fair order propagation</li>
+<li>Create validator registration process</li>
+<li>Implement multi-validator coordination</li>
+<li>Build validator state synchronization</li>
+<li>Deploy test validators across regions</li>
+<li>Validate network performance metrics</li>
 </ul>
 </section>
 </section>
-<section id="performance-characteristics" class="level2">
-<h2 class="anchored" data-anchor-id="performance-characteristics">Performance Characteristics</h2>
-<section id="consensus-speed" class="level3">
-<h3 class="anchored" data-anchor-id="consensus-speed">Consensus Speed</h3>
+<section id="phase-4-transaction-integration" class="level2">
+<h2 class="anchored" data-anchor-id="phase-4-transaction-integration">Phase 4: Transaction Integration</h2>
+<section id="milestone-4.1-sui-integration" class="level3">
+<h3 class="anchored" data-anchor-id="milestone-4.1-sui-integration">Milestone 4.1: Sui Integration</h3>
+<p>Connecting to the Sui ecosystem represents a major expansion of network capabilities.</p>
+<p>Primary Goals:</p>
 <ul>
-<li>2 network hops for block times</li>
-<li>3 network hops for finalization</li>
-<li>Optimized for network latency</li>
-<li>Geographic distribution balanced with performance</li>
-<li>Fast recovery from attacks</li>
-<li>Efficient block propagation</li>
+<li>Set up Sui node integration</li>
+<li>Implement mempool monitoring</li>
+<li>Create transaction validation system</li>
+<li>Build state management interface</li>
+<li>Migrate from ledger to full token system</li>
 </ul>
 </section>
-<section id="network-efficiency" class="level3">
-<h3 class="anchored" data-anchor-id="network-efficiency">Network Efficiency</h3>
+<section id="milestone-4.2-full-network-operation" class="level3">
+<h3 class="anchored" data-anchor-id="milestone-4.2-full-network-operation">Milestone 4.2: Full Network Operation</h3>
+<p>The final phase brings all components together into a complete, operational network.</p>
+<p>Primary Goals:</p>
 <ul>
-<li>Decoupled block broadcast</li>
-<li>Optimized path selection</li>
-<li>Regional leadership model</li>
-<li>Performance-based validation</li>
-<li>Infrastructure requirements</li>
-<li>Network path optimization</li>
+<li>Implement full transaction processing</li>
+<li>Create block execution pipeline</li>
+<li>Build SDK integration</li>
+<li>Deploy monitoring systems</li>
+<li>Complete system documentation</li>
 </ul>
 </section>
 </section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Proof of Physics represents a novel approach to blockchain consensus that combines Simplex Consensus, Commonware primitives, and physical infrastructure requirements to create a secure and truly decentralized network. By requiring validators to maintain physical infrastructure across multiple jurisdictions and continuously prove their capabilities, the system achieves exponential security scaling while maintaining fast finality and low operating costs.</p>
+<section id="testing-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="testing-requirements">Testing Requirements</h2>
+<p>Each milestone requires:</p>
+<ul>
+<li>Functional testing of new components</li>
+<li>Integration testing with existing systems</li>
+<li>Performance validation</li>
+<li>Security review</li>
+<li>Documentation updates</li>
+</ul>
+</section>
+<section id="success-metrics" class="level2">
+<h2 class="anchored" data-anchor-id="success-metrics">Success Metrics</h2>
+<p>Milestone completion requires:</p>
+<ul>
+<li>Working software deployment</li>
+<li>Meeting performance targets</li>
+<li>Passing security requirements</li>
+<li>Documentation completion</li>
+<li>Operational validation</li>
+</ul>
+<p>This roadmap prioritizes building a working network first, then gradually adding complexity. Each phase builds directly on previous work, maintaining a functional system throughout development.</p>
 
 
 </section>

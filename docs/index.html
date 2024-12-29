@@ -105,12 +105,12 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Tokenomics</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./regions.html"> 
-<span class="menu-text">Regions</span></a>
+    <a class="nav-link" href="./devnet.html"> 
+<span class="menu-text">Devnet</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./engineering.html"> 
-<span class="menu-text">Engineering</span></a>
+    <a class="nav-link" href="./economics.html"> 
+<span class="menu-text">RØMER’s Economic Model</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -133,6 +133,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#understanding-core-blockchain-challenges" id="toc-understanding-core-blockchain-challenges" class="nav-link" data-scroll-target="#understanding-core-blockchain-challenges">Understanding Core Blockchain Challenges</a>
   <ul class="collapse">
   <li><a href="#geographic-centralization-the-hidden-threat" id="toc-geographic-centralization-the-hidden-threat" class="nav-link" data-scroll-target="#geographic-centralization-the-hidden-threat">Geographic Centralization: The Hidden Threat</a></li>
+  <li><a href="#the-market-cycle-challenge" id="toc-the-market-cycle-challenge" class="nav-link" data-scroll-target="#the-market-cycle-challenge">The Market Cycle Challenge</a></li>
   <li><a href="#the-austrian-economics-gap" id="toc-the-austrian-economics-gap" class="nav-link" data-scroll-target="#the-austrian-economics-gap">The Austrian Economics Gap</a></li>
   <li><a href="#the-compute-pricing-problem" id="toc-the-compute-pricing-problem" class="nav-link" data-scroll-target="#the-compute-pricing-problem">The Compute Pricing Problem</a></li>
   <li><a href="#the-mev-challenge" id="toc-the-mev-challenge" class="nav-link" data-scroll-target="#the-mev-challenge">The MEV Challenge</a></li>
@@ -140,6 +141,7 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#rømers-solutions-a-first-principles-approach" id="toc-rømers-solutions-a-first-principles-approach" class="nav-link" data-scroll-target="#rømers-solutions-a-first-principles-approach">Rømer’s Solutions: A First Principles Approach</a>
   <ul class="collapse">
+  <li><a href="#economic-resilience-through-austrian-design" id="toc-economic-resilience-through-austrian-design" class="nav-link" data-scroll-target="#economic-resilience-through-austrian-design">Economic Resilience Through Austrian Design</a></li>
   <li><a href="#proof-of-physics-democratizing-validation-through-geographic-distribution" id="toc-proof-of-physics-democratizing-validation-through-geographic-distribution" class="nav-link" data-scroll-target="#proof-of-physics-democratizing-validation-through-geographic-distribution">Proof of Physics: Democratizing Validation Through Geographic Distribution</a></li>
   <li><a href="#austrian-inspired-economic-model" id="toc-austrian-inspired-economic-model" class="nav-link" data-scroll-target="#austrian-inspired-economic-model">Austrian-Inspired Economic Model</a></li>
   <li><a href="#precise-compute-pricing-with-move" id="toc-precise-compute-pricing-with-move" class="nav-link" data-scroll-target="#precise-compute-pricing-with-move">Precise Compute Pricing with MOVE</a></li>
@@ -164,27 +166,40 @@ ul.task-list li input[type="checkbox"] {
 <p>The blockchain ecosystem faces several fundamental challenges that limit its potential for true decentralization and widespread adoption. To understand Rømer Chain’s innovative approach, we must first examine these core issues:</p>
 <section id="geographic-centralization-the-hidden-threat" class="level3">
 <h3 class="anchored" data-anchor-id="geographic-centralization-the-hidden-threat">Geographic Centralization: The Hidden Threat</h3>
-<p>While most blockchain discussions focus on token distribution or validator count, geographic centralization represents perhaps the most significant threat to network resilience. Current networks cluster around major data centers and cloud providers, creating physical points of failure that could compromise entire networks through regional outages or regulatory actions. True decentralization must begin with physical distribution.</p>
+<p>While most blockchain discussions focus on token distribution or validator count, geographic centralization represents perhaps the most significant threat to network resilience. Current networks cluster around major data centers and cloud providers, creating physical points of failure that could compromise entire networks through regional outages or regulatory actions. Recent research from the Cambridge Centre for Alternative Finance (CCAF) provides compelling evidence of this concentration: Bitcoin mining operations are heavily concentrated in the United States<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, while Ethereum’s network shows severe underrepresentation in critical regions including Africa and Asia<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. This geographic imbalance not only creates technical vulnerabilities but also raises serious concerns about global accessibility and participation. True decentralization must begin with physical distribution.</p>
+</section>
+<section id="the-market-cycle-challenge" class="level3">
+<h3 class="anchored" data-anchor-id="the-market-cycle-challenge">The Market Cycle Challenge</h3>
+<p>Traditional blockchain networks suffer from a fundamental economic flaw: they lack mechanisms to maintain network vitality during market downturns. When token prices fall, several destructive patterns emerge simultaneously:</p>
+<p>First, validators face declining rewards in real terms, often leading to reduced participation and compromised network security. Second, development activity typically slows as project treasuries, denominated in native tokens, lose value. Third, and perhaps most critically, user engagement drops sharply as speculative activity decreases, creating a negative feedback loop that can take years to reverse.</p>
+<p>This cyclical pattern has plagued virtually every major blockchain project, leading to periodic phases of reduced security, stalled development, and diminished network effects. The challenge isn’t just about maintaining token price stability—it’s about ensuring the network’s fundamental utility and security remain strong regardless of market conditions.</p>
 </section>
 <section id="the-austrian-economics-gap" class="level3">
 <h3 class="anchored" data-anchor-id="the-austrian-economics-gap">The Austrian Economics Gap</h3>
-<p>Bitcoin introduced sound monetary principles aligned with Austrian economics, but subsequent blockchain platforms have largely abandoned these foundations in favor of various economic experiments. This departure from proven economic theory has led to unstable tokenomics and unpredictable costs for network usage. A blockchain designed for global adoption needs to return to these fundamental economic principles.</p>
+<p>Bitcoin introduced sound monetary principles aligned with Austrian economics, but subsequent blockchain platforms have largely abandoned these foundations in favor of various economic experiments. This departure from proven economic theory has led to unstable tokenomics and unpredictable costs for network usage. A blockchain designed for global adoption needs to return to these fundamental economic principles while adapting them for the unique requirements of computational infrastructure.</p>
 </section>
 <section id="the-compute-pricing-problem" class="level3">
 <h3 class="anchored" data-anchor-id="the-compute-pricing-problem">The Compute Pricing Problem</h3>
-<p>Existing “world computer” platforms struggle with volatile and unpredictable pricing for computation. Neither the EVM’s gas model nor Solana’s fee structure provides sufficient granularity to accurately price computational resources. This uncertainty makes it difficult for applications to budget and scale effectively, hindering enterprise adoption.</p>
+<p>Existing “world computer” platforms struggle with volatile and unpredictable pricing for computation. Neither the EVM’s gas model nor Solana’s fee structure provides sufficient granularity to accurately price computational resources. This uncertainty makes it difficult for applications to budget and scale effectively, hindering enterprise adoption and creating additional barriers during market downturns when cost predictability becomes even more crucial.</p>
 </section>
 <section id="the-mev-challenge" class="level3">
 <h3 class="anchored" data-anchor-id="the-mev-challenge">The MEV Challenge</h3>
-<p>Miner (or Maximal) Extractable Value (MEV) has emerged as a critical challenge that threatens fair market operation on blockchain networks. As DeFi grows more sophisticated, MEV’s impact on transaction ordering and user experience will only increase, potentially undermining trust in decentralized systems. Traditional approaches to MEV often legitimize it through “fair ordering” services, which fundamentally contradicts free market principles by making transaction ordering a commodity that can be purchased.</p>
+<p>Maximal Extractable Value (MEV) has emerged as a critical challenge that threatens fair market operation on blockchain networks, mirroring the predatory practices exposed in traditional finance’s high-frequency trading. The impact of MEV becomes even more pronounced during bear markets, when reduced trading volumes make MEV extraction one of the few remaining profitable activities, potentially concentrating network control among sophisticated MEV extractors.</p>
 </section>
 <section id="the-validator-barrier-problem" class="level3">
 <h3 class="anchored" data-anchor-id="the-validator-barrier-problem">The Validator Barrier Problem</h3>
-<p>Traditional consensus mechanisms create significant barriers to network participation. Proof of Work requires massive investments in specialized hardware and energy infrastructure, while Proof of Stake demands large capital deposits. These requirements naturally lead to centralization among wealthy individuals and institutions, contradicting the democratic ideals of blockchain technology.</p>
+<p>Traditional consensus mechanisms create staggering financial barriers to network participation, a problem that becomes particularly acute during market downturns. Proof of Work and Proof of Stake systems both require substantial capital investments, leading to centralization among wealthy participants and creating additional systemic risks during bear markets when the value of staked assets declines.</p>
 </section>
 </section>
 <section id="rømers-solutions-a-first-principles-approach" class="level2">
 <h2 class="anchored" data-anchor-id="rømers-solutions-a-first-principles-approach">Rømer’s Solutions: A First Principles Approach</h2>
+<section id="economic-resilience-through-austrian-design" class="level3">
+<h3 class="anchored" data-anchor-id="economic-resilience-through-austrian-design">Economic Resilience Through Austrian Design</h3>
+<p>Rømer introduces an economic model that ensures network vitality across all market conditions. The system achieves this through several interconnected mechanisms:</p>
+<p>First, computation costs remain fixed in nominal terms, providing crucial stability for developers and enterprises regardless of market conditions. During periods of reduced demand, the system automatically burns more tokens than it emits, creating natural supply contraction that helps maintain real economic value. This mechanism becomes stronger during market downturns, effectively treating reduced network activity as a signal to optimize the token supply.</p>
+<p>Second, validator economics are designed to strengthen during bear markets. As network usage decreases, the proportional increase in token burning reduces total supply, helping maintain the real value of validator rewards even as nominal network activity declines. This creates a counter-cyclical stabilizing force that actually enhances network security during market downturns.</p>
+<p>Third, the treasury’s adaptive funding model ensures consistent development resources. By maintaining fixed computation costs while adjusting token supply, the system helps preserve the real value of treasury assets during market downturns. This enables sustained development and ecosystem growth regardless of market conditions.</p>
+</section>
 <section id="proof-of-physics-democratizing-validation-through-geographic-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="proof-of-physics-democratizing-validation-through-geographic-distribution">Proof of Physics: Democratizing Validation Through Geographic Distribution</h3>
 <p>Rømer introduces Proof of Physics, a revolutionary consensus mechanism that simultaneously achieves true geographic decentralization and dramatically lowers barriers to participation. Unlike existing systems that require either expensive hardware (PoW) or large capital deposits (PoS), Proof of Physics enables validation based purely on a node’s capability to maintain high-quality network connections.</p>
@@ -222,10 +237,10 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="mev-mitigation-strategy">MEV Mitigation Strategy</h3>
 <p>Rømer’s approach to MEV aligns with its Austrian economic principles and commitment to true market freedom:</p>
 <ul>
-<li>Fixed pricing for computation eliminates validator incentives for transaction reordering</li>
+<li>Fixed pricing for computation minimizes validator incentives for transaction reordering</li>
 <li>Removes traditional transaction fees, significantly reducing MEV opportunities</li>
 <li>Ensures transaction ordering follows natural network propagation, preventing artificial manipulation</li>
-<li>Plans to implement a Fully Homomorphic Encryption (FHE) based solution post-mainnet for handling any residual MEV concerns in a privacy-preserving manner</li>
+<li>Implements transparent mempool indexing and simulation capabilities to enable fair market analysis and prevent information asymmetry</li>
 </ul>
 <p>This strategy recognizes that MEV often represents a market distortion rather than a feature. By fixing computation costs and removing the ability to bribe validators through transaction fees, Rømer creates a more equitable and predictable environment that better serves all participants.</p>
 </section>
@@ -234,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="technical-implementation">Technical Implementation</h2>
 <p>The combination of these solutions creates a uniquely robust platform:</p>
 <ul>
-<li>Transactions reach finality in under one second</li>
+<li>Transactions reach finality in under one second using <a href="https://simplex.blog/">Simplex Consensus</a></li>
 <li>Geographic distribution provides natural DDoS resistance</li>
 <li>Zero-knowledge proofs ensure privacy while maintaining security</li>
 <li>Community governance ensures continued alignment with user needs</li>
@@ -249,7 +264,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Cambridge Bitcoin Electricity Consumption Index (CBECI) Mining Map, Cambridge Centre for Alternative Finance, https://ccaf.io/cbnsi/cbeci/mining_map<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Ethereum Network Analytics, Cambridge Centre for Alternative Finance, https://ccaf.io/cbnsi/ethereum/network_analytics<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -32,38 +32,9 @@ Proof of Physics, built on Simplex Consensus and Commonware primitives, addresse
 The system is built on core Commonware primitives:
 
 1. Commonware P2P
-- Authenticated peer communication
-- Encrypted connections
-- Automatic peer discovery
-- Multiplexed communication
-- Rate limiting
-- Message compression
-- Network simulation support
-
 2. Commonware Storage
-- Persistent data storage
-- Archive optimization
-- Journal management
-- Metadata handling
-- Write-once guarantees
-- Efficient retrieval
-- Data integrity
-
 3. Commonware Runtime
-- Task scheduling
-- Network operations
-- Storage interface
-- Clock synchronization
-- Deterministic testing
-- Performance monitoring
-
 4. Commonware Consensus (Simplex)
-- Fast block times (2 hops)
-- Optimal finalization (3 hops)
-- Externalized proofs
-- Decoupled sync
-- Flexible format
-- Attack recovery
 
 ### Geographic Distribution
 The network is divided into distinct regions based on major internet exchanges and submarine cable landing points. One validator can be active leader per region, with selection based on sustained network performance rather than computational work or stake.

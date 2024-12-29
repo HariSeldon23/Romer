@@ -14,10 +14,10 @@ website:
         text: Proof of Physics
       - href: tokenomics.qmd
         text: Tokenomics
-      - href: regions.qmd
-        text: Regions
-      - href: engineering.qmd
-        text: Engineering
+      - href: devnet.qmd
+        text: Devnet
+      - href: economics.qmd
+        text: RØMER's Economic Model
   
 format:
   html:

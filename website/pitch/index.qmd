@@ -1,12 +1,36 @@
 ---
 title: "Rømer Chain"
-subtitle: "Building the First Chain Optimized for Geographic Decentralization"
+subtitle: "The First Blockchain That Thrives in Bear Markets"
 format:
   revealjs:
     theme: simple
     include-in-header:
       - text: |
-          <a href="http://localhost:3511" class="back-button">← Back to Website</a>
+          <style>
+            .back-button {
+              position: fixed;
+              top: 20px;
+              left: 20px;
+              padding: 10px 20px;
+              background-color: rgba(255, 255, 255, 0.9);
+              border: 2px solid #666;
+              border-radius: 6px;
+              color: #333;
+              text-decoration: none;
+              font-family: 'Source Sans Pro', sans-serif;
+              font-size: 16px;
+              transition: all 0.3s ease;
+              z-index: 1000;
+              box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .back-button:hover {
+              background-color: #666;
+              color: white;
+              box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+              text-decoration: none;
+            }
+          </style>
+          <a href="https://hariseldon23.github.io/Romer/" class="back-button">← Back to Website</a>
     controls: true
     slide-number: true
     width: 1600
@@ -15,181 +39,226 @@ format:
     incremental: true
 ---
 
+## Vision: The Future of Blockchain Infrastructure
+
+Rømer Chain represents a fundamental reimagining of blockchain architecture. By combining Austrian economics, physical decentralization, and innovative consensus mechanisms, we're creating the first blockchain explicitly designed to thrive during bear markets - precisely when other chains are most vulnerable.
+
+::: {.incremental}
+- First blockchain built on physical reality rather than virtual consensus
+- True geographic decentralization across 80+ strategic network locations
+- Austrian economic principles that naturally strengthen the network during market downturns
+- Fixed computation costs enabling enterprise-grade stability
+:::
+
+---
+
+## Market Opportunity
+
+The blockchain industry faces critical challenges that create an opening for innovation:
+
+::: {.incremental}
+- $100B+ lost in 2022 bear market due to unstable tokenomics
+- 90% of Ethereum nodes run on just 3 cloud providers
+- Average validator costs exceed $50,000 on major chains
+- Computation costs vary by 1000%+ during market cycles
+:::
+
+These systemic weaknesses create an opportunity for a fundamentally new approach.
+
+---
+
 ## The Problem
 
-Current blockchain architectures face fundamental challenges:
+Current blockchain architectures face five fundamental challenges:
 
 ::: {.incremental}
-- **Geographic Centralization** - Existing chains optimize for node count rather than true physical decentralization
-- **High Validator Barriers** - Proof of Work and Proof of Stake create massive financial barriers to participation
-- **Unstable Computation Costs** - No blockchain provides predictable, Austrian economics-aligned pricing for compute
-- **MEV as a Market Distortion** - Current chains treat MEV as a feature rather than a fundamental economic flaw
+- **Market Cycle Vulnerability**: Bear markets devastate development and security
+- **Geographic Centralization**: Most nodes run in the same data centers
+- **High Validator Barriers**: Massive financial requirements limit participation
+- **Unstable Computation Costs**: Unpredictable pricing blocks enterprise adoption
+- **MEV as Market Distortion**: Front-running undermines market integrity
 :::
 
 ---
 
-## Why Geographic Decentralization Matters
+## The Rømer Solution
 
-::: {.incremental}
-- Speed of light creates immutable constraints on network topology
-- Physical infrastructure can't be faked or virtualized
-- True resilience comes from geographic distribution
-- Prevents capture by any single jurisdiction
-- Creates natural DDoS resistance through physical separation
-:::
-
----
-
-## The Current State of Blockchain Economics
-
-::: {.incremental}
-- Volatile and unpredictable computation costs
-- High barriers to entry for network participation
-- Centralization pressure from economies of scale
-- Lack of sound money principles in system design
-- Transaction ordering becoming a purchasable commodity
-:::
-
----
-
-## Introducing Rømer Chain
-
-Built from first principles to solve these core challenges:
-
-::: {.incremental}
-- **Proof of Physics** - Validators selected based on network performance and geographic distribution, with physical location proved by ZK proofs
-- **Commonware Primitives** - Utilizing advanced consensus mechanisms like Simplex for optimal cross-region performance
-- **Sui Object Model** - Leveraging Move's resource-oriented programming for precise compute cost calculation
-- **Austrian Economic Design** - Fixed computation costs with market-driven supply adjustment
-:::
-
----
-
-## Technical Architecture
-
-Our stack combines four powerful technologies:
+Three core innovations solve these fundamental challenges:
 
 :::: {.columns}
-::: {.column width="50%"}
-**1. Commonware Primitives**
 
-- Simplex consensus for fast cross-region messaging
-- Geographic optimization at protocol level
-- Secure validator communication network
+::: {.column width="33%"}
+**Counter-Cyclical Economics**
 
-**2. Proof of Physics**
-
-- One validator per major internet exchange
-- Performance-based selection process
-- Required diversity in BGP paths
+- Supply contracts in bear markets
+- Token value naturally rises
+- Development continues unimpeded
 :::
 
-::: {.column width="50%"}
-**3. Sui Integration**
+::: {.column width="33%"}
+**Geographic Distribution**
 
-- Move-based execution layer
-- Object-oriented state management
-- Precise compute cost tracking
-
-**4. FHE Foundation**
-
-- Privacy-preserving transaction ordering
-- Future MEV protection layer
-- Post-mainnet development focus
+- Physical infrastructure requirements
+- Multi-jurisdictional resilience
+- Natural DDoS protection
 :::
+
+::: {.column width="33%"}
+**Proof of Physics**
+
+- Performance-based validation
+- Minimal financial barriers
+- True decentralization
+:::
+
 ::::
 
 ---
 
-## Tokenomics: Economic Philosophy
+## Our Competitive Edge
 
-Our token model embodies Austrian economic principles:
+Why Rømer Chain represents a step-function improvement:
 
-::: {.incremental}
-- **Stability as a First-Class Citizen**
-  - Fixed compute costs
-  - Market-driven supply adjustment
-  - Automatic expansion and contraction
+:::: {.columns}
 
-- **Sound Money Implementation**
-  - Natural price discovery
-  - No artificial scarcity
-  - Market-based supply control
+::: {.column width="50%"}
+**Traditional Chains**
 
-- **Validator Sustainability**
-  - No minimum stake requirement
-  - Rewards based on network performance
-  - Geographic distribution incentives
+- Vulnerable to bear markets
+- Centralized in data centers
+- High financial barriers
+- Volatile compute costs
+- MEV extraction issues
 :::
+
+::: {.column width="50%"}
+**Rømer Chain**
+
+- Thrives in bear markets
+- True physical distribution
+- Minimal financial barriers
+- Fixed compute costs
+- Natural MEV protection
+:::
+
+::::
 
 ---
 
-## Supply Dynamics
+## Technical Innovation
 
-### Market-Responsive Supply Mechanism
-
-```python
-def calculate_supply_adjustment(base_compute_units, actual_compute_units):
-    BASE_COST_TARGET = 0.001  # RØMER per compute unit
-    
-    if actual_compute_units > base_compute_units:
-        new_supply = (actual_compute_units - base_compute_units) * 
-                     (BASE_COST_TARGET / base_compute_units)
-        return new_supply
-    
-    # Supply contraction during low demand
-    contraction_rate = base_compute_units / actual_compute_units
-    return -1 * (BASE_COST_TARGET * contraction_rate)
-```
+Our architecture leverages three major components:
 
 ::: {.incremental}
-- Bidirectional supply adjustment
-- Natural market equilibrium
-- Automatic price stability
+- **Commonware Primitives**: Sub-second finality through Simplex consensus
+- **Proof of Physics**: Geographic validation through network performance
+- **Sui Integration**: Precise computation cost tracking via Move
 :::
+
+Each component reinforces our core advantages while maintaining simplicity.
 
 ---
 
 ## Development Roadmap
 
-### Devnet Phase
+:::: {.columns}
+
+::: {.column width="25%"}
+**Phase 1: Q1-Q2 2024**
+
+- Core network bootstrap
+- Economic engine implementation
+- Initial devnet deployment
+:::
+
+::: {.column width="25%"}
+**Phase 2: Q2-Q3 2024**
+
+- Network coordination system
+- Performance measurement
+- Geographic proof prototype
+:::
+
+::: {.column width="25%"}
+**Phase 3: Q3-Q4 2024**
+
+- Multi-validator expansion
+- Geographic distribution
+- Production infrastructure
+:::
+
+::: {.column width="25%"}
+**Phase 4: Q4 2024**
+
+- Sui integration completion
+- Mainnet preparation
+- Security audits & testing
+:::
+
+::::
+
+---
+
+## Current Status & Next Steps
+
+Development Progress:
 
 ::: {.incremental}
-- **Sui Integration**
-  - Implementing Sui mempool operations
-  - Building Tycho indexer and simulator
-  - Transaction validation framework
-  - Move resource tracking integration
+- Core consensus mechanism implementation underway
+- Economic model fully specified
+- Geographic distribution system designed
+- Initial partnerships in discussion
+:::
 
-- **Infrastructure Development**
-  - Proof of Physics implementation
-  - Geographic validator network
-  - Network performance measurement
+Immediate Focus:
+
+::: {.incremental}
+- Commonware integration development
+- Movement Labs collaboration exploration
+- Angel investment outreach
+- Community building initiation
 :::
 
 ---
 
-## Funding Strategy
+## Leadership
 
-Current Stage: Angel Round
+**Founder & CEO**
+
+Experienced blockchain founder and technical leader:
+
+- Successfully scaled Pangolin DEX to nearly $500M TVL
+- Managed over $18B in total trading volume
+- Expanded operations across 4 blockchain networks
+- Previous successful exit from Microsoft Dynamics payroll solution
+- Economics degree providing foundation for tokenomics design
+
+---
+
+## Investment Opportunity
+
+Seeking angel investment to:
 
 ::: {.incremental}
-- **Strategic Partnerships**
-  - Exploring Sui Foundation grant opportunities
-  - Potential Movement Labs collaboration for Aptos Move
-  - Focus on technical infrastructure development
+- Accelerate core development
+- Build strategic partnerships
+- Expand technical team
+- Launch initial testnet
+:::
 
-- **Development Priorities**
-  - Mempool operation and monitoring
-  - Transaction validation framework
-  - Geographic proof system
+Perfect timing to:
+
+::: {.incremental}
+- Capitalize on bear market building opportunity
+- Position for next market cycle
+- Establish first-mover advantage in physical blockchain infrastructure
 :::
 
 ---
 
 ## Why Now?
 
-The market needs a blockchain that:
+The market desperately needs a blockchain that:
 
 ::: {.incremental}
 - Provides genuine geographic decentralization
@@ -199,23 +268,32 @@ The market needs a blockchain that:
 - Creates natural resistance to centralization
 :::
 
+The time is perfect to build the infrastructure for the next generation of blockchain adoption.
+
 ---
 
 ## Long-Term Vision
 
+Building the foundation for truly sustainable blockchain infrastructure:
+
 ::: {.incremental}
 - **Network Sustainability**
+
   - Geographic resilience
   - Economic stability
   - Permissionless validation
 
 - **Technical Innovation**
-  - FHE-based privacy features
-  - Advanced MEV protection
+
+  - Advanced privacy features
+  - MEV protection systems
   - Continued geographic expansion
 
-- **Philosophical Foundation**
+- **Market Impact**
+
+  - Enterprise-grade stability
   - True decentralization
   - Sound money principles
-  - Market-driven evolution
 :::
+
+Let's build the future of blockchain infrastructure together.
