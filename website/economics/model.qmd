@@ -2,7 +2,7 @@
 
 ## Introduction to Core Economic Principles
 
-RØMER Chain introduces a revolutionary economic model built on three foundational principles that work together to create a truly market-driven blockchain economy. By understanding how these principles interact, we can appreciate how RØMER achieves both stability and efficiency in ways traditional blockchain networks cannot.
+RØMER Chain introduces an Austrian inspired economic model built on three foundational principles that work together to create a truly market-driven blockchain economy. By understanding how these principles interact, we can appreciate how RØMER achieves both stability and efficiency in ways traditional blockchain networks cannot.
 
 ### Computation as the Product
 

@@ -1,6 +1,6 @@
 # RØMER Token Distribution: Market-Driven Supply Management
 
-RØMER Chain implements a revolutionary approach to token distribution that aligns with our core principle of market-driven economics. Unlike traditional blockchain projects that rely on complex vesting schedules and artificial supply constraints, RØMER's distribution model focuses on achieving rapid price discovery and maintaining computation cost stability from day one.
+RØMER Chain implements an unique approach to token distribution that aligns with our core principle of market-driven economics. Unlike traditional blockchain projects that rely on complex vesting schedules and artificial supply constraints, RØMER's distribution model focuses on achieving rapid price discovery and maintaining computation cost stability from day one.
 
 ## Initial Token Distribution
 
