@@ -26,6 +26,7 @@ Our economic documentation is organized into several key sections that detail di
 
 ### Economic Model
 The [Economic Model](model.qmd) section provides a detailed examination of RØMER's core economic mechanisms, including:
+
 - Supply adjustment formulas
 - Base computation threshold calculations
 - Market equilibrium mechanics
@@ -33,6 +34,7 @@ The [Economic Model](model.qmd) section provides a detailed examination of RØME
 
 ### Token Distribution
 The [Token Distribution](distribution.qmd) documentation covers:
+
 - Initial token allocation
 - Vesting schedules
 - Treasury management
@@ -40,6 +42,7 @@ The [Token Distribution](distribution.qmd) documentation covers:
 
 ### Market Dynamics
 Our [Market Dynamics](market.qmd) section explores:
+
 - Price discovery mechanisms
 - Supply and demand interactions
 - Market cycle responses
@@ -47,6 +50,7 @@ Our [Market Dynamics](market.qmd) section explores:
 
 ### Validator Economics
 The [Validator Economics](validators.qmd) documentation details:
+
 - Reward structures
 - Economic incentives
 - Operational considerations
