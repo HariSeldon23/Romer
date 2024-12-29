@@ -164,7 +164,7 @@ Each component reinforces our core advantages while maintaining simplicity.
 :::: {.columns}
 
 ::: {.column width="25%"}
-**Phase 1: Q1-Q2 2024**
+**Phase 1: Q2-Q3 2025**
 
 - Core network bootstrap
 - Economic engine implementation
@@ -172,7 +172,7 @@ Each component reinforces our core advantages while maintaining simplicity.
 :::
 
 ::: {.column width="25%"}
-**Phase 2: Q2-Q3 2024**
+**Phase 2: Q3-Q4 2025**
 
 - Network coordination system
 - Performance measurement
@@ -180,7 +180,7 @@ Each component reinforces our core advantages while maintaining simplicity.
 :::
 
 ::: {.column width="25%"}
-**Phase 3: Q3-Q4 2024**
+**Phase 3: Q4 2025 - Q1 2026**
 
 - Multi-validator expansion
 - Geographic distribution
@@ -188,7 +188,7 @@ Each component reinforces our core advantages while maintaining simplicity.
 :::
 
 ::: {.column width="25%"}
-**Phase 4: Q4 2024**
+**Phase 4: Q2 2026**
 
 - Sui integration completion
 - Mainnet preparation

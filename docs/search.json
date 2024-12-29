@@ -123,7 +123,7 @@
     "href": "pitch/index.html#development-roadmap",
     "title": "Rømer Chain",
     "section": "Development Roadmap",
-    "text": "Development Roadmap\n\n\nPhase 1: Q1-Q2 2024\n\nCore network bootstrap\nEconomic engine implementation\nInitial devnet deployment\n\n\nPhase 2: Q2-Q3 2024\n\nNetwork coordination system\nPerformance measurement\nGeographic proof prototype\n\n\nPhase 3: Q3-Q4 2024\n\nMulti-validator expansion\nGeographic distribution\nProduction infrastructure\n\n\nPhase 4: Q4 2024\n\nSui integration completion\nMainnet preparation\nSecurity audits & testing"
+    "text": "Development Roadmap\n\n\nPhase 1: Q2-Q3 2025\n\nCore network bootstrap\nEconomic engine implementation\nInitial devnet deployment\n\n\nPhase 2: Q3-Q4 2025\n\nNetwork coordination system\nPerformance measurement\nGeographic proof prototype\n\n\nPhase 3: Q4 2025 - Q1 2026\n\nMulti-validator expansion\nGeographic distribution\nProduction infrastructure\n\n\nPhase 4: Q2 2026\n\nSui integration completion\nMainnet preparation\nSecurity audits & testing"
   },
   {
     "objectID": "pitch/index.html#current-status-next-steps",
