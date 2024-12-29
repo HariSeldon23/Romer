@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -166,7 +200,48 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#architecture-overview" id="toc-architecture-overview" class="nav-link active" data-scroll-target="#architecture-overview">Architecture Overview</a></li>
+  <li><a href="#rømer-chain-architecture-overview" id="toc-rømer-chain-architecture-overview" class="nav-link active" data-scroll-target="#rømer-chain-architecture-overview">RØMER Chain Architecture Overview</a>
+  <ul class="collapse">
+  <li><a href="#system-architecture-overview" id="toc-system-architecture-overview" class="nav-link" data-scroll-target="#system-architecture-overview">System Architecture Overview</a></li>
+  <li><a href="#commonware-integration-layer" id="toc-commonware-integration-layer" class="nav-link" data-scroll-target="#commonware-integration-layer">Commonware Integration Layer</a>
+  <ul class="collapse">
+  <li><a href="#network-communication-commonware-p2p" id="toc-network-communication-commonware-p2p" class="nav-link" data-scroll-target="#network-communication-commonware-p2p">Network Communication (Commonware P2P)</a></li>
+  <li><a href="#state-management-commonware-storage" id="toc-state-management-commonware-storage" class="nav-link" data-scroll-target="#state-management-commonware-storage">State Management (Commonware Storage)</a></li>
+  <li><a href="#execution-environment-commonware-runtime" id="toc-execution-environment-commonware-runtime" class="nav-link" data-scroll-target="#execution-environment-commonware-runtime">Execution Environment (Commonware Runtime)</a></li>
+  <li><a href="#consensus-integration-simplex-consensus" id="toc-consensus-integration-simplex-consensus" class="nav-link" data-scroll-target="#consensus-integration-simplex-consensus">Consensus Integration (Simplex Consensus)</a></li>
+  </ul></li>
+  <li><a href="#proof-of-physics-layer" id="toc-proof-of-physics-layer" class="nav-link" data-scroll-target="#proof-of-physics-layer">Proof of Physics Layer</a>
+  <ul class="collapse">
+  <li><a href="#hardware-verification-system" id="toc-hardware-verification-system" class="nav-link" data-scroll-target="#hardware-verification-system">Hardware Verification System</a></li>
+  <li><a href="#geographic-validation-protocol" id="toc-geographic-validation-protocol" class="nav-link" data-scroll-target="#geographic-validation-protocol">Geographic Validation Protocol</a></li>
+  </ul></li>
+  <li><a href="#sui-move-virtual-machine-integration" id="toc-sui-move-virtual-machine-integration" class="nav-link" data-scroll-target="#sui-move-virtual-machine-integration">Sui Move Virtual Machine Integration</a>
+  <ul class="collapse">
+  <li><a href="#resource-management" id="toc-resource-management" class="nav-link" data-scroll-target="#resource-management">Resource Management</a></li>
+  <li><a href="#transaction-processing" id="toc-transaction-processing" class="nav-link" data-scroll-target="#transaction-processing">Transaction Processing</a></li>
+  </ul></li>
+  <li><a href="#cross-layer-integration" id="toc-cross-layer-integration" class="nav-link" data-scroll-target="#cross-layer-integration">Cross-Layer Integration</a>
+  <ul class="collapse">
+  <li><a href="#security-framework" id="toc-security-framework" class="nav-link" data-scroll-target="#security-framework">Security Framework</a></li>
+  <li><a href="#performance-optimization" id="toc-performance-optimization" class="nav-link" data-scroll-target="#performance-optimization">Performance Optimization</a></li>
+  </ul></li>
+  <li><a href="#implementation-details" id="toc-implementation-details" class="nav-link" data-scroll-target="#implementation-details">Implementation Details</a>
+  <ul class="collapse">
+  <li><a href="#network-protocol-specifications" id="toc-network-protocol-specifications" class="nav-link" data-scroll-target="#network-protocol-specifications">Network Protocol Specifications</a></li>
+  <li><a href="#state-management-implementation" id="toc-state-management-implementation" class="nav-link" data-scroll-target="#state-management-implementation">State Management Implementation</a></li>
+  </ul></li>
+  <li><a href="#networking-architecture" id="toc-networking-architecture" class="nav-link" data-scroll-target="#networking-architecture">Networking Architecture</a>
+  <ul class="collapse">
+  <li><a href="#geographic-network-topology" id="toc-geographic-network-topology" class="nav-link" data-scroll-target="#geographic-network-topology">Geographic Network Topology</a></li>
+  <li><a href="#message-propagation" id="toc-message-propagation" class="nav-link" data-scroll-target="#message-propagation">Message Propagation</a></li>
+  </ul></li>
+  <li><a href="#future-architectural-considerations" id="toc-future-architectural-considerations" class="nav-link" data-scroll-target="#future-architectural-considerations">Future Architectural Considerations</a>
+  <ul class="collapse">
+  <li><a href="#scalability-enhancements" id="toc-scalability-enhancements" class="nav-link" data-scroll-target="#scalability-enhancements">Scalability Enhancements</a></li>
+  <li><a href="#network-evolution" id="toc-network-evolution" class="nav-link" data-scroll-target="#network-evolution">Network Evolution</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -176,10 +251,360 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="architecture-overview" class="level1">
-<h1>Architecture Overview</h1>
+<section id="rømer-chain-architecture-overview" class="level1">
+<h1>RØMER Chain Architecture Overview</h1>
+<section id="system-architecture-overview" class="level2">
+<h2 class="anchored" data-anchor-id="system-architecture-overview">System Architecture Overview</h2>
+<p>RØMER Chain implements a novel blockchain architecture that combines physical infrastructure requirements with advanced cryptography to create a truly decentralized computation platform. Our system is built on three core architectural components: the Commonware primitive layer, the Proof of Physics consensus mechanism, and the Sui Move virtual machine. Each component serves specific purposes while working together to create a cohesive system.</p>
+</section>
+<section id="commonware-integration-layer" class="level2">
+<h2 class="anchored" data-anchor-id="commonware-integration-layer">Commonware Integration Layer</h2>
+<p>At the foundation of RØMER’s architecture lies the Commonware primitive layer, which provides essential blockchain functionality through four key components:</p>
+<section id="network-communication-commonware-p2p" class="level3">
+<h3 class="anchored" data-anchor-id="network-communication-commonware-p2p">Network Communication (Commonware P2P)</h3>
+<p>The P2P layer handles all network communication between nodes using a custom protocol designed for geographic validation. This component implements:</p>
+<ol type="1">
+<li>Network Performance Measurement
+<ul>
+<li>Continuous latency monitoring between nodes</li>
+<li>Bandwidth measurement and tracking</li>
+<li>Path diversity verification</li>
+<li>Geographic distance calculation</li>
+</ul></li>
+<li>Message Propagation
+<ul>
+<li>Optimized gossip protocol for geographic distribution</li>
+<li>Priority-based message routing</li>
+<li>Network topology-aware broadcast</li>
+<li>Regional relay optimization</li>
+</ul></li>
+</ol>
+</section>
+<section id="state-management-commonware-storage" class="level3">
+<h3 class="anchored" data-anchor-id="state-management-commonware-storage">State Management (Commonware Storage)</h3>
+<p>The storage layer implements a sophisticated state management system designed for distributed operation:</p>
+<ol type="1">
+<li>State Organization
+<ul>
+<li>Merkle-Patricia trie for state storage</li>
+<li>Regional state sharding</li>
+<li>Geographic replication management</li>
+<li>State synchronization protocols</li>
+</ul></li>
+<li>Data Persistence
+<ul>
+<li>Zero-knowledge storage proofs</li>
+<li>Geographic redundancy</li>
+<li>State compression</li>
+<li>Efficient state updates</li>
+</ul></li>
+</ol>
+</section>
+<section id="execution-environment-commonware-runtime" class="level3">
+<h3 class="anchored" data-anchor-id="execution-environment-commonware-runtime">Execution Environment (Commonware Runtime)</h3>
+<p>The runtime environment coordinates transaction execution across the distributed network:</p>
+<ol type="1">
+<li>Transaction Processing
+<ul>
+<li>Parallel execution engine</li>
+<li>Geographic load balancing</li>
+<li>Resource usage tracking</li>
+<li>State transition validation</li>
+</ul></li>
+<li>Resource Management
+<ul>
+<li>CPU utilization monitoring</li>
+<li>Memory allocation tracking</li>
+<li>Storage space management</li>
+<li>Network bandwidth control</li>
+</ul></li>
+</ol>
+</section>
+<section id="consensus-integration-simplex-consensus" class="level3">
+<h3 class="anchored" data-anchor-id="consensus-integration-simplex-consensus">Consensus Integration (Simplex Consensus)</h3>
+<p>RØMER enhances Simplex Consensus with geographic validation:</p>
+<ol type="1">
+<li>Leader Selection
+<ul>
+<li>Geographic rotation requirements</li>
+<li>Performance-based eligibility</li>
+<li>Regional representation</li>
+<li>Network health metrics</li>
+</ul></li>
+<li>Block Production
+<ul>
+<li>Geographic timestamp verification</li>
+<li>Regional block propagation</li>
+<li>Cross-region validation</li>
+<li>Latency-aware finalization</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="proof-of-physics-layer" class="level2">
+<h2 class="anchored" data-anchor-id="proof-of-physics-layer">Proof of Physics Layer</h2>
+<p>The Proof of Physics layer implements our novel consensus mechanism that validates geographic distribution and physical infrastructure:</p>
+<section id="hardware-verification-system" class="level3">
+<h3 class="anchored" data-anchor-id="hardware-verification-system">Hardware Verification System</h3>
+<ol type="1">
+<li>Physical Infrastructure Validation
+<ul>
+<li>Zero-knowledge proofs of hardware ownership</li>
+<li>CPU architecture verification</li>
+<li>Memory capacity validation</li>
+<li>Storage requirements checking</li>
+</ul></li>
+<li>Network Connection Validation
+<ul>
+<li>Bandwidth measurement</li>
+<li>Latency verification</li>
+<li>Path diversity checking</li>
+<li>Geographic distance confirmation</li>
+</ul></li>
+</ol>
+</section>
+<section id="geographic-validation-protocol" class="level3">
+<h3 class="anchored" data-anchor-id="geographic-validation-protocol">Geographic Validation Protocol</h3>
+<ol type="1">
+<li>Location Verification
+<ul>
+<li>Network topology analysis</li>
+<li>Path latency measurement</li>
+<li>Regional connectivity verification</li>
+<li>Infrastructure ownership validation</li>
+</ul></li>
+<li>Performance Monitoring
+<ul>
+<li>Continuous uptime tracking</li>
+<li>Network quality measurement</li>
+<li>Resource utilization monitoring</li>
+<li>Geographic distribution verification</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="sui-move-virtual-machine-integration" class="level2">
+<h2 class="anchored" data-anchor-id="sui-move-virtual-machine-integration">Sui Move Virtual Machine Integration</h2>
+<p>RØMER leverages Sui’s Move VM for secure and efficient computation:</p>
+<section id="resource-management" class="level3">
+<h3 class="anchored" data-anchor-id="resource-management">Resource Management</h3>
+<ol type="1">
+<li>Computation Tracking
+<ul>
+<li>Granular resource monitoring</li>
+<li>Fixed cost calculation</li>
+<li>Usage optimization</li>
+<li>State transition tracking</li>
+</ul></li>
+<li>Memory Management
+<ul>
+<li>Linear type system</li>
+<li>Resource ownership tracking</li>
+<li>Memory safety guarantees</li>
+<li>Efficient garbage collection</li>
+</ul></li>
+</ol>
+</section>
+<section id="transaction-processing" class="level3">
+<h3 class="anchored" data-anchor-id="transaction-processing">Transaction Processing</h3>
+<ol type="1">
+<li>Execution Pipeline
+<ul>
+<li>Deterministic processing</li>
+<li>Parallel execution</li>
+<li>State isolation</li>
+<li>Resource tracking</li>
+</ul></li>
+<li>State Management
+<ul>
+<li>Object-capability model</li>
+<li>Resource-oriented programming</li>
+<li>State transition verification</li>
+<li>Access control enforcement</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="cross-layer-integration" class="level2">
+<h2 class="anchored" data-anchor-id="cross-layer-integration">Cross-Layer Integration</h2>
+<p>The architecture implements several cross-cutting concerns that span multiple layers:</p>
+<section id="security-framework" class="level3">
+<h3 class="anchored" data-anchor-id="security-framework">Security Framework</h3>
+<ol type="1">
+<li>Cryptographic Security
+<ul>
+<li>Zero-knowledge proof systems</li>
+<li>Hardware attestation</li>
+<li>Network path verification</li>
+<li>State transition validation</li>
+</ul></li>
+<li>Network Security
+<ul>
+<li>Geographic distribution requirements</li>
+<li>Path diversity enforcement</li>
+<li>DDoS resistance through topology</li>
+<li>MEV prevention through latency</li>
+</ul></li>
+</ol>
+</section>
+<section id="performance-optimization" class="level3">
+<h3 class="anchored" data-anchor-id="performance-optimization">Performance Optimization</h3>
+<ol type="1">
+<li>Geographic Optimization
+<ul>
+<li>Regional state sharding</li>
+<li>Local execution priority</li>
+<li>Path-aware routing</li>
+<li>Latency minimization</li>
+</ul></li>
+<li>Resource Management
+<ul>
+<li>Dynamic load balancing</li>
+<li>Geographic resource distribution</li>
+<li>Efficient state propagation</li>
+<li>Parallel processing optimization</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="implementation-details" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-details">Implementation Details</h2>
+<section id="network-protocol-specifications" class="level3">
+<h3 class="anchored" data-anchor-id="network-protocol-specifications">Network Protocol Specifications</h3>
+<p>The system implements custom network protocols for geographic validation:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example Geographic Validation Protocol</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> GeoValidation:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> validate_connection(<span class="va">self</span>, peer_info):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Verify physical distance through network paths</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        paths <span class="op">=</span> measure_network_paths(peer_info)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> verify_path_diversity(paths):</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Check latency corresponds to geographic distance</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        latency <span class="op">=</span> measure_min_latency(peer_info)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> verify_physical_latency(latency, peer_info.location):</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Validate infrastructure ownership</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> verify_infrastructure_proof(peer_info.proof):</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="state-management-implementation" class="level3">
+<h3 class="anchored" data-anchor-id="state-management-implementation">State Management Implementation</h3>
+<p>The state management system uses a modified Merkle-Patricia trie optimized for geographic distribution:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example Geographic State Management</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> GeoState:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> update_state(<span class="va">self</span>, key, value, location):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate geographic shard</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        shard <span class="op">=</span> <span class="va">self</span>.get_geographic_shard(location)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Update state with location metadata</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        state_update <span class="op">=</span> {</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">'value'</span>: value,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">'location'</span>: location,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">'timestamp'</span>: get_network_time(),</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">'validators'</span>: get_regional_validators(location)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Update state tree with geographic indexing</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.state_tree.update(key, state_update, shard)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="networking-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="networking-architecture">Networking Architecture</h2>
+<section id="geographic-network-topology" class="level3">
+<h3 class="anchored" data-anchor-id="geographic-network-topology">Geographic Network Topology</h3>
+<p>The network implements a sophisticated topology aware of physical infrastructure:</p>
+<ol type="1">
+<li>Regional Organization
+<ul>
+<li>Network divided into geographic regions</li>
+<li>Inter-region connection requirements</li>
+<li>Path diversity enforcement</li>
+<li>Latency-based organization</li>
+</ul></li>
+<li>Connection Management
+<ul>
+<li>Minimum peer requirements per region</li>
+<li>Geographic distance verification</li>
+<li>Path quality monitoring</li>
+<li>Dynamic peer selection</li>
+</ul></li>
+</ol>
+</section>
+<section id="message-propagation" class="level3">
+<h3 class="anchored" data-anchor-id="message-propagation">Message Propagation</h3>
+<p>Message propagation is optimized for geographic distribution:</p>
+<ol type="1">
+<li>Regional Propagation
+<ul>
+<li>Local-first broadcasting</li>
+<li>Geographic routing optimization</li>
+<li>Path redundancy</li>
+<li>Latency minimization</li>
+</ul></li>
+<li>Cross-Region Communication
+<ul>
+<li>Optimal path selection</li>
+<li>Geographic relay points</li>
+<li>Bandwidth optimization</li>
+<li>Congestion management</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="future-architectural-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="future-architectural-considerations">Future Architectural Considerations</h2>
+<section id="scalability-enhancements" class="level3">
+<h3 class="anchored" data-anchor-id="scalability-enhancements">Scalability Enhancements</h3>
+<p>The architecture is designed to support future scaling improvements:</p>
+<ol type="1">
+<li>Geographic Sharding
+<ul>
+<li>Regional state partitioning</li>
+<li>Cross-shard transaction processing</li>
+<li>Dynamic load balancing</li>
+<li>State synchronization optimization</li>
+</ul></li>
+<li>Performance Optimization
+<ul>
+<li>Hardware requirement evolution</li>
+<li>Network protocol improvements</li>
+<li>Execution engine enhancements</li>
+<li>State management optimization</li>
+</ul></li>
+</ol>
+</section>
+<section id="network-evolution" class="level3">
+<h3 class="anchored" data-anchor-id="network-evolution">Network Evolution</h3>
+<p>The system supports natural network growth:</p>
+<ol type="1">
+<li>Geographic Expansion
+<ul>
+<li>New region integration</li>
+<li>Path diversity improvement</li>
+<li>Infrastructure requirements adjustment</li>
+<li>Performance scaling</li>
+</ul></li>
+<li>Protocol Updates
+<ul>
+<li>Governance-driven evolution</li>
+<li>Backward compatibility</li>
+<li>Security enhancement</li>
+<li>Feature addition</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>RØMER’s architecture represents a novel approach to blockchain design that prioritizes physical decentralization and sustainable operation. By combining Commonware primitives, Proof of Physics consensus, and the Sui Move VM, we create a system that achieves both security and performance through geographic distribution.</p>
+<p>The architecture’s emphasis on physical infrastructure and network topology creates natural barriers to centralization while enabling efficient operation. This unique combination of features positions RØMER to support the next generation of decentralized applications while maintaining true decentralization and censorship resistance.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
