@@ -36,7 +36,6 @@ The [Economic Model](model.qmd) section provides a detailed examination of RØME
 The [Token Distribution](distribution.qmd) documentation covers:
 
 - Initial token allocation
-- Vesting schedules
 - Treasury management
 - Burn reserve mechanics
 
