@@ -18,7 +18,8 @@ website:
         text: Devnet
       - href: economics.qmd
         text: RØMER's Economic Model
-  
+      - href: validators.qmd
+        text: Validators
 format:
   html:
     theme:

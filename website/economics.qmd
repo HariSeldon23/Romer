@@ -45,10 +45,10 @@ format:
 ::: {.column width="33%"}
 **Computation as the Product**
 
-- Users purchase compute power
-- Each operation has fixed cost
-- Predictable resource pricing 
-- True market commodity
+- Base threshold at 50% capacity
+- Fixed per-operation pricing
+- Predictable resource costs
+- Natural market equilibrium
 :::
 
 ::: {.column width="33%"}
@@ -78,12 +78,13 @@ format:
 :::: {.columns}
 
 ::: {.column width="50%"}
-**Dynamic Adjustment**
+**Capacity-Based Threshold**
 
-- 90-day weighted moving average
-- More weight on recent usage
-- Gradual daily adjustments
-- ±10% maximum epoch change
+- Set at 50% of validator capacity
+- Natural operating equilibrium
+- Resource optimization incentives
+- Headroom for demand spikes
+- Computing power grows with network
 :::
 
 ::: {.column width="50%"}
@@ -91,13 +92,13 @@ format:
 
 - Validator cost tracking
 - Anti-manipulation design
-- Seasonal pattern awareness
+- Hardware upgrade incentives
 - Network security focus
 :::
 
 ::::
 
-The threshold provides a stable reference point for supply adjustment while remaining responsive to genuine market changes.
+The 50% threshold provides a stable reference point for network operations while ensuring sufficient capacity for demand spikes.
 
 ---
 
@@ -106,26 +107,28 @@ The threshold provides a stable reference point for supply adjustment while rema
 :::: {.columns}
 
 ::: {.column width="50%"}
-**Above Base Threshold**
+**Above Base Threshold (>50% Capacity)**
 
-- Network usage exceeds baseline
+- Usage exceeds 50% capacity
 - New RØMER tokens mint
-- Supply expands naturally
-- Market adjusts token value
+- Natural supply expansion
+- Market price adjustment
+- Resource optimization incentives
 :::
 
 ::: {.column width="50%"}
-**Below Base Threshold**
+**Below Base Threshold (<50% Capacity)**
 
-- Network usage below baseline
+- Usage below 50% capacity
 - RØMER tokens burn
 - Supply contracts naturally
 - Market supports token value
+- Efficiency incentives increase
 :::
 
 ::::
 
-The supply mechanism maintains stable computation costs while letting market forces determine total supply.
+The supply mechanism maintains stable computation costs while letting market forces determine total supply based on actual network utilization.
 
 ---
 
@@ -136,28 +139,28 @@ The supply mechanism maintains stable computation costs while letting market for
 ::: {.column width="33%"}
 **Rational Traders**
 
-- Sell during high usage
-- Buy during low usage
-- Profit from predictable moves
+- Monitor capacity utilization
+- Trade around 50% threshold
+- Profit from usage patterns
 - Support system stability
 :::
 
 ::: {.column width="33%"}
 **Network Users**
 
-- Plan costs reliably
-- Budget effectively
-- Stable operating expenses
-- Focus on value creation
+- Plan resource usage
+- Budget based on capacity
+- Optimize transaction timing
+- Focus on efficiency
 :::
 
 ::: {.column width="33%"}
 **Validators**
 
-- Predictable rewards
-- Counter-cyclical income
-- Sustainable operations
-- Geographic incentives
+- Maintain optimal capacity
+- Scale hardware as needed
+- Predictable economics
+- Geographic advantages
 :::
 
 ::::
@@ -171,24 +174,24 @@ The supply mechanism maintains stable computation costs while letting market for
 ::: {.column width="50%"}
 **Bull Markets**
 
-- Increased network activity
-- Higher computation demand
-- RØMER supply expands
-- USD value typically falls
+- Network usage above 50%
+- Capacity pressure increases
+- Supply naturally expands
+- Hardware upgrades encouraged
 :::
 
 ::: {.column width="50%"}
 **Bear Markets**
 
-- Decreased network activity
-- Lower computation demand
-- RØMER supply contracts
-- USD value typically rises
+- Network usage below 50%
+- Excess capacity available
+- Supply naturally contracts
+- Efficiency optimization
 :::
 
 ::::
 
-RØMER's counter-cyclical nature provides natural market stability.
+RØMER's capacity-based threshold creates natural market stability.
 
 ---
 
@@ -197,30 +200,30 @@ RØMER's counter-cyclical nature provides natural market stability.
 :::: {.columns}
 
 ::: {.column width="33%"}
-**Price Feedback**
+**Capacity Feedback**
 
-- Market signals drive supply
-- Real-time adjustments
+- Real-time utilization data
+- Clear economic signals
 - Natural equilibrium
-- No central planning
+- Hardware growth incentives
 :::
 
 ::: {.column width="33%"}
 **Supply Control**
 
-- Automatic minting/burning
-- Demand-driven changes
-- No arbitrary schedules
-- Market-determined supply
+- Based on 50% threshold
+- Automatic adjustments
+- Market-driven changes
+- Hardware-aligned supply
 :::
 
 ::: {.column width="33%"}
 **Value Proposition**
 
-- Stable compute costs
-- Predictable operations
-- Market efficiency
-- Economic sustainability
+- Predictable costs
+- Clear capacity planning
+- Efficient operations
+- Sustainable growth
 :::
 
 ::::
@@ -232,37 +235,35 @@ RØMER's counter-cyclical nature provides natural market stability.
 :::: {.columns}
 
 ::: {.column width="50%"}
-**Daily Adjustment**
+**Usage Monitoring**
 
 ```python
-# Weighted 90-day average
-recent_weight = 0.6  # Last 30 days
-mid_weight = 0.3    # 31-60 days
-old_weight = 0.1    # 61-90 days
+# Calculate current utilization
+def calc_utilization():
+    total_capacity = get_validator_capacity()
+    current_usage = measure_network_load()
+    utilization = current_usage / total_capacity
 
-target = (recent_avg * recent_weight +
-         mid_avg * mid_weight +
-         old_avg * old_weight)
-
-# Gradual adjustment
-new_threshold = current + 
-    (target - current) * 
-    daily_rate
+    # Compare to 50% threshold
+    if utilization > 0.5:
+        return (utilization - 0.5) * 100
+    else:
+        return (0.5 - utilization) * 100
 ```
 :::
 
 ::: {.column width="50%"}
-**Safeguards**
+**System Response**
 
-- Maximum 10% change per epoch
-- Validator cost floor protection
-- Anti-gaming time windows
-- Emergency brake conditions
+- Above 50%: Mint new tokens
+- Below 50%: Burn tokens
+- At 50%: Maintain supply
+- Track hardware needs
 :::
 
 ::::
 
-Precise, predictable adjustments maintain stability while responding to market conditions.
+The system maintains precise capacity tracking while responding to market conditions.
 
 ---
 
@@ -271,23 +272,141 @@ Precise, predictable adjustments maintain stability while responding to market c
 :::: {.columns}
 
 ::: {.column width="50%"}
-**Network Effects**
+**Network Growth**
 
-- Predictable costs attract users
-- Stable pricing enables growth
-- Market efficiency increases
-- Network value compounds
+- Hardware naturally scales
+- Capacity grows with demand
+- Geographic distribution
+- Market-driven expansion
 :::
 
 ::: {.column width="50%"}
 **Economic Sustainability**
 
-- Self-balancing system
-- Market-driven stability
-- Validator sustainability
+- Clear capacity signals
+- Natural supply adjustment
+- Predictable operations
 - Long-term viability
 :::
 
 ::::
 
-RØMER creates a truly sustainable blockchain economy aligned with fundamental market principles.
+RØMER creates a sustainable blockchain economy aligned with physical network capacity.
+
+---
+
+## Market-Driven Price Discovery
+
+### 6.1 Capacity Management and Economic Equilibrium 
+
+The 50% base capacity threshold creates natural economic incentives:
+
+1. Resource Optimization
+   - Validators operate at efficient capacity levels
+   - Natural headroom for demand spikes
+   - Encourages hardware upgrades when consistently near threshold
+   - Creates sustainable growth pattern
+
+2. Economic Balancing
+   - Token supply expands above 50% usage
+   - Supply contracts below 50% usage
+   - Market finds natural equilibrium
+   - Hardware capacity grows with demand
+
+### 6.2 Market Leadership Through DEX Efficiency
+
+RØMER defines market equilibrium through concrete metrics:
+
+1. Performance Targets
+   - Process more DEX operations than competing chains
+   - Maintain lower costs per operation
+   - Ensure consistent capacity headroom
+   - Support predictable scaling
+
+2. Capacity Planning
+   - Monitor utilization patterns
+   - Project growth requirements
+   - Plan hardware upgrades
+   - Maintain geographic distribution
+
+---
+
+## Implementation
+
+### 7.1 Market Launch Parameters
+
+Initial network parameters align with the 50% capacity threshold:
+
+1. Validator Configuration
+   - Hardware requirements sized for 200% of expected launch demand
+   - Initial network capacity provides substantial growth headroom
+   - Base threshold fixed at 50% of total capacity
+   - Clear upgrade paths as demand grows
+
+2. Economic Parameters
+   - Token supply based on 50% capacity utilization
+   - Burn rate calibrated to capacity threshold
+   - Mint rate aligned with overutilization
+   - Reserve sized for extended underutilization periods
+
+### 7.2 Natural Market Evolution
+
+The system allows for organic growth through:
+
+1. Capacity Expansion
+   - Hardware upgrades driven by sustained high utilization
+   - Geographic distribution of new capacity
+   - Market-based validator incentives
+   - Natural network scaling
+
+2. Economic Adaptation
+   - Supply adjusts to utilization
+   - Market prices reflect capacity
+   - Efficient resource allocation
+   - Sustainable growth patterns
+
+---
+
+## Game Theory and Economic Behavior
+
+### 8.1 Capacity Optimization
+
+The 50% threshold creates interesting game theoretic scenarios:
+
+1. User Strategy
+   - Time transactions around capacity usage
+   - Batch operations during low utilization
+   - Optimize for efficiency during high usage
+   - Plan for predictable costs
+
+2. Validator Strategy
+   - Balance hardware investment with rewards
+   - Optimize geographic positioning
+   - Scale capacity with demand
+   - Maintain competitive efficiency
+
+### 8.2 Market Dynamics
+
+The relationship between capacity and market behavior creates additional considerations:
+
+1. Supply Dynamics
+   - Natural expansion above 50% utilization
+   - Controlled contraction below threshold
+   - Market-driven price discovery
+   - Sustainable economic model
+
+2. Growth Patterns
+   - Hardware naturally scales with demand
+   - Geographic distribution improves
+   - Network efficiency increases
+   - Costs remain predictable
+
+---
+
+## Conclusion
+
+RØMER Chain's economic model represents a practical implementation of capacity-based blockchain economics. By anchoring the system to 50% of validator computational capacity, we create clear incentives for efficient resource utilization while maintaining network stability.
+
+The combination of fixed computational costs, capacity-based supply adjustment, and geographic distribution creates an environment where market forces naturally drive network growth and optimization. This approach provides the predictability users need while maintaining the economic incentives required for sustainable network evolution.
+
+Through its focus on physical capacity and market-driven growth, RØMER Chain positions itself as a platform for sustainable blockchain computation with unique stability across market cycles.
