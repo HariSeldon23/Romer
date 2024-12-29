@@ -6,20 +6,38 @@ website:
   title: "Rømer Chain"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - href: pitch/index.qmd
-        text: Pitch Deck
-      - href: pop.qmd
-        text: Proof of Physics
-      - href: tokenomics.qmd
-        text: Tokenomics
-      - href: devnet.qmd
-        text: Devnet
-      - href: economics.qmd
-        text: RØMER's Economic Model
-      - href: validators.qmd
-        text: Validators
+      - text: Home
+        href: index.qmd
+      
+      - text: Vision
+        href: pitch/index.qmd
+      
+      - text: Tokenomics
+        menu:
+          - text: Overview
+            href: economics/index.qmd
+          - text: Economic Model
+            href: economics/model.qmd
+          - text: Token Distribution
+            href: economics/distribution.qmd
+          - text: Market Dynamics
+            href: economics/market.qmd
+          - text: Validator Economics
+            href: economics/validators.qmd
+      
+      - text: Technical Design
+        menu:
+          - text: Architecture Overview
+            href: technical/index.qmd
+          - text: Proof of Physics
+            href: technical/pop.qmd
+          - text: Network Design
+            href: technical/network.qmd
+          - text: Development Roadmap
+            href: technical/devnet.qmd
+          - text: Validator Requirements
+            href: technical/validators.qmd
+
 format:
   html:
     theme:
