@@ -83,11 +83,11 @@ Current blockchain architectures face five fundamental challenges:
 
 ## The Rømer Solution
 
-Three core innovations solve these fundamental challenges:
+Four core innovations solve these fundamental challenges:
 
 :::: {.columns}
 
-::: {.column width="33%"}
+::: {.column width="25%"}
 **Counter-Cyclical Economics**
 
 - Supply contracts in bear markets
@@ -95,7 +95,7 @@ Three core innovations solve these fundamental challenges:
 - Development continues unimpeded
 :::
 
-::: {.column width="33%"}
+::: {.column width="25%"}
 **Geographic Distribution**
 
 - Physical infrastructure requirements
@@ -103,12 +103,21 @@ Three core innovations solve these fundamental challenges:
 - Natural DDoS protection
 :::
 
-::: {.column width="33%"}
+::: {.column width="25%"}
 **Proof of Physics**
 
 - Performance-based validation
 - Minimal financial barriers
 - True decentralization
+:::
+
+::: {.column width="25%"}
+**Sui Move VM**
+
+- Upfront compute costs
+- No gas refunds for reverts
+- Prevents MEV spam attacks
+- Granular resource tracking
 :::
 
 ::::
