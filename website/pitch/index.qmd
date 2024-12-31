@@ -1,6 +1,6 @@
 ---
 title: "Rømer Chain"
-subtitle: "The First Blockchain That Thrives in Bear Markets"
+subtitle: "Building the First Physically Decentralized Layer 1"
 format:
   revealjs:
     theme: simple
