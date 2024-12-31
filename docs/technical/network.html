@@ -173,7 +173,36 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#network-design" id="toc-network-design" class="nav-link active" data-scroll-target="#network-design">Network Design</a></li>
+  <li><a href="#network-design-system-lifecycles" id="toc-network-design-system-lifecycles" class="nav-link active" data-scroll-target="#network-design-system-lifecycles">Network Design: System Lifecycles</a>
+  <ul class="collapse">
+  <li><a href="#lifecycle-of-a-block" id="toc-lifecycle-of-a-block" class="nav-link" data-scroll-target="#lifecycle-of-a-block">Lifecycle of a Block</a>
+  <ul class="collapse">
+  <li><a href="#leader-preparation" id="toc-leader-preparation" class="nav-link" data-scroll-target="#leader-preparation">1. Leader Preparation</a></li>
+  <li><a href="#block-construction" id="toc-block-construction" class="nav-link" data-scroll-target="#block-construction">2. Block Construction</a></li>
+  <li><a href="#network-distribution" id="toc-network-distribution" class="nav-link" data-scroll-target="#network-distribution">3. Network Distribution</a></li>
+  <li><a href="#validation-and-consensus" id="toc-validation-and-consensus" class="nav-link" data-scroll-target="#validation-and-consensus">4. Validation and Consensus</a></li>
+  <li><a href="#finalization" id="toc-finalization" class="nav-link" data-scroll-target="#finalization">5. Finalization</a></li>
+  </ul></li>
+  <li><a href="#lifecycle-of-leader-election" id="toc-lifecycle-of-leader-election" class="nav-link" data-scroll-target="#lifecycle-of-leader-election">Lifecycle of Leader Election</a>
+  <ul class="collapse">
+  <li><a href="#regional-qualification" id="toc-regional-qualification" class="nav-link" data-scroll-target="#regional-qualification">1. Regional Qualification</a></li>
+  <li><a href="#selection-process" id="toc-selection-process" class="nav-link" data-scroll-target="#selection-process">2. Selection Process</a></li>
+  <li><a href="#leader-operation" id="toc-leader-operation" class="nav-link" data-scroll-target="#leader-operation">3. Leader Operation</a></li>
+  <li><a href="#transition" id="toc-transition" class="nav-link" data-scroll-target="#transition">4. Transition</a></li>
+  </ul></li>
+  <li><a href="#lifecycle-of-a-validator" id="toc-lifecycle-of-a-validator" class="nav-link" data-scroll-target="#lifecycle-of-a-validator">Lifecycle of a Validator</a>
+  <ul class="collapse">
+  <li><a href="#first-validator-in-a-region" id="toc-first-validator-in-a-region" class="nav-link" data-scroll-target="#first-validator-in-a-region">First Validator in a Region</a></li>
+  <li><a href="#competing-with-an-incumbent" id="toc-competing-with-an-incumbent" class="nav-link" data-scroll-target="#competing-with-an-incumbent">Competing with an Incumbent</a></li>
+  <li><a href="#maintaining-regional-leadership" id="toc-maintaining-regional-leadership" class="nav-link" data-scroll-target="#maintaining-regional-leadership">Maintaining Regional Leadership</a></li>
+  </ul></li>
+  <li><a href="#network-evolution" id="toc-network-evolution" class="nav-link" data-scroll-target="#network-evolution">Network Evolution</a>
+  <ul class="collapse">
+  <li><a href="#performance-improvement" id="toc-performance-improvement" class="nav-link" data-scroll-target="#performance-improvement">Performance Improvement</a></li>
+  <li><a href="#geographic-distribution" id="toc-geographic-distribution" class="nav-link" data-scroll-target="#geographic-distribution">Geographic Distribution</a></li>
+  <li><a href="#market-development-1" id="toc-market-development-1" class="nav-link" data-scroll-target="#market-development-1">Market Development</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -183,10 +212,235 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="network-design" class="level1">
-<h1>Network Design</h1>
+<section id="network-design-system-lifecycles" class="level1">
+<h1>Network Design: System Lifecycles</h1>
+<p>Understanding Rømer Chain’s network design is best approached through the lifecycles of its key components. Each lifecycle illustrates how different parts of the system evolve and interact over time, creating a network that maintains physical decentralization while delivering high performance.</p>
+<section id="lifecycle-of-a-block" class="level2">
+<h2 class="anchored" data-anchor-id="lifecycle-of-a-block">Lifecycle of a Block</h2>
+<p>A block’s journey through Rømer Chain follows several distinct phases, each designed to maintain both speed and physical decentralization:</p>
+<section id="leader-preparation" class="level3">
+<h3 class="anchored" data-anchor-id="leader-preparation">1. Leader Preparation</h3>
+<p>The designated leader begins by collecting transactions from their regional mempool. Because leaders operate from distinct geographic regions, this initial transaction gathering naturally creates regional price discovery and reduces global front-running opportunities.</p>
+</section>
+<section id="block-construction" class="level3">
+<h3 class="anchored" data-anchor-id="block-construction">2. Block Construction</h3>
+<p>The leader constructs their block proposal considering several factors:</p>
+<ul>
+<li>Available transactions in their regional mempool</li>
+<li>Current network computational load</li>
+<li>Geographic distribution of recent block validators</li>
+<li>Physical network performance metrics</li>
+</ul>
+</section>
+<section id="network-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="network-distribution">3. Network Distribution</h3>
+<p>Block distribution leverages Rømer’s geographic topology:</p>
+<ul>
+<li>The leader first broadcasts to their regional peers</li>
+<li>Regional validators verify and relay to adjacent regions</li>
+<li>Cross-region propagation follows natural network paths</li>
+<li>Speed-of-light latency creates predictable propagation patterns</li>
+</ul>
+</section>
+<section id="validation-and-consensus" class="level3">
+<h3 class="anchored" data-anchor-id="validation-and-consensus">4. Validation and Consensus</h3>
+<p>Block validation occurs in geographic waves:</p>
+<ul>
+<li>Regional validators perform immediate verification</li>
+<li>Cross-region validation follows physical network topology</li>
+<li>Consensus considers geographic distribution of validating nodes</li>
+<li>Finality achieved through multi-region confirmation</li>
+</ul>
+</section>
+<section id="finalization" class="level3">
+<h3 class="anchored" data-anchor-id="finalization">5. Finalization</h3>
+<p>Once consensus is reached:</p>
+<ul>
+<li>Block is marked as finalized</li>
+<li>State updates are committed</li>
+<li>New leader selection process begins</li>
+<li>Network performance metrics are updated</li>
+</ul>
+</section>
+</section>
+<section id="lifecycle-of-leader-election" class="level2">
+<h2 class="anchored" data-anchor-id="lifecycle-of-leader-election">Lifecycle of Leader Election</h2>
+<p>Leader election in Rømer Chain differs from traditional blockchain networks by explicitly considering physical network characteristics and geographic distribution.</p>
+<section id="regional-qualification" class="level3">
+<h3 class="anchored" data-anchor-id="regional-qualification">1. Regional Qualification</h3>
+<p>Before each election cycle:</p>
+<ul>
+<li>Validators report their network performance metrics</li>
+<li>Geographic distribution is evaluated</li>
+<li>Regional validator rankings are updated</li>
+<li>Performance thresholds are checked</li>
+</ul>
+</section>
+<section id="selection-process" class="level3">
+<h3 class="anchored" data-anchor-id="selection-process">2. Selection Process</h3>
+<p>Leader selection considers multiple factors:</p>
+<ul>
+<li>Regional rotation requirements</li>
+<li>Validator performance history</li>
+<li>Network latency measurements</li>
+<li>Geographic diversity goals</li>
+</ul>
+</section>
+<section id="leader-operation" class="level3">
+<h3 class="anchored" data-anchor-id="leader-operation">3. Leader Operation</h3>
+<p>During their leadership period:</p>
+<ul>
+<li>Leader performance is continuously measured</li>
+<li>Network latencies are monitored</li>
+<li>Geographic distribution is maintained</li>
+<li>Regional transaction flow is optimized</li>
+</ul>
+</section>
+<section id="transition" class="level3">
+<h3 class="anchored" data-anchor-id="transition">4. Transition</h3>
+<p>Leader transition includes:</p>
+<ul>
+<li>Performance metric updates</li>
+<li>Regional ranking adjustments</li>
+<li>Network path optimization</li>
+<li>Preparation for next leader cycle</li>
+</ul>
+</section>
+</section>
+<section id="lifecycle-of-a-validator" class="level2">
+<h2 class="anchored" data-anchor-id="lifecycle-of-a-validator">Lifecycle of a Validator</h2>
+<p>The validator lifecycle illustrates how Rømer Chain maintains competition and performance while ensuring geographic distribution. We’ll examine three key scenarios:</p>
+<section id="first-validator-in-a-region" class="level3">
+<h3 class="anchored" data-anchor-id="first-validator-in-a-region">First Validator in a Region</h3>
+<p>When a validator becomes the first in their region, they go through several phases:</p>
+<section id="initial-setup" class="level4">
+<h4 class="anchored" data-anchor-id="initial-setup">Initial Setup</h4>
+<ul>
+<li>Prove physical hardware through zero-knowledge proofs</li>
+<li>Demonstrate geographic location</li>
+<li>Establish network connections to adjacent regions</li>
+<li>Begin performance metric tracking</li>
+</ul>
+</section>
+<section id="regional-establishment" class="level4">
+<h4 class="anchored" data-anchor-id="regional-establishment">Regional Establishment</h4>
+<ul>
+<li>Build regional transaction mempool</li>
+<li>Develop optimal network paths</li>
+<li>Create regional price discovery mechanisms</li>
+<li>Establish cross-region relationships</li>
+</ul>
+</section>
+<section id="performance-building" class="level4">
+<h4 class="anchored" data-anchor-id="performance-building">Performance Building</h4>
+<ul>
+<li>Optimize network connections</li>
+<li>Build transaction processing efficiency</li>
+<li>Develop regional market presence</li>
+<li>Create effective cross-region paths</li>
+</ul>
+</section>
+</section>
+<section id="competing-with-an-incumbent" class="level3">
+<h3 class="anchored" data-anchor-id="competing-with-an-incumbent">Competing with an Incumbent</h3>
+<p>When a new validator enters a region with an existing validator, competition drives network improvement:</p>
+<section id="entry-requirements" class="level4">
+<h4 class="anchored" data-anchor-id="entry-requirements">Entry Requirements</h4>
+<ul>
+<li>Must exceed regional performance minimums</li>
+<li>Prove physical separation from incumbent</li>
+<li>Demonstrate network path diversity</li>
+<li>Show computational capability</li>
+</ul>
+</section>
+<section id="performance-competition" class="level4">
+<h4 class="anchored" data-anchor-id="performance-competition">Performance Competition</h4>
+<ul>
+<li>Continuous latency measurements</li>
+<li>Transaction processing efficiency</li>
+<li>Network path optimization</li>
+<li>Regional service quality</li>
+</ul>
+</section>
+<section id="market-development" class="level4">
+<h4 class="anchored" data-anchor-id="market-development">Market Development</h4>
+<ul>
+<li>Build regional transaction flow</li>
+<li>Optimize cross-region connections</li>
+<li>Develop market making capability</li>
+<li>Enhance network resilience</li>
+</ul>
+</section>
+</section>
+<section id="maintaining-regional-leadership" class="level3">
+<h3 class="anchored" data-anchor-id="maintaining-regional-leadership">Maintaining Regional Leadership</h3>
+<p>Incumbent validators must continuously improve to maintain their position:</p>
+<section id="performance-optimization" class="level4">
+<h4 class="anchored" data-anchor-id="performance-optimization">Performance Optimization</h4>
+<ul>
+<li>Monitor competitor metrics</li>
+<li>Upgrade network infrastructure</li>
+<li>Optimize transaction processing</li>
+<li>Enhance regional services</li>
+</ul>
+</section>
+<section id="regional-development" class="level4">
+<h4 class="anchored" data-anchor-id="regional-development">Regional Development</h4>
+<ul>
+<li>Strengthen network paths</li>
+<li>Improve transaction flow</li>
+<li>Enhance market efficiency</li>
+<li>Build regional resilience</li>
+</ul>
+</section>
+<section id="competitive-response" class="level4">
+<h4 class="anchored" data-anchor-id="competitive-response">Competitive Response</h4>
+<ul>
+<li>Adapt to new entrants</li>
+<li>Optimize network paths</li>
+<li>Improve service quality</li>
+<li>Maintain performance edge</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="network-evolution" class="level2">
+<h2 class="anchored" data-anchor-id="network-evolution">Network Evolution</h2>
+<p>These lifecycles create a dynamic system that naturally evolves toward greater decentralization and performance:</p>
+<section id="performance-improvement" class="level3">
+<h3 class="anchored" data-anchor-id="performance-improvement">Performance Improvement</h3>
+<p>Validator competition drives continuous enhancement of:</p>
+<ul>
+<li>Network latency</li>
+<li>Transaction processing</li>
+<li>Regional coverage</li>
+<li>Market efficiency</li>
+</ul>
+</section>
+<section id="geographic-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="geographic-distribution">Geographic Distribution</h3>
+<p>The system maintains decentralization through:</p>
+<ul>
+<li>Regional competition</li>
+<li>Performance requirements</li>
+<li>Physical validation</li>
+<li>Network diversity</li>
+</ul>
+</section>
+<section id="market-development-1" class="level3">
+<h3 class="anchored" data-anchor-id="market-development-1">Market Development</h3>
+<p>Regional competition leads to:</p>
+<ul>
+<li>Efficient price discovery</li>
+<li>Reduced MEV</li>
+<li>Better service quality</li>
+<li>Enhanced resilience</li>
+</ul>
+<p>Through these interlinked lifecycles, Rømer Chain creates a network that combines high performance with true physical decentralization, setting a new standard for blockchain infrastructure.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
