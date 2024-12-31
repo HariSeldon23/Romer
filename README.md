@@ -28,7 +28,7 @@ The Genesis node is responsible for the following:
 To start the genesis node in the network:
 
 ```bash
-cargo run -- -a-127.0.0.1:8000 -g
+cargo run -- -a 127.0.0.1:8000 -g
 ```
 
 **Please note** Your private key is not stored anywhere and is regenerated everytime you use the key to seed.

@@ -84,6 +84,8 @@ impl Node {
             journal_config,
         ).await.expect("Failed to create journal");
 
+        info!("Journal");
+
         // Configure P2P network with authentication
         let p2p_config = P2PConfig::recommended(
             self.automaton.signer.clone(),

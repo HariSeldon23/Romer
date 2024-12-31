@@ -216,14 +216,12 @@ Development Progress:
 - Core consensus mechanism implementation underway
 - Economic model fully specified
 - Geographic distribution system designed
-- Initial partnerships in discussion
 :::
 
 Immediate Focus:
 
 ::: {.incremental}
 - Commonware integration development
-- Movement Labs collaboration exploration
 - Angel investment outreach
 - Community building initiation
 :::

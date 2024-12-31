@@ -8,7 +8,6 @@ use bytes::Bytes;
 use std::time::SystemTime;
 use tracing::{info, warn};
 use futures::channel::oneshot;
-use futures::Future;
 
 #[derive(Clone)]
 pub struct BlockchainAutomaton {

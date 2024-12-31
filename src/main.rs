@@ -1,46 +1,30 @@
-use clap::Parser;
-use commonware_cryptography::{Ed25519, Scheme};
-use commonware_runtime::{Runner};
-use commonware_runtime::deterministic::{Executor};
-use std::net::SocketAddr;
-use tracing::{info, error};
-
-// AUTOMATON
 mod automaton;  
-mod node;
+mod validator;
 mod utils;
 mod genesis_config;
-use crate::node::Node;
+mod cli;  
+
+use clap::Parser;
+use commonware_cryptography::{Ed25519, Scheme};
+use commonware_runtime::Runner;
+use commonware_runtime::deterministic::Executor;
+use tracing::{info, error};
+
+use crate::validator::Node;
 use crate::genesis_config::GenesisConfig;
-
-// Command line arguments for node configuration
-#[derive(Parser, Debug)]
-#[command(author, version, about, long_about = None)]
-struct NodeCliArgs {
-    /// Node's network address
-    #[arg(short, long, default_value = "127.0.0.1:8000")]
-    address: SocketAddr,
-
-    /// Genesis node flag
-    #[arg(short, long)]
-    genesis: bool,
-
-    /// Bootstrap node address (required for non-genesis nodes)
-    #[arg(short, long)]
-    bootstrap: Option<String>,
-}
+use crate::cli::NodeCliArgs;
 
 fn main() {
-    // Initialize logging
-    tracing_subscriber::fmt()
-    .with_max_level(tracing::Level::INFO)  // Capture all log levels
-    .with_target(true)  // Include the source of the log (module name)
-    .init();
-    
-    info!("Starting Romer Node");
-
     // Parse command line arguments
-    let args = NodeCliArgs::parse();
+    let args: NodeCliArgs = NodeCliArgs::parse();
+
+    // Initialize logging with configured level
+    tracing_subscriber::fmt()
+        .with_max_level(args.get_log_level())
+        .with_target(true)
+        .init();
+    
+    info!("Starting Rømer Chain Node");
     info!("Using local address: {}", args.address);
 
     // Load the genesis configuration
@@ -55,11 +39,6 @@ fn main() {
         }
     };
 
-    // Parse network addresses
-    let local_addr: SocketAddr = args.address;
-    let bootstrap_addr = args.bootstrap
-        .map(|addr| addr.parse().expect("Invalid bootstrap address"));
-
     // Initialize the Commonware Runtime
     let (executor, runtime, _) = Executor::default();
     info!("Commonware Runtime initialized");
@@ -70,12 +49,14 @@ fn main() {
 
     // Create and run the node with configuration
     let node = Node::new(runtime.clone(), signer, genesis_config);
+
+    info!("New Node spun up");
     
     Runner::start(executor, async move {
         node.run(
-            local_addr,
+            args.address,
             args.genesis,
-            bootstrap_addr,
+            args.get_bootstrap_addr(),
         ).await;
     });
 }
