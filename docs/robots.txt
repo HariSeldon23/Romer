@@ -1,1 +1,1 @@
-Sitemap: https://hariseldon23.github.io/Romer/sitemap.xml
+Sitemap: http://romer.network/sitemap.xml

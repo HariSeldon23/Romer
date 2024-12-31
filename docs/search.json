@@ -343,13 +343,6 @@
     "text": "The Power of Primitives\nThe beauty of this approach is that we get the best of both worlds: rock-solid infrastructure components built by world-class distributed systems engineers, combined with complete freedom to innovate on our unique features. We’re not fighting against framework assumptions or trying to modify someone else’s opinion about how blockchains should work.\nThe only alternative would have been building everything from scratch—implementing our own networking stack, consensus messaging, storage layer, and runtime environment. Instead, Commonware gives us these capabilities as composable primitives, letting us focus our engineering efforts on the novel aspects of our design.\nConsider our Proof of Physics implementation: we can focus entirely on building the geographic validation and physical hardware verification systems because we’re not worrying about:\n\nHow blocks are stored and retrieved\nHow messages are delivered between nodes\nHow leader election state is maintained\nHow async operations are scheduled\nHow network connections are managed\n\nThis is what makes Commonware unique in the blockchain space. Other platforms force you to accept their opinions about these core components. Commonware just gives you the building blocks and lets you assemble them however you need."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
     "objectID": "blog/index.html",
     "href": "blog/index.html",
     "title": "Rømer Chain Development Blog",
@@ -381,6 +374,69 @@
       "Blog",
       "Recent Posts"
     ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "blog/posts/2024-12-31-mev/index.html",
+    "href": "blog/posts/2024-12-31-mev/index.html",
+    "title": "Order Flow Wars: From Wall Street to Blockchain",
+    "section": "",
+    "text": "Imagine you’re at a busy auction house. Before an item goes up for bid, some buyers get to peek at what’s coming up next, while others have to wait. Those with the early peek have an obvious advantage - they can prepare their bids and strategy before anyone else. This is essentially what happens in financial markets through something called “order flow” - the stream of incoming trades that people want to make.\n\n\nLet’s start with a simple example from traditional stock trading. When you click “buy” on your trading app to purchase some Apple shares, your order doesn’t go directly to the stock exchange. Instead, it typically goes through several intermediaries, each of whom gets to see your intention to buy before it becomes public knowledge.\nThis advance knowledge is incredibly valuable. If someone knows you’re about to buy 1,000 shares of Apple at the market price, they could quickly buy shares themselves and sell them to you at a slightly higher price. This practice, known as front-running in traditional markets, has evolved into a sophisticated industry in the world of cryptocurrency.\n\n\n\nOn Wall Street, high-frequency trading (HFT) firms spend millions of dollars to place their computers as close as possible to stock exchanges. They even lay specialized cables to gain microsecond advantages in trading speed. When a pension fund wants to buy a large amount of shares, these HFT firms can spot the order coming and react before it hits the exchange.\nIn cryptocurrency markets, this race for speed has taken on new forms. Instead of building faster cables, traders compete to have their transactions included in the next block of a blockchain. This competition is what we call MEV (Maximal Extractable Value), and it’s become a multi-billion dollar industry.\n\n\n\nImagine you’re at a Las Vegas sportsbook during the Super Bowl. Bettors are lining up to place their wagers at betting windows. As the game progresses, the betting odds constantly change based on what’s happening on the field. Now imagine three different scenarios:\nFirst, think about someone who could see all the bets people are about to place before they reach the window. If they notice a large bet coming that might move the odds, they could quickly place their own bet first at better odds. This is exactly how order flow works in financial markets - seeing what trades are coming before they happen is incredibly valuable information.\nSecond, consider if someone could pay extra to jump to the front of the betting line during crucial moments - like right after a big touchdown when everyone’s rushing to place bets at the current odds. They’d have a huge advantage over other bettors who have to wait in line while the odds change. This is similar to how traders pay higher fees to have their transactions processed first in cryptocurrency markets.\nThird, picture if certain bettors had a special VIP betting window that processed their bets faster than the regular windows. While everyone else waits in long lines watching the odds change, these VIP bettors could always get their bets in quickly at the odds they want. This is like having special access to faster blockchain infrastructure.\nThis is similar to how order flow works in crypto markets. The line of people waiting to place bets is like the “mempool” - where transactions wait to be processed. Different blockchain networks handle this queue of transactions in different ways.\n\n\n\n\n\nEthereum treats its order box like a transparent auction house. Everyone can see the incoming orders, and traders can openly bid to have their transactions processed first. While this is transparent, it means that regular users often have to pay extra to have their transactions processed in a timely manner.\n\n\n\nSolana takes a different approach - like a special VIP line that only certain customers know about. While this prevents some types of front-running, it gives special advantages to those with insider access to the network.\n\n\n\n\nRømer Chain is trying to create a fairer system through several innovations:\n\n\nThe Move VM takes a fundamentally different approach. Rather than allowing cheap transaction reverts, it requires all computational costs to be paid upfront. Success or failure, the resources consumed by a transaction must be paid for. This shifts the economic model from “try everything and pay for successes” to “carefully validate before attempting.” The result is more efficient network usage and reduced spam opportunities.\n\n\n\nInstead of having one central location where all orders are processed, Rømer spreads out its order processing across many locations. This prevents any one location from having too much control over all the orders.\n\n\n\nRather than allowing geographic concentration to determine transaction ordering, Rømer’s consensus mechanism incorporates physical location as a core part of its design. This distributes transaction processing across a broader geographic area, reducing the advantages of proximity to any single point of infrastructure.\n\n\n\n\nThe goal isn’t to eliminate all MEV - that would be both impossible and, in some cases, undesirable. Rather, Rømer Chain aims to create a market structure where:\n\nValue extraction requires actual market intelligence rather than just technical advantages\nInfrastructure positioning can’t override market fundamentals\nFailed speculation has real costs that must be considered\nInformation flow follows natural network topology rather than centralized paths\n\nThis creates an environment where MEV extraction aligns more closely with genuine market making and price discovery, rather than pure technical exploitation. The result is a more efficient market where resources flow toward actual value creation rather than rent-seeking behavior.\n\n\n\nThe conversation around MEV often focuses on whether it can be eliminated. This misses the point. The real question is how we can structure markets to channel trading activity toward beneficial forms of value extraction while making harmful forms prohibitively expensive. Through its combination of economic incentives, geographic distribution, and infrastructure rotation, Rømer Chain works to create markets where MEV extraction aligns with, rather than opposes, market efficiency."
+  },
+  {
+    "objectID": "blog/posts/2024-12-31-mev/index.html#the-power-of-seeing-whats-next",
+    "href": "blog/posts/2024-12-31-mev/index.html#the-power-of-seeing-whats-next",
+    "title": "Order Flow Wars: From Wall Street to Blockchain",
+    "section": "",
+    "text": "Let’s start with a simple example from traditional stock trading. When you click “buy” on your trading app to purchase some Apple shares, your order doesn’t go directly to the stock exchange. Instead, it typically goes through several intermediaries, each of whom gets to see your intention to buy before it becomes public knowledge.\nThis advance knowledge is incredibly valuable. If someone knows you’re about to buy 1,000 shares of Apple at the market price, they could quickly buy shares themselves and sell them to you at a slightly higher price. This practice, known as front-running in traditional markets, has evolved into a sophisticated industry in the world of cryptocurrency."
+  },
+  {
+    "objectID": "blog/posts/2024-12-31-mev/index.html#from-wall-street-to-crypto-the-evolution-of-speed-trading",
+    "href": "blog/posts/2024-12-31-mev/index.html#from-wall-street-to-crypto-the-evolution-of-speed-trading",
+    "title": "Order Flow Wars: From Wall Street to Blockchain",
+    "section": "",
+    "text": "On Wall Street, high-frequency trading (HFT) firms spend millions of dollars to place their computers as close as possible to stock exchanges. They even lay specialized cables to gain microsecond advantages in trading speed. When a pension fund wants to buy a large amount of shares, these HFT firms can spot the order coming and react before it hits the exchange.\nIn cryptocurrency markets, this race for speed has taken on new forms. Instead of building faster cables, traders compete to have their transactions included in the next block of a blockchain. This competition is what we call MEV (Maximal Extractable Value), and it’s become a multi-billion dollar industry."
+  },
+  {
+    "objectID": "blog/posts/2024-12-31-mev/index.html#why-order-flow-matters-a-super-bowl-betting-analogy",
+    "href": "blog/posts/2024-12-31-mev/index.html#why-order-flow-matters-a-super-bowl-betting-analogy",
+    "title": "Order Flow Wars: From Wall Street to Blockchain",
+    "section": "",
+    "text": "Imagine you’re at a Las Vegas sportsbook during the Super Bowl. Bettors are lining up to place their wagers at betting windows. As the game progresses, the betting odds constantly change based on what’s happening on the field. Now imagine three different scenarios:\nFirst, think about someone who could see all the bets people are about to place before they reach the window. If they notice a large bet coming that might move the odds, they could quickly place their own bet first at better odds. This is exactly how order flow works in financial markets - seeing what trades are coming before they happen is incredibly valuable information.\nSecond, consider if someone could pay extra to jump to the front of the betting line during crucial moments - like right after a big touchdown when everyone’s rushing to place bets at the current odds. They’d have a huge advantage over other bettors who have to wait in line while the odds change. This is similar to how traders pay higher fees to have their transactions processed first in cryptocurrency markets.\nThird, picture if certain bettors had a special VIP betting window that processed their bets faster than the regular windows. While everyone else waits in long lines watching the odds change, these VIP bettors could always get their bets in quickly at the odds they want. This is like having special access to faster blockchain infrastructure.\nThis is similar to how order flow works in crypto markets. The line of people waiting to place bets is like the “mempool” - where transactions wait to be processed. Different blockchain networks handle this queue of transactions in different ways."
+  },
+  {
+    "objectID": "blog/posts/2024-12-31-mev/index.html#different-approaches-to-the-order-box",
+    "href": "blog/posts/2024-12-31-mev/index.html#different-approaches-to-the-order-box",
+    "title": "Order Flow Wars: From Wall Street to Blockchain",
+    "section": "",
+    "text": "Ethereum treats its order box like a transparent auction house. Everyone can see the incoming orders, and traders can openly bid to have their transactions processed first. While this is transparent, it means that regular users often have to pay extra to have their transactions processed in a timely manner.\n\n\n\nSolana takes a different approach - like a special VIP line that only certain customers know about. While this prevents some types of front-running, it gives special advantages to those with insider access to the network."
+  },
+  {
+    "objectID": "blog/posts/2024-12-31-mev/index.html#rømers-new-approach",
+    "href": "blog/posts/2024-12-31-mev/index.html#rømers-new-approach",
+    "title": "Order Flow Wars: From Wall Street to Blockchain",
+    "section": "",
+    "text": "Rømer Chain is trying to create a fairer system through several innovations:\n\n\nThe Move VM takes a fundamentally different approach. Rather than allowing cheap transaction reverts, it requires all computational costs to be paid upfront. Success or failure, the resources consumed by a transaction must be paid for. This shifts the economic model from “try everything and pay for successes” to “carefully validate before attempting.” The result is more efficient network usage and reduced spam opportunities.\n\n\n\nInstead of having one central location where all orders are processed, Rømer spreads out its order processing across many locations. This prevents any one location from having too much control over all the orders.\n\n\n\nRather than allowing geographic concentration to determine transaction ordering, Rømer’s consensus mechanism incorporates physical location as a core part of its design. This distributes transaction processing across a broader geographic area, reducing the advantages of proximity to any single point of infrastructure."
+  },
+  {
+    "objectID": "blog/posts/2024-12-31-mev/index.html#the-future-of-market-structure",
+    "href": "blog/posts/2024-12-31-mev/index.html#the-future-of-market-structure",
+    "title": "Order Flow Wars: From Wall Street to Blockchain",
+    "section": "",
+    "text": "The goal isn’t to eliminate all MEV - that would be both impossible and, in some cases, undesirable. Rather, Rømer Chain aims to create a market structure where:\n\nValue extraction requires actual market intelligence rather than just technical advantages\nInfrastructure positioning can’t override market fundamentals\nFailed speculation has real costs that must be considered\nInformation flow follows natural network topology rather than centralized paths\n\nThis creates an environment where MEV extraction aligns more closely with genuine market making and price discovery, rather than pure technical exploitation. The result is a more efficient market where resources flow toward actual value creation rather than rent-seeking behavior."
+  },
+  {
+    "objectID": "blog/posts/2024-12-31-mev/index.html#looking-forward",
+    "href": "blog/posts/2024-12-31-mev/index.html#looking-forward",
+    "title": "Order Flow Wars: From Wall Street to Blockchain",
+    "section": "",
+    "text": "The conversation around MEV often focuses on whether it can be eliminated. This misses the point. The real question is how we can structure markets to channel trading activity toward beneficial forms of value extraction while making harmful forms prohibitively expensive. Through its combination of economic incentives, geographic distribution, and infrastructure rotation, Rømer Chain works to create markets where MEV extraction aligns with, rather than opposes, market efficiency."
   },
   {
     "objectID": "economics/distribution.html",

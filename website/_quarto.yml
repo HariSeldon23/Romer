@@ -7,7 +7,7 @@ project:
 website:
   title: "Rømer Chain"
   description: "A First Principles Approach to Blockchain Design"
-  site-url: https://hariseldon23.github.io/Romer/
+  site-url: http://romer.network
   repo-url: https://github.com/hariseldon23/Romer
   
   # Navigation bar configuration
