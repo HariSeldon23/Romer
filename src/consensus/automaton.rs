@@ -1,8 +1,8 @@
-use bytes::{Buf, BufMut, Bytes, BytesMut};
+use bytes::{BufMut, Bytes, BytesMut};
 use commonware_consensus::{simplex::Context, Automaton};
 use commonware_consensus::{Committer, Relay, Supervisor};
 use commonware_cryptography::{Ed25519, PublicKey, Scheme};
-use commonware_p2p::{Recipients, Sender}; // Removed unused Receiver import
+use commonware_p2p::{Recipients, Sender};
 use commonware_runtime::deterministic::Context as RuntimeContext;
 use commonware_runtime::Clock;
 use futures::channel::oneshot;
@@ -11,29 +11,52 @@ use tracing::{info, warn};
 
 use crate::block::{Block, BlockHeader};
 use crate::config::genesis::GenesisConfig;
+use crate::consensus::supervisor::BlockchainSupervisor;
 
+/// Core blockchain automaton responsible for block creation, validation, and network interactions
 #[derive(Clone)]
 pub struct BlockchainAutomaton {
+    /// Runtime context for deterministic operations
     runtime: RuntimeContext,
+    
+    /// Optional P2P message sender for network communication
     p2p_sender: Option<commonware_p2p::authenticated::Sender>,
+    
+    /// Cryptographic signer for the node
     pub signer: Ed25519,
+    
+    /// Network genesis configuration
     genesis_config: GenesisConfig,
+    
+    /// Blockchain supervisor managing node leadership and participation
+    pub supervisor: BlockchainSupervisor,
 }
 
 impl BlockchainAutomaton {
-    pub fn new(runtime: RuntimeContext, signer: Ed25519, genesis_config: GenesisConfig) -> Self {
+    /// Create a new blockchain automaton
+    pub fn new(
+        runtime: RuntimeContext, 
+        signer: Ed25519, 
+        genesis_config: GenesisConfig
+    ) -> Self {
+        // Clone the signer to create the supervisor
+        let supervisor_signer = signer.clone();
+        
         Self {
             runtime,
             p2p_sender: None,
             signer,
             genesis_config,
+            supervisor: BlockchainSupervisor::new(supervisor_signer.public_key()),
         }
     }
 
+    /// Set the P2P sender for network communication
     pub fn set_sender(&mut self, sender: commonware_p2p::authenticated::Sender) {
         self.p2p_sender = Some(sender);
     }
 
+    /// Create the initial genesis block for the blockchain
     async fn create_genesis_block(&self, genesis_time: u64) -> Block {
         Block {
             header: BlockHeader {
@@ -51,6 +74,7 @@ impl BlockchainAutomaton {
     }
 }
 
+// The rest of the trait implementations remain the same as in the previous version
 impl Automaton for BlockchainAutomaton {
     type Context = Context;
 
@@ -179,7 +203,7 @@ impl Supervisor for BlockchainAutomaton {
 
     fn is_participant(&self, _index: Self::Index, _candidate: &PublicKey) -> Option<u32> {
         Some(0)
-    }
+}
 
     async fn report(&self, _activity: u8, _proof: Bytes) {}
 }

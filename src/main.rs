@@ -1,5 +1,4 @@
 // main.rs
-
 mod block;
 mod cmd;
 mod config;
@@ -10,10 +9,9 @@ mod regions;
 mod utils;
 
 use clap::Parser;
-use commonware_cryptography::{Ed25519, Scheme};
+use commonware_cryptography::Scheme;
 use commonware_runtime::deterministic::Executor;
 use commonware_runtime::Runner;
-use rand::rngs::OsRng;
 use tracing::{error, info};
 
 use crate::cmd::cli::NodeCliArgs;
@@ -94,7 +92,7 @@ fn main() {
     info!("Node initialized");
 
     Runner::start(executor, async move {
-        node.run(args.address, args.genesis, args.get_bootstrap_addr())
+        node.run(args.address,args.get_bootstrap_addr())
             .await;
     });
 }

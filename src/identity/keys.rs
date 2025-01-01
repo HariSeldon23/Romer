@@ -1,4 +1,4 @@
-use commonware_cryptography::{Ed25519, PrivateKey, PublicKey, Scheme};
+use commonware_cryptography::{Ed25519, PrivateKey, Scheme};
 use rand::rngs::OsRng;
 use std::fs;
 use std::path::PathBuf;

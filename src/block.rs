@@ -1,6 +1,5 @@
-use bytes::{Bytes, BytesMut, BufMut, Buf};
 use commonware_cryptography::{PublicKey, Signature};
-use std::time::{SystemTime, UNIX_EPOCH};
+use std::time::SystemTime;
 
 /// Represents the header portion of a block, containing metadata and cryptographic links
 #[derive(Debug, Clone)]
