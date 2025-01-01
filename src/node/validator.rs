@@ -53,8 +53,9 @@ impl Node {
 
         let validator_config: ValidatorConfig = match ValidatorConfig::load_validator_config() {
             Ok(config) => {
+
                 info!("Validator configuration loaded successfully");
-                info!("Region: {}", config.city);
+                info!("City: {}", config.city);
                 config
             }
             Err(e) => {
@@ -112,6 +113,7 @@ impl Node {
         bootstrap: Option<SocketAddr>,
     ) {
         info!("Starting node at {}", address);
+        info!("TODO: Validator details added to Metadata");
 
         // Initialize storage with journal configuration
         let journal_config = JournalConfig {
@@ -123,7 +125,15 @@ impl Node {
             .await
             .expect("Failed to create journal");
 
-        info!("Journal");
+        info!("Commonware Journal Storage initialized...");
+
+        // Initialize genesis state if this is a genesis node
+        if is_genesis {
+            if let Err(e) = self.initialize_genesis_state(&mut journal).await {
+                error!("Failed to initialize genesis state: {}", e);
+                return;
+            }
+        }
 
         // Configure P2P network with authentication
         let p2p_config = P2PConfig::recommended(
@@ -171,14 +181,6 @@ impl Node {
 
         self.automaton.set_sender(sender.clone());
 
-        // Initialize genesis state if this is a genesis node
-        if is_genesis {
-            if let Err(e) = self.initialize_genesis_state(&mut journal).await {
-                error!("Failed to initialize genesis state: {}", e);
-                return;
-            }
-        }
-
         // Configure consensus engine
         let consensus_config = ConsensusConfig {
             crypto: Ed25519::from_seed(42),
@@ -192,7 +194,9 @@ impl Node {
             namespace: self.genesis_config.network.chain_id.as_bytes().to_vec(),
             replay_concurrency: 4,
             leader_timeout: Duration::from_millis(self.genesis_config.consensus.block_time_ms),
-            notarization_timeout: Duration::from_millis(self.genesis_config.consensus.block_time_ms * 2),
+            notarization_timeout: Duration::from_millis(
+                self.genesis_config.consensus.block_time_ms * 2,
+            ),
             nullify_retry: Duration::from_millis(self.genesis_config.consensus.block_time_ms / 2),
             activity_timeout: 100,
             fetch_timeout: Duration::from_secs(5),

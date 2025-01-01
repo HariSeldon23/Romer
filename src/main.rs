@@ -1,3 +1,5 @@
+// main.rs
+
 mod cmd;
 mod node;
 mod consensus;
@@ -12,7 +14,6 @@ use commonware_runtime::deterministic::Executor;
 use tracing::{info, error};
 
 use crate::node::validator::Node;
-use crate::config::genesis::GenesisConfig;
 use crate::cmd::cli::NodeCliArgs;
 
 fn main() {
@@ -51,6 +52,7 @@ fn main() {
     info!("Public key: {}", hex::encode(signer.public_key()));
 
     // Create and run the node with both configurations
+    info!("Starting Node initialization...");
     let node = Node::new(
         runtime.clone(), 
         signer,

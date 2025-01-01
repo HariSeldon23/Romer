@@ -1,0 +1,6 @@
+[regions.city.gold-coast]
+city = "Gold Coast"
+jurisdiction_country = "Australia" 
+jurisdiction_state = "Queensland"
+flag = "🇦🇺"
+internet_exchange = "IX Australia QLD"
