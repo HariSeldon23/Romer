@@ -54,16 +54,32 @@ fn main() {
         }
     };
 
-    // Generate or load the validator key
-    let signer = match key_manager.generate_key() {
-        Ok(key) => key,
+    // Check for existing key, generate if not found
+    let signer = match key_manager.check_existing_key() {
+        Ok(Some(existing_key)) => {
+            info!("Loaded existing validator key");
+            existing_key
+        }
+        Ok(None) => {
+            // No existing key, generate a new one
+            match key_manager.generate_key() {
+                Ok(new_key) => {
+                    info!("Generated new validator key");
+                    new_key
+                }
+                Err(e) => {
+                    error!("Failed to generate validator key: {}", e);
+                    std::process::exit(1);
+                }
+            }
+        }
         Err(e) => {
-            error!("Failed to generate validator key: {}", e);
+            error!("Error checking existing key: {}", e);
             std::process::exit(1);
         }
     };
 
-    info!("Validator key pair created");
+    info!("Validator key ready");
     info!("Public key: {}", hex::encode(signer.public_key()));
     info!("Key stored at: {:?}", key_manager.key_path());
 
