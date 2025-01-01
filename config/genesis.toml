@@ -1,8 +1,8 @@
-# Rømer Chain Genesis Configuration - Proof of Concept Version
+# Rømer Chain Genesis Configuration 
 
 [network]
 # A unique identifier for this blockchain network instance
-chain_id = "romer-testnet-1"
+chain_id = "rømer-devnet-1"
 # Software version for compatibility checking
 version = "0.1.0"
 # The timestamp when this network starts (Unix timestamp)

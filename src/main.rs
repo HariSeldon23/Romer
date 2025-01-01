@@ -1,8 +1,9 @@
-mod automaton;  
-mod validator;
+mod cmd;
+mod node;
+mod consensus;
+mod config;
 mod utils;
-mod genesis_config;
-mod cli;  
+mod block;
 
 use clap::Parser;
 use commonware_cryptography::{Ed25519, Scheme};
@@ -10,9 +11,9 @@ use commonware_runtime::Runner;
 use commonware_runtime::deterministic::Executor;
 use tracing::{info, error};
 
-use crate::validator::Node;
-use crate::genesis_config::GenesisConfig;
-use crate::cli::NodeCliArgs;
+use crate::node::validator::Node;
+use crate::config::genesis::GenesisConfig;
+use crate::cmd::cli::NodeCliArgs;
 
 fn main() {
     // Parse command line arguments
@@ -24,33 +25,38 @@ fn main() {
         .with_target(true)
         .init();
     
+    let romer_ascii = r#"
+    ██████╗  ██████╗ ███╗   ███╗███████╗██████╗ 
+    ██╔══██╗██╔═══██╗████╗ ████║██╔════╝██╔══██╗
+    ██████╔╝██║   ██║██╔████╔██║█████╗  ██████╔╝
+    ██╔══██╗██║   ██║██║╚██╔╝██║██╔══╝  ██╔══██╗
+    ██║  ██║╚██████╔╝██║ ╚═╝ ██║███████╗██║  ██║
+    ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝
+    "#;
+    
+    // Print the ASCII art to the console
+    println!("{}", romer_ascii);
+    
     info!("Starting Rømer Chain Node");
     info!("Using local address: {}", args.address);
 
-    // Load the genesis configuration
-    let genesis_config = match GenesisConfig::load_default() {
-        Ok(config) => {
-            info!("Genesis config loaded successfully");
-            config
-        },
-        Err(e) => {
-            error!("Failed to load genesis config: {}", e);
-            std::process::exit(1);
-        }
-    };
-
     // Initialize the Commonware Runtime
     let (executor, runtime, _) = Executor::default();
-    info!("Commonware Runtime initialized");
+    info!("Default Commonware Runtime initialized");
 
     // Create node identity
-    let signer = Ed25519::from_seed(42);
-    info!("Node identity created");
+    use rand::rngs::OsRng;
+    let signer = Ed25519::new(&mut OsRng);
+    info!("Validator key pair created");
+    info!("Public key: {}", hex::encode(signer.public_key()));
 
-    // Create and run the node with configuration
-    let node = Node::new(runtime.clone(), signer, genesis_config);
-
-    info!("New Node spun up");
+    // Create and run the node with both configurations
+    let node = Node::new(
+        runtime.clone(), 
+        signer,
+    );
+    
+    info!("Node initialized");
     
     Runner::start(executor, async move {
         node.run(
@@ -60,3 +66,7 @@ fn main() {
         ).await;
     });
 }
+
+
+
+
