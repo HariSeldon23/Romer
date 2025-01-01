@@ -67,6 +67,7 @@ pub struct JournalConfig {
 /// Names for different journal partitions
 #[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct JournalPartitions {
+    pub genesis: String,
     pub blocks: String,
     pub transactions: String,
     pub receipts: String,
@@ -172,6 +173,7 @@ impl StorageConfig {
             journal: JournalConfig {
                 blocks_per_section: defaults::BLOCKS_PER_SECTION,
                 partitions: JournalPartitions {
+                    genesis: "genesis_data".to_string(),
                     blocks: "block_data".to_string(),
                     transactions: "tx_data".to_string(),
                     receipts: "receipt_data".to_string(),

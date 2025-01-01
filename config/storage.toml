@@ -16,6 +16,7 @@ blocks_per_section = 10000
 
 # Sections for different types of blockchain data
 [journal.partitions]
+genesis = "genesis_data"
 blocks = "block_data"
 transactions = "tx_data"
 receipts = "receipt_data"

@@ -1,3 +1,4 @@
+use bytes::{Buf, BufMut, Bytes, BytesMut};
 use commonware_consensus::simplex::{Config as ConsensusConfig, Engine};
 use commonware_consensus::Automaton;
 use commonware_cryptography::Ed25519;
@@ -20,7 +21,9 @@ use std::sync::Mutex;
 use std::time::{Duration, SystemTime};
 use tracing::{error, info};
 
+use crate::block::{Block, BlockHeader};
 use crate::config::genesis::GenesisConfig;
+use crate::config::storage::StorageConfig;
 use crate::config::validator::ValidatorConfig;
 use crate::consensus::automaton::BlockchainAutomaton;
 use crate::regions::region::RegionConfig;
@@ -32,13 +35,12 @@ pub struct Node {
     automaton: BlockchainAutomaton,
     genesis_config: GenesisConfig,
     validator_config: ValidatorConfig,
+    storage_config: StorageConfig,
 }
 
 impl Node {
     /// Creates a new Node instance
     pub fn new(runtime: RuntimeContext, signer: Ed25519) -> Self {
-        let automaton = BlockchainAutomaton::new(runtime.clone(), signer);
-
         // Load network-wide genesis configuration
         let genesis_config = match GenesisConfig::load_default() {
             Ok(config) => {
@@ -48,6 +50,22 @@ impl Node {
             }
             Err(e) => {
                 error!("Failed to load genesis configuration: {}", e);
+                std::process::exit(1);
+            }
+        };
+
+        // Create automaton with genesis config
+        let automaton = BlockchainAutomaton::new(runtime.clone(), signer, genesis_config.clone());
+
+        // Load Storage configuration
+        let storage_config = match StorageConfig::load_default() {
+            Ok(config) => {
+                info!("Storage configuration loaded successfully");
+
+                config
+            }
+            Err(e) => {
+                error!("Failed to load storage configuration: {}", e);
                 std::process::exit(1);
             }
         };
@@ -89,40 +107,8 @@ impl Node {
             automaton,
             genesis_config,
             validator_config,
+            storage_config,
         }
-    }
-
-    /// Initializes the genesis state for the blockchain
-    async fn initialize_genesis_state(
-        &mut self,
-        journal: &mut Journal<Blob, Storage>,
-    ) -> Result<(), Box<dyn std::error::Error>> {
-        info!(
-            "Initializing genesis state for chain {}",
-            self.genesis_config.network.chain_id
-        );
-
-        // Check if we're past genesis time
-        let current_time = SystemTime::now()
-            .duration_since(SystemTime::UNIX_EPOCH)?
-            .as_secs();
-
-        if current_time < self.genesis_config.network.genesis_time {
-            let wait_time = self.genesis_config.network.genesis_time - current_time;
-            info!("Waiting {} seconds for genesis time...", wait_time);
-            self.runtime.sleep(Duration::from_secs(wait_time)).await;
-        }
-
-        // Create and store the genesis block
-        let genesis_block = self.automaton.genesis().await;
-        info!("Generated genesis block: {:?}", genesis_block);
-
-        // Store genesis block in the journal
-        journal.append(0, genesis_block).await?;
-        journal.sync(0).await?;
-
-        info!("Genesis block created and stored");
-        Ok(())
     }
 
     /// Main entry point for running the node
@@ -133,27 +119,24 @@ impl Node {
         bootstrap: Option<SocketAddr>,
     ) {
         info!("Starting node at {}", address);
-        info!("TODO: Validator details added to Metadata");
 
         // Initialize storage with journal configuration
         let journal_config = JournalConfig {
             registry: Arc::new(Mutex::new(Registry::default())),
-            partition: format!("blockchain_data_{}", self.genesis_config.network.chain_id),
+            // Simply use the genesis partition name from storage config
+            partition: self.storage_config.journal.partitions.genesis.clone(),
         };
+
+        info!(
+            "Creating journal with partition: {}",
+            journal_config.partition
+        );
 
         let mut journal = Journal::init(self.runtime.clone(), journal_config)
             .await
             .expect("Failed to create journal");
 
         info!("Commonware Journal Storage initialized...");
-
-        // Initialize genesis state if this is a genesis node
-        if is_genesis {
-            if let Err(e) = self.initialize_genesis_state(&mut journal).await {
-                error!("Failed to initialize genesis state: {}", e);
-                return;
-            }
-        }
 
         // Configure P2P network with authentication
         let p2p_config = P2PConfig::recommended(
