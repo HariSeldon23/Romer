@@ -11,44 +11,85 @@ use tracing::{info, warn};
 
 use crate::block::{Block, BlockHeader};
 use crate::config::genesis::GenesisConfig;
+use crate::config::storage::StorageConfig;
 use crate::consensus::supervisor::BlockchainSupervisor;
 
 /// Core blockchain automaton responsible for block creation, validation, and network interactions
 #[derive(Clone)]
 pub struct BlockchainAutomaton {
-    /// Runtime context for deterministic operations
     runtime: RuntimeContext,
-    
-    /// Optional P2P message sender for network communication
     p2p_sender: Option<commonware_p2p::authenticated::Sender>,
-    
-    /// Cryptographic signer for the node
     pub signer: Ed25519,
-    
-    /// Network genesis configuration
     genesis_config: GenesisConfig,
-    
-    /// Blockchain supervisor managing node leadership and participation
+    storage_config: StorageConfig,
     pub supervisor: BlockchainSupervisor,
 }
 
 impl BlockchainAutomaton {
-    /// Create a new blockchain automaton
     pub fn new(
-        runtime: RuntimeContext, 
-        signer: Ed25519, 
-        genesis_config: GenesisConfig
+        runtime: RuntimeContext,
+        signer: Ed25519,
+        genesis_config: GenesisConfig,
+        storage_config: StorageConfig,
     ) -> Self {
         // Clone the signer to create the supervisor
         let supervisor_signer = signer.clone();
-        
+
         Self {
             runtime,
             p2p_sender: None,
             signer,
             genesis_config,
+            storage_config,
             supervisor: BlockchainSupervisor::new(supervisor_signer.public_key()),
         }
+    }
+
+    pub async fn run(&self) -> Result<(), Box<dyn std::error::Error>> {
+        // Construct the full path to the genesis data directory
+        let genesis_path = self
+            .storage_config
+            .paths
+            .data_dir
+            .join(&self.storage_config.paths.journal_dir)
+            .join(&self.storage_config.journal.partitions.genesis);
+
+        // Check if the directory exists
+        match std::fs::read_dir(&genesis_path) {
+            Ok(mut entries) => {
+                // Check if the directory is empty
+                let is_empty = entries.next().is_none();
+
+                if is_empty {
+                    info!("Genesis data directory exists but is empty. Creating genesis block.");
+                    // Pass the genesis time from config
+                    let genesis_block = self
+                        .create_genesis_block(self.genesis_config.network.genesis_time)
+                        .await;
+
+                } else {
+                    info!("Genesis data already exists. Skipping genesis block creation.");
+                }
+            }
+            Err(e) if e.kind() == std::io::ErrorKind::NotFound => {
+                // Directory doesn't exist, create it and the genesis block
+                info!("Genesis data directory not found. Creating directory and genesis block.");
+                std::fs::create_dir_all(&genesis_path)?;
+
+                // Pass the genesis time from config
+                let genesis_block = self
+                    .create_genesis_block(self.genesis_config.network.genesis_time)
+                    .await;
+
+                // TODO: Add code to store the genesis block
+            }
+            Err(e) => {
+                // Some other error occurred
+                return Err(Box::new(e));
+            }
+        }
+
+        Ok(())
     }
 
     /// Set the P2P sender for network communication
@@ -203,7 +244,7 @@ impl Supervisor for BlockchainAutomaton {
 
     fn is_participant(&self, _index: Self::Index, _candidate: &PublicKey) -> Option<u32> {
         Some(0)
-}
+    }
 
     async fn report(&self, _activity: u8, _proof: Bytes) {}
 }

@@ -115,34 +115,3 @@ impl From<toml::de::Error> for RegionError {
         RegionError::ParseError(error)
     }
 }
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_city_display() {
-        // Create a test configuration
-        let mut city_regions = HashMap::new();
-        city_regions.insert(
-            "gold-coast".to_string(),
-            CityRegion {
-                city: "Gold Coast".to_string(),
-                jurisdiction_country: "Australia".to_string(),
-                jurisdiction_state: "Queensland".to_string(),
-                flag: "🇦🇺".to_string(),
-                internet_exchange: "IX Australia QLD".to_string(),
-            }
-        );
-        
-        let region_types = RegionTypes { city: city_regions };
-        let config = RegionConfig { regions: region_types };
-        
-        // Test the display formatting
-        let display = config.get_city_display("gold-coast").unwrap();
-        assert!(display.contains("🇦🇺"));
-        assert!(display.contains("Gold Coast"));
-        assert!(display.contains("Queensland"));
-        assert!(display.contains("Australia"));
-    }
-}

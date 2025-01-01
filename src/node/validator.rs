@@ -13,8 +13,8 @@ use crate::regions::region::RegionConfig;
 pub struct Node {
     runtime: RuntimeContext,
     genesis_config: GenesisConfig,
-    validator_config: ValidatorConfig,
     storage_config: StorageConfig,
+    validator_config: ValidatorConfig,
     signer: Ed25519,
 }
 
@@ -80,8 +80,8 @@ impl Node {
         Self {
             runtime,
             genesis_config,
-            validator_config,
             storage_config,
+            validator_config,
             signer,
         }
     }
@@ -98,11 +98,11 @@ impl Node {
         let automaton = BlockchainAutomaton::new(
             self.runtime.clone(), 
             self.signer.clone(), 
-            self.genesis_config.clone()
+            self.genesis_config.clone(),
+            self.storage_config.clone()
         );
 
-        // Additional node startup logic can be added here
-        // For example, network initialization, consensus engine setup, etc.
+        automaton.run().await?;
 
         Ok(())
     }

@@ -30,4 +30,5 @@ Before you start your node, you'll need to specify the city you're in. We curren
 
 So first thing we're going to do is get you a public private key pair for your validator node. We'll store that locally for you so everytime you start up your node it will use the same key.
 
-Then we load up the config for Genesis, Storage and Regions. Then we run the Validator. 
+Then we load up the config for Genesis, Storage and Validator. Then we run the Node.
+
