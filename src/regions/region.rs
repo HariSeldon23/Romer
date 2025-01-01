@@ -17,6 +17,7 @@ pub struct CityRegion {
     pub jurisdiction_country: String,
     pub jurisdiction_state: String,
     pub flag: String,
+    pub region_code: String,
     pub internet_exchange: String,
 }
 

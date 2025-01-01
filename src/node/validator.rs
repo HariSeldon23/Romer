@@ -23,6 +23,7 @@ use tracing::{error, info};
 use crate::config::genesis::GenesisConfig;
 use crate::config::validator::ValidatorConfig;
 use crate::consensus::automaton::BlockchainAutomaton;
+use crate::regions::region::RegionConfig;
 use crate::utils::utils::Sha256Hasher;
 
 /// The main Node structure that coordinates all components
@@ -51,11 +52,30 @@ impl Node {
             }
         };
 
-        let validator_config: ValidatorConfig = match ValidatorConfig::load_validator_config() {
+        let validator_config = match ValidatorConfig::load_validator_config() {
             Ok(config) => {
+                let region_config = RegionConfig::load()
+                    .expect("Region config should be valid as it was checked during validation");
+
+                let city_key = config.city.to_lowercase().replace(" ", "-");
+                let region_details = region_config
+                    .regions
+                    .city
+                    .get(&city_key)
+                    .expect("Region should exist as it was validated");
 
                 info!("Validator configuration loaded successfully");
-                info!("City: {}", config.city);
+                info!("Region Details:");
+                // Use a more console-friendly format with region code in brackets
+                info!(
+                    "  [{}] {} ({}, {})",
+                    region_details.region_code, // We'll add this field
+                    region_details.city,
+                    region_details.jurisdiction_state,
+                    region_details.jurisdiction_country
+                );
+                info!("  Internet Exchange: {}", region_details.internet_exchange);
+
                 config
             }
             Err(e) => {

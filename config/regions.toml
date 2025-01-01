@@ -1,6 +1,83 @@
+# Asia-Pacific Region
 [regions.city.gold-coast]
 city = "Gold Coast"
 jurisdiction_country = "Australia" 
 jurisdiction_state = "Queensland"
 flag = "🇦🇺"
+region_code = "AU"
 internet_exchange = "IX Australia QLD"
+
+[regions.city.singapore]
+city = "Singapore"
+jurisdiction_country = "Singapore"
+jurisdiction_state = "Singapore"
+flag = "🇸🇬"
+region_code = "SG"
+internet_exchange = "SGIX"
+
+[regions.city.tokyo]
+city = "Tokyo"
+jurisdiction_country = "Japan"
+jurisdiction_state = "Tokyo"
+flag = "🇯🇵"
+region_code = "JP"
+internet_exchange = "JPNAP Tokyo"
+
+# Americas Region
+[regions.city.ashburn]
+city = "Ashburn"
+jurisdiction_country = "United States"
+jurisdiction_state = "Virginia"
+flag = "🇺🇸"
+region_code = "US-VA"
+internet_exchange = "Equinix Ashburn"
+
+[regions.city.sao-paulo]
+city = "São Paulo"
+jurisdiction_country = "Brazil"
+jurisdiction_state = "São Paulo"
+flag = "🇧🇷"
+region_code = "BR"
+internet_exchange = "IX.br São Paulo"
+
+# European Region
+[regions.city.amsterdam]
+city = "Amsterdam"
+jurisdiction_country = "Netherlands"
+jurisdiction_state = "North Holland"
+flag = "🇳🇱"
+region_code = "NL"
+internet_exchange = "AMS-IX"
+
+[regions.city.frankfurt]
+city = "Frankfurt"
+jurisdiction_country = "Germany"
+jurisdiction_state = "Hesse"
+flag = "🇩🇪"
+region_code = "DE"
+internet_exchange = "DE-CIX Frankfurt"
+
+[regions.city.london]
+city = "London"
+jurisdiction_country = "United Kingdom"
+jurisdiction_state = "England"
+flag = "🇬🇧"
+region_code = "GB"
+internet_exchange = "LINX"
+
+# Africa and Middle East
+[regions.city.cape-town]
+city = "Cape Town"
+jurisdiction_country = "South Africa"
+jurisdiction_state = "Western Cape"
+flag = "🇿🇦"
+region_code = "ZA"
+internet_exchange = "NAPAfrica Cape Town"
+
+[regions.city.dubai]
+city = "Dubai"
+jurisdiction_country = "United Arab Emirates"
+jurisdiction_state = "Dubai"
+flag = "🇦🇪"
+region_code = "AE"
+internet_exchange = "UAE-IX"
