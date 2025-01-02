@@ -27,3 +27,5 @@ toml = "0.7"
 futures = "0.3"
 windows-acl = "0.3"
 whoami = "1.4"
+async-std = { version = "1.12.0", features = ["attributes"] }
+local-ip-address = "0.5.3"
