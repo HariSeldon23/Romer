@@ -36,7 +36,6 @@ fn main() {
     ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝
     "#;
 
-    // Print the ASCII art to the console
     println!("{}", romer_ascii);
 
     info!("Starting Rømer Chain Node");
@@ -59,7 +58,7 @@ fn main() {
     info!("Starting Node initialization...");
 
     Runner::start(executor, async move {
-        // First create the node, handling any initialization errors
+        
         let node = match Node::new(runtime.clone(), signer) {
             Ok(node) => {
                 info!("Node successfully initialized");
@@ -67,7 +66,7 @@ fn main() {
             }
             Err(e) => {
                 error!("Failed to initialize node: {}", e);
-                // Print more specific error information based on error type
+                
                 match e {
                     NodeError::Genesis(e) => {
                         error!("Genesis configuration error: {}", e);
