@@ -46,11 +46,9 @@ fn main() {
     let signer = match NodeKeyManager::new().and_then(|km| km.initialize()) {
         Ok(signer) => signer,
         Err(e) => {
-            // More detailed error logging
             error!("Failed to initialize key manager: {}", e);
             error!("Full error details: {:?}", e);
 
-            // If it's an IO error, print more context
             if let KeyManagementError::Io(io_err) = &e {
                 error!("IO Error details: {}", io_err);
                 error!("Error kind: {:?}", io_err.kind());

@@ -31,8 +31,6 @@ To start the genesis node in the network:
 cargo run -- -a 127.0.0.1:8000 -g
 ```
 
-**Please note** Your private key is not stored anywhere and is regenerated everytime you use the key to seed.
-
 ### Joining an Existing Network
 
 To connect to an existing network, you'll need to know the key and address of at least one running node. Then start your node with the bootstrappers flag:
