@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::{Path, PathBuf};
 
-use crate::regions::region::RegionConfig;
+use crate::node::operating_regions::RegionConfig;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct ValidatorConfig {

@@ -1,92 +1,73 @@
 use commonware_cryptography::Ed25519;
 use commonware_runtime::deterministic::Context as RuntimeContext;
 use std::net::SocketAddr;
+use thiserror::Error;
 use tracing::{error, info};
 
 use crate::config::genesis::GenesisConfig;
 use crate::config::storage::StorageConfig;
+use crate::config::genesis::ConfigError as GenesisConfigError;
+use crate::config::storage::ConfigError as StorageConfigError;
 use crate::config::validator::ValidatorConfig;
 use crate::consensus::automaton::BlockchainAutomaton;
-use crate::regions::region::RegionConfig;
+use crate::node::operating_regions::RegionConfig;
+
+#[derive(Error, Debug)]
+pub enum NodeError {
+    #[error("Genesis configuration error: {0}")]
+    Genesis(#[from] GenesisConfigError),
+    
+    #[error("Storage configuration error: {0}")]
+    Storage(#[from] StorageConfigError),
+    
+    #[error("Node initialization error: {0}")]
+    Initialization(String),
+}
 
 /// The main Node structure that coordinates all components
 pub struct Node {
     runtime: RuntimeContext,
     genesis_config: GenesisConfig,
     storage_config: StorageConfig,
-    validator_config: ValidatorConfig,
     signer: Ed25519,
 }
 
 impl Node {
-    /// Creates a new Node instance
-    pub fn new(runtime: RuntimeContext, signer: Ed25519) -> Self {
-        // Load network-wide genesis configuration
-        let genesis_config = match GenesisConfig::load_default() {
-            Ok(config) => {
-                info!("Genesis configuration loaded successfully");
-                info!("Chain ID: {}", config.network.chain_id);
-                config
-            }
-            Err(e) => {
-                error!("Failed to load genesis configuration: {}", e);
-                std::process::exit(1);
-            }
-        };
-
-        // Load Storage configuration
-        let storage_config = match StorageConfig::load_default() {
-            Ok(config) => {
-                info!("Storage configuration loaded successfully");
-                config
-            }
-            Err(e) => {
-                error!("Failed to load storage configuration: {}", e);
-                std::process::exit(1);
-            }
-        };
-
-        let validator_config = match ValidatorConfig::load_validator_config() {
-            Ok(config) => {
-                let region_config = RegionConfig::load()
-                    .expect("Region config should be valid as it was checked during validation");
-
-                let city_key = config.city.to_lowercase().replace(" ", "-");
-                let region_details = region_config
-                    .regions
-                    .city
-                    .get(&city_key)
-                    .expect("Region should exist as it was validated");
-
-                info!("Validator configuration loaded successfully");
-                info!("Region Details:");
-                info!(
-                    "  [{}] {} ({}, {})",
-                    region_details.region_code,
-                    region_details.city,
-                    region_details.jurisdiction_state,
-                    region_details.jurisdiction_country
-                );
-                info!("  Internet Exchange: {}", region_details.internet_exchange);
-
-                config
-            }
-            Err(e) => {
-                error!("Failed to load validator configuration: {}", e);
-                std::process::exit(1);
-            }
-        };
-
-        Self {
+    /// Creates a new Node instance with validated configurations
+    pub fn new(runtime: RuntimeContext, signer: Ed25519) -> Result<Self, NodeError> {
+        let (genesis_config, storage_config) = Self::configure_node_context()?;
+        
+        Ok(Self {
             runtime,
             genesis_config,
             storage_config,
-            validator_config,
             signer,
-        }
+        })
     }
 
-    /// Main entry point for running the node
+    /// Loads and validates all required node configurations
+    /// Returns a tuple of validated configurations or a NodeError if anything fails
+    fn configure_node_context() -> Result<(GenesisConfig, StorageConfig), NodeError> {
+        // Load network-wide genesis configuration
+        // GenesisConfigError will automatically convert to NodeError thanks to From implementation
+        let genesis_config = GenesisConfig::load_default()
+            .map(|config| {
+                info!("Genesis configuration loaded successfully");
+                info!("Chain ID: {}", config.network.chain_id);
+                config
+            })?;
+
+        // Load Storage configuration
+        // StorageConfigError will automatically convert to NodeError thanks to From implementation
+        let storage_config = StorageConfig::load_default()
+            .map(|config| {
+                info!("Storage configuration loaded successfully");
+                config
+            })?;
+
+        Ok((genesis_config, storage_config))
+    }
+
     pub async fn run(
         &self,
         address: SocketAddr,
@@ -94,7 +75,6 @@ impl Node {
     ) -> Result<(), Box<dyn std::error::Error>> {
         info!("Starting node at {}", address);
 
-        // Initialize the automaton within the run method
         let automaton = BlockchainAutomaton::new(
             self.runtime.clone(), 
             self.signer.clone(), 
@@ -107,3 +87,4 @@ impl Node {
         Ok(())
     }
 }
+
