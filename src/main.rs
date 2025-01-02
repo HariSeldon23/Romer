@@ -10,6 +10,7 @@ mod utils;
 use clap::Parser;
 use commonware_runtime::deterministic::Executor;
 use commonware_runtime::Runner;
+use identity::keymanager::KeyManagementError;
 use node::validator::NodeError;
 use tracing::{error, info};
 
@@ -45,7 +46,16 @@ fn main() {
     let signer = match NodeKeyManager::new().and_then(|km| km.initialize()) {
         Ok(signer) => signer,
         Err(e) => {
+            // More detailed error logging
             error!("Failed to initialize key manager: {}", e);
+            error!("Full error details: {:?}", e);
+
+            // If it's an IO error, print more context
+            if let KeyManagementError::Io(io_err) = &e {
+                error!("IO Error details: {}", io_err);
+                error!("Error kind: {:?}", io_err.kind());
+            }
+
             std::process::exit(1);
         }
     };
@@ -58,7 +68,6 @@ fn main() {
     info!("Starting Node initialization...");
 
     Runner::start(executor, async move {
-        
         let node = match Node::new(runtime.clone(), signer) {
             Ok(node) => {
                 info!("Node successfully initialized");
@@ -66,7 +75,7 @@ fn main() {
             }
             Err(e) => {
                 error!("Failed to initialize node: {}", e);
-                
+
                 match e {
                     NodeError::Genesis(e) => {
                         error!("Genesis configuration error: {}", e);
