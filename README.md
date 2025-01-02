@@ -46,17 +46,9 @@ cargo run --release -- node --key 5678 --region amsterdam --port 30304 --bootstr
 The node command accepts these arguments:
 
 ```bash
---key          Required. Your validator's private key seed (any number)
---region       Required. Your validator's region
---port         Optional. Network port (default: 30303)
---bootstrappers Optional. Comma-separated list of bootstrap nodes (format: key@ip:port)
+--address      
+--genesis
 ```
-
-### Available Regions
-
-Use any of these regions when starting your node:
-
-Frankfurt, Amsterdam, London, Ashburn VA, New York/NJ, Tokyo, Singapore, Hong Kong, Sydney, São Paulo, Marseille, Los Angeles, Seattle, Miami, Toronto, Dubai, Mumbai, Chennai, Fortaleza, Manila, Stockholm, Warsaw, Istanbul, Cairo, Moscow, Beijing, Seoul, Taipei, Jakarta, Auckland, Paris, Madrid, Milan, Vienna, Prague, Copenhagen, Helsinki, Tel Aviv, Johannesburg, Lagos, Nairobi, Cape Town, Panama City, Santiago, Vancouver, Perth, Kuala Lumpur, Muscat, Dublin, Montreal
 
 ## Monitoring
 `brew install prometheus`

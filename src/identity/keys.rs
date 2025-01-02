@@ -1,5 +1,6 @@
 use commonware_cryptography::{Ed25519, PrivateKey, Scheme};
 use rand::rngs::OsRng;
+use tracing::info;
 use std::fs;
 use std::path::PathBuf;
 use thiserror::Error;
@@ -39,6 +40,34 @@ impl NodeKeyManager {
         let key_path = key_dir.join("node.key");
 
         Ok(Self { key_path })
+    }
+
+    pub fn initialize(&self) -> Result<Ed25519, KeyManagementError> {
+        info!("Initializing node key manager");
+
+        // Check for existing key and handle key generation in one flow
+        let signer = match self.check_existing_key()? {
+            Some(existing_key) => {
+                info!("Loaded existing validator key");
+                existing_key
+            }
+            None => {
+                info!("No existing key found, generating new validator key");
+                self.generate_key()?
+            }
+        };
+
+        // Log key information
+        info!("Validator key ready");
+        info!("Public key: {}", hex::encode(signer.public_key()));
+        info!("Key stored at: {:?}", self.key_path());
+
+        Ok(signer)
+    }
+
+    // Add a method to get signer info for logging/display
+    pub fn get_signer_info(&self, signer: &Ed25519) -> (String, &PathBuf) {
+        (hex::encode(signer.public_key()), &self.key_path)
     }
 
     pub fn generate_key(&self) -> Result<Ed25519, KeyManagementError> {
