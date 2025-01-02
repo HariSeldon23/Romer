@@ -12,7 +12,6 @@ use clap::Parser;
 use commonware_cryptography::Scheme;
 use commonware_runtime::deterministic::Executor;
 use commonware_runtime::Runner;
-use node::hardware::VirtualizationType;
 use tracing::{error, info};
 
 use crate::cmd::cli::NodeCliArgs;
