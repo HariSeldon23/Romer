@@ -12,10 +12,12 @@ use clap::Parser;
 use commonware_cryptography::Scheme;
 use commonware_runtime::deterministic::Executor;
 use commonware_runtime::Runner;
+use node::hardware::VirtualizationType;
 use tracing::{error, info};
 
 use crate::cmd::cli::NodeCliArgs;
 use crate::identity::keys::NodeKeyManager;
+use crate::node::hardware::HardwareVerifier;
 use crate::node::validator::Node;
 
 fn main() {
@@ -42,6 +44,36 @@ fn main() {
 
     info!("Starting Rømer Chain Node");
     info!("Using local address: {}", args.address);
+
+    let verifier = HardwareVerifier::new();
+
+    // Run the hardware verification test
+    match verifier.verify() {
+        Ok((virtualization_type, result)) => {
+            // Print operating system information
+            println!("Operating System: {:?}", HardwareVerifier::detect_os());
+
+            // Print virtualization details
+            match virtualization_type {
+                VirtualizationType::Physical => {
+                    println!("Hardware Type: Physical Machine");
+                }
+                VirtualizationType::Virtual(virt_type) => {
+                    println!("Hardware Type: Virtual Environment ({})", virt_type);
+                }
+            }
+
+            // Print performance details
+            println!("Performance Details:");
+            println!("  Operations per second: {}", result.ops_per_second);
+            println!("  Performance score: {:.2}", result.performance_score);
+            println!("  Test duration: {:?}", result.test_duration);
+        }
+        Err(err) => {
+            eprintln!("Hardware Verification Failed: {:?}", err);
+            std::process::exit(1);
+        }
+    }
 
     // Initialize the key manager
     let key_manager = match NodeKeyManager::new() {
@@ -92,7 +124,6 @@ fn main() {
     info!("Node initialized");
 
     Runner::start(executor, async move {
-        node.run(args.address,args.get_bootstrap_addr())
-            .await;
+        node.run(args.address, args.get_bootstrap_addr()).await;
     });
 }
